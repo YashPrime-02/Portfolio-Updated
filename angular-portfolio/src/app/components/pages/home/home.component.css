@@ -2,15 +2,16 @@
 .home-container {
   display: flex;
   justify-content: center;
-  align-items: center; /* Center the content vertically */
+  align-items: center;
   flex-direction: column;
   min-height: calc(100vh - 80px);
   background: linear-gradient(270deg, #1a2a3b, #3a4e6f, #1a2a3b);
   color: #FFD700;
   padding: 2rem;
   box-sizing: border-box;
-  text-align: center; /* Center align text for all sections */
+  text-align: center;
   position: relative;
+  overflow: hidden;
 }
 
 /* Hero Section */
@@ -35,6 +36,7 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 1.3rem;
   margin-bottom: 2rem;
+  color: #F2C03D;
 }
 
 .btn {
@@ -44,7 +46,7 @@
   color: #fff;
   font-weight: bold;
   border-radius: 4px;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
   font-size: 1.1rem;
 }
 
@@ -147,6 +149,10 @@
 /* Testimonials Section */
 .testimonials-section {
   margin-top: 4rem;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  padding: 2rem 0;
 }
 
 .testimonials-section h2 {
@@ -157,21 +163,26 @@
 }
 
 .testimonial-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonial-track {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+  width: max-content;
+  animation: scroll 30s linear infinite;
 }
 
 .testimonial-card {
-  background: rgba(255, 255, 255, 0.2);
+  flex: 0 0 auto;
+  width: 300px;
+  margin: 0 1rem;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(15px);
-  width: 300px;
-  text-align: center;
-  margin-bottom: 2rem;
   text-align: left;
 }
 
@@ -195,7 +206,17 @@
   margin-bottom: 1rem;
 }
 
-/* Responsive for smaller devices */
+/* Animation Keyframes */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive Design */
 @media (max-width: 1024px) {
   .hero h1 {
     font-size: 2.5rem;
@@ -252,110 +273,4 @@
   .testimonial-card {
     width: 180px;
   }
-}
-.testimonials-section {
-  text-align: center;
-  overflow: hidden;
-  position: relative;
-  padding: 2rem 0;
-}
-
-.testimonial-carousel {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.testimonial-track {
-  display: flex;
-  width: max-content;
-  animation: scroll 30s linear infinite;
-}
-
-.testimonial-card {
-  flex: 0 0 auto;
-  width: 300px;
-  margin: 0 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  color: #FFD700;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s;
-}
-
-.testimonial-card:hover {
-  transform: scale(1.05);
-}
-
-.testimonial-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  object-fit: cover;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-.testimonial-carousel:hover .testimonial-track {
-  animation-play-state: paused;
-}
-@media (max-width: 768px) {
-  .testimonial-card {
-    width: 220px;
-    margin: 0 0.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .testimonial-card {
-    width: 180px;
-    margin: 0 0.3rem;
-  }
-}
-.testimonial-card {
-  /* existing styles */
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s ease forwards;
-  animation-delay: calc(var(--card-index) * 0.3s);
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.testimonial-track {
-  animation: scroll 30s linear infinite;
-}
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 215, 0, 0.7);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-  color: #1a2a3b;
-  font-size: 1.2rem;
-}
-
-.arrow.left {
-  left: 1rem;
-}
-
-.arrow.right {
-  right: 1rem;
 }

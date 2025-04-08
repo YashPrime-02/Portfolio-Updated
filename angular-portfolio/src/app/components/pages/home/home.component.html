@@ -43,7 +43,7 @@
  <section class="testimonials-section">
   <h2>What People Say</h2>
   <div class="testimonial-carousel">
-    <button class="arrow left" (click)="scrollLeft()">←</button>
+    <!-- <button class="arrow left" (click)="scrollLeft()">←</button> -->
     <div class="testimonial-track" #testimonialTrack>
       <div *ngFor="let testimonial of testimonials.concat(testimonials)" class="testimonial-card">
         <img [src]="testimonial.image" alt="{{ testimonial.name }}" class="testimonial-image" />
@@ -51,7 +51,7 @@
         <h4>- {{ testimonial.name }}</h4>
       </div>
     </div>
-    <button class="arrow right" (click)="scrollRight()">→</button>
+    <!-- <button class="arrow right" (click)="scrollRight()">→</button> -->
   </div>
 </section>
 

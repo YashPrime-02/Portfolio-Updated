@@ -13,13 +13,13 @@ export class ProjectsComponent {
     {
       title: 'Sion Varsity',
       description: 'Developed SionVarsity.com as an Angular Developer, focusing on responsive design, improved UI/UX, and performance optimization. Enhanced user engagement and ensured seamless navigation, contributing to a scalable and efficient web platform.',
-      imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/globe.svg', // Website globe icon
+      imageUrl: '/assets/SION_VARSITY.png', // Website globe icon
       projectUrl: 'https://sionvarsity.com/'
     },
     {
       title: 'Sion Semi AI',
       description: 'Developed and optimized sionsemi.ai using Angular, focusing on responsive design, performance enhancements, and seamless user experience. Collaborated with cross-functional teams to implement scalable solutions and ensure smooth deployment.',
-      imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/cpu.svg', // AI chip / neural network icon
+      imageUrl: '/assets/SIONSEMI_AI.png',
       projectUrl: 'https://sionsemi.ai/'
     },
     {
@@ -31,7 +31,7 @@ export class ProjectsComponent {
     {
       title: 'E-CELL WEBSITE',
       description: 'Conceptualized, built, and coordinated the official website for E-CELL using React, providing a dynamic and engaging platform for event announcements, team showcases, and entrepreneurial resources.',
-      imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/rocket.svg', // Startup / rocket icon
+      imageUrl: '/assets/E-CELL_ABESEC.png', // Startup / rocket icon
       projectUrl: ''
     },
     {
