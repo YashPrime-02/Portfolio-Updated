@@ -4,8 +4,16 @@
 body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
-  background-color: #f5f5f5;
+  background: linear-gradient(270deg, #3a4e6f, #5b6f87, #3a4e6f); /* Adjusted to make it lighter */
+  color: #FFD700; /* Shiny golden font color */
 }
+
+p {
+  color: #F2C03D;
+  line-height: 1.6;
+  font-size: 1.1rem; /* Slightly increased font size for better readability */
+}
+
 
 
 @keyframes fadeIn {

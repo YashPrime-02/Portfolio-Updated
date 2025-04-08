@@ -2,12 +2,16 @@
 .footer {
   background: linear-gradient(270deg, #000435, #2a344d, #000435); /* Match navbar gradient */
   color: #fff;
-  padding: 2rem 2rem;
+  padding: 1rem 2rem;  /* Reduced padding for smaller footer */
   text-align: center;
   box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(15px);
   border-radius: 12px;
   margin-top: 2rem;
+  position: relative;
+  bottom: 0;
+  width: 95%;
+  flex-shrink: 0;  /* Ensures the footer stays at the bottom */
 }
 
 /* Footer content */
@@ -16,14 +20,14 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1.5rem;  /* Reduced gap for smaller screens */
   margin-bottom: 1rem; /* Added for spacing on mobile */
 }
 
 /* Footer Logo */
 .footer-logo a {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2rem;
+  font-size: 1.6rem;  /* Slightly smaller logo size */
   font-weight: bold;
   color: #ffffff;
   text-decoration: none;
@@ -39,7 +43,7 @@
 .footer-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;  /* Reduced gap */
   padding: 0;
   margin: 0;
 }
@@ -61,13 +65,13 @@
 /* Social Icons */
 .footer-social {
   display: flex;
-  gap: 1.5rem;
-  margin-top: 1rem; /* Added for better spacing on mobile */
+  gap: 1rem;  /* Reduced gap */
+  margin-top: 1rem; /* Adjusted for better spacing on mobile */
 }
 
 .footer-social a {
   color: #ffffff;
-  font-size: 1.6rem; /* Increased size for better visibility */
+  font-size: 1.4rem; /* Slightly smaller icons */
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -78,8 +82,8 @@
 
 /* Footer Bottom */
 .footer-bottom {
-  margin-top: 2rem;
-  font-size: 1.1rem; /* Slightly larger font size for better readability */
+  margin-top: 1rem;  /* Reduced margin */
+  font-size: 1rem;  /* Adjusted size */
 }
 
 .footer-bottom p {
@@ -108,19 +112,19 @@
   }
 
   .footer-logo a {
-    font-size: 1.8rem; /* Slightly smaller logo text for tablets */
+    font-size: 1.4rem; /* Smaller logo text for tablets */
   }
 
   .footer-links li a {
-    font-size: 1.1rem; /* Adjusted for better readability on tablet */
+    font-size: 1rem; /* Adjusted for better readability on tablet */
   }
 
   .footer-social a {
-    font-size: 1.6rem; /* Increased social icon size */
+    font-size: 1.4rem; /* Slightly smaller icons */
   }
 
   .footer-bottom p {
-    font-size: 1rem; /* Increased font size for footer text */
+    font-size: 1rem; /* Adjusted text size */
   }
 }
 
@@ -142,15 +146,15 @@
   }
 
   .footer-logo a {
-    font-size: 1.7rem; /* Further reduced for mobile */
+    font-size: 1.3rem; /* Further reduced for mobile */
   }
 
   .footer-links li a {
-    font-size: 1.2rem; /* Larger font size for easier readability */
+    font-size: 1.1rem; /* Larger font size for easier readability */
   }
 
   .footer-social a {
-    font-size: 1.8rem; /* Slightly larger icons for mobile */
+    font-size: 1.5rem; /* Slightly larger icons for mobile */
   }
 
   .footer-bottom p {
@@ -160,18 +164,31 @@
 
 @media (max-width: 480px) {
   .footer-logo a {
-    font-size: 1.5rem; /* Adjusted logo size for very small screens */
+    font-size: 1.3rem; /* Adjusted logo size for very small screens */
   }
 
   .footer-links li a {
-    font-size: 1.1rem; /* Font size adjusted for small mobile screens */
+    font-size: 1rem; /* Font size adjusted for small mobile screens */
   }
 
   .footer-social a {
-    font-size: 1.5rem; /* Optimized icon size */
+    font-size: 1.3rem; /* Optimized icon size */
   }
 
   .footer-bottom p {
     font-size: 0.9rem; /* Smaller text for footer */
   }
+}
+.footer-bottom {
+  text-align: center !important;
+  font-size: 1.2rem !important;
+  color: #555 !important;
+  padding: 20px !important;
+  background-color: #1a2a3b !important;
+  color: #FFD700 !important; /* golden text color */
+}
+
+.footer-bottom span {
+  font-size: 1.5rem !important;
+  color: red !important;
 }

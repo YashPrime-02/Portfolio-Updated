@@ -1,1 +1,19 @@
-<p>contact works!</p>
+<div class="contact-container animate__animated animate__fadeInUp">
+  <h2>Contact Me</h2>
+  <div class="input-group">
+    <span class="input-icon"><i class="fas fa-user"></i></span>
+    <input formControlName="name" type="text" placeholder="Your Name">
+  </div>
+
+  <div class="input-group">
+    <span class="input-icon"><i class="fas fa-envelope"></i></span>
+    <input formControlName="email" type="email" placeholder="Your Email">
+  </div>
+
+  <div class="input-group">
+    <span class="input-icon"><i class="fas fa-comment"></i></span>
+    <textarea formControlName="message" placeholder="Your Message"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Send Message</button>
+</div>

@@ -1,0 +1,131 @@
+.contact-container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 28px; /* Slight refinement */
+  max-width: 460px; /* Refined width */
+  margin: 70px auto; /* More elegant spacing */
+  backdrop-filter: blur(20px);
+  box-shadow: 0 12px 32px rgba(31, 38, 135, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.contact-container h2 {
+  margin-bottom: 18px; /* Subtle reduction */
+  color: #FFD700;
+  font-size: 1.8rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 18px; /* Sleeker spacing */
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #FFD700;
+  font-size: 1rem;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 90%;
+  padding: 14px 12px 14px 44px; /* Increased vertical and left padding */
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin: 0;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: #ccc;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px #FFD700;
+}
+
+.input-group textarea {
+  min-height: 25px; /* Increased height a bit */
+  resize: vertical;
+  width: 90%;
+}
+
+/* Enhanced Submit Button */
+.btn-submit {
+  background-color: #FFD700;
+  color: #333;
+  padding: 14px 36px; /* Expanded for a luxurious feel */
+  border: none;
+  border-radius: 16px; /* Slightly more rounded */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px; /* More space between icon and text */
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(255, 215, 0, 0.4);
+}
+
+.btn-submit:hover {
+  background-color: #e6c200;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(255, 215, 0, 0.5);
+}
+
+@media (max-width: 600px) {
+  .contact-container {
+    padding: 20px;
+    margin: 50px 16px;
+  }
+
+  .input-group {
+    margin-bottom: 16px;
+  }
+
+  .input-group input,
+  .input-group textarea {
+    width: 85%;
+    padding: 14px 12px 14px 40px; /* Comfortable padding for mobile */
+    font-size: 1rem;
+  }
+
+  .input-group textarea {
+    min-height: 45px; /* More typing space on mobile */
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 18px 0; /* More tap-friendly button */
+    font-size: 1.1rem;
+    border-radius: 18px;
+    gap: 10px;
+    letter-spacing: 0.6px;
+    box-shadow: 0 8px 22px rgba(255, 215, 0, 0.45);
+  }
+
+  .btn-submit:hover {
+    transform: none; /* Avoid move on hover for mobile */
+    box-shadow: 0 12px 28px rgba(255, 215, 0, 0.6);
+  }
+
+  .input-icon {
+    left: 10px;
+    font-size: 1.1rem;
+  }
+}

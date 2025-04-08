@@ -1,44 +1,127 @@
 .projects-container {
   padding: 2rem;
-  h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(270deg, #000435, #2a344d, #000435); /* Match footer gradient */
+  color: #fff; /* Light text to contrast with background */
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37); /* Similar shadow effect as footer */
+  backdrop-filter: blur(15px); /* Glassy effect */
+  min-height: 100vh; /* Ensure the container fills the viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0; /* Adjusted to avoid extra padding at the top */
+}
+
+.projects-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem; /* Larger for better visibility */
+  font-weight: bold;
+  color: #fff;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Ensure only 3 items per row */
+  gap: 1.5rem;
+  width: 100%; /* Ensure grid fills the available width */
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.15); /* Semi-transparent background for glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for separation */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+  backdrop-filter: blur(15px); /* Glassy effect */
+  padding: 1.5rem;
+  position: relative; /* For positioning overlay */
+  overflow: hidden; /* Ensure no elements overflow the rounded borders */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 15px 25px rgba(0, 0, 0, 0.15); /* More depth on hover */
+}
+
+.project-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.project-card img:hover {
+  transform: scale(1.05); /* Slight zoom effect on image hover */
+}
+
+.project-card h3,
+.project-card p {
+  padding: 0.75rem 0;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff; /* White text for readability */
+}
+
+.project-card a {
+  display: block;
+  text-align: center;
+  padding: 0.75rem;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.3s, transform 0.3s ease;
+  margin-top: 1rem; /* Add some spacing from description */
+}
+
+.project-card a:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1); /* Slight overlay for better readability */
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+/* Responsive for tablets and smaller devices */
+@media (max-width: 1024px) {
+  .projects-container h2 {
+    font-size: 2rem; /* Slightly smaller on tablets */
   }
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    .project-card {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-      &:hover {
-        transform: translateY(-5px);
-      }
-      img {
-        width: 100%;
-        height: auto;
-      }
-      h3, p {
-        padding: 1rem;
-      }
-      a {
-        display: block;
-        text-align: center;
-        padding: 0.75rem;
-        background: #007bff;
-        color: #fff;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background 0.3s;
-        &:hover {
-          background: #0056b3;
-        }
-      }
-    }
+
+  .project-card a {
+    font-size: 1.1rem; /* Adjusted button size */
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-container h2 {
+    font-size: 1.8rem; /* Further reduced for mobile */
+  }
+
+  .project-card a {
+    font-size: 1rem; /* Adjusted for mobile readability */
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-container h2 {
+    font-size: 1.5rem; /* Adjusted for small screens */
+  }
+
+  .project-card a {
+    font-size: 0.9rem; /* Smaller button text */
   }
 }

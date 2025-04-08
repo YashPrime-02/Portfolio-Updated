@@ -1,0 +1,150 @@
+/* About Page Styles */
+.about-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* About Me Section */
+.about-me {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.about-photo img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #FFD700;
+}
+
+.about-text {
+  flex: 1;
+  padding-left: 30px;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* Technologies Section */
+.technologies-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.technologies-section h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.tech-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.tech-icon {
+  text-align: center;
+  width: 120px;
+}
+
+.tech-icon img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.tech-icon p {
+  font-size: 1rem;
+  color: #444;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  text-align: center;
+}
+
+.testimonials-section h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.testimonial-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.testimonial-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.testimonial-card .testimonial-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.testimonial-card p {
+  font-size: 1.1rem;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.testimonial-card h4 {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .about-me {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-photo img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .about-text {
+    padding-left: 0;
+    padding-top: 20px;
+  }
+
+  .tech-icons {
+    gap: 20px;
+  }
+
+  .tech-icon {
+    width: 100px;
+  }
+}

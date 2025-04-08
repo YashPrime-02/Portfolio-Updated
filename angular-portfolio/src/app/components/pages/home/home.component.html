@@ -1,7 +1,53 @@
 <div class="home-container" [@fadeInAnimation]>
+
+  <!-- Hero Section -->
   <section class="hero">
-    <h1>Welcome to my Portfolio</h1>
+    <h1>Welcome to My Portfolio</h1>
     <p>I am Yash Mishra, a passionate developer and designer.</p>
     <a routerLink="/about" class="btn btn-primary">Discover More</a>
   </section>
+
+  <!-- Counter Section -->
+  <section class="stats-heading">
+    <h2>Key Stats</h2>
+  </section>
+
+  <section class="stats-container">
+    <div class="stats-card">
+      <h3>{{ yearsOfExperience }}+</h3>
+      <p>Experience</p>
+    </div>
+    <div class="stats-card">
+      <h3>{{ numberOfProjects }}+</h3>
+      <p>Projects</p>
+    </div>
+    <div class="stats-card">
+      <h3>{{ numberOfTechnologies }}+</h3>
+      <p>Technologies</p>
+    </div>
+  </section>
+
+  <!-- Technologies Section -->
+  <section class="technologies-section">
+    <h2>Technologies I've Worked on</h2>
+    <div class="tech-icons">
+      <div class="tech-icon" *ngFor="let tech of technologies">
+        <img [src]="tech.icon" alt="{{ tech.name }}" />
+        <p>{{ tech.name }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <h2>What People Say</h2>
+    <div class="testimonial-carousel">
+      <div *ngFor="let testimonial of testimonials" class="testimonial-card">
+        <img [src]="testimonial.image" alt="{{ testimonial.name }}" class="testimonial-image"/>
+        <p>"{{ testimonial.message }}"</p>
+        <h4>- {{ testimonial.name }}</h4>
+      </div>
+    </div>
+  </section>
+
 </div>
