@@ -14,7 +14,7 @@ import { ContactComponent } from './components/pages/contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    HeaderComponent,     // <-- Ensure HeaderComponent is declared
     FooterComponent,
     HomeComponent,
     AboutComponent,
