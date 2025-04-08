@@ -4,7 +4,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  styleUrls: ['./home.component.css'],
   animations: [
     trigger('fadeInAnimation', [
       transition(':enter', [

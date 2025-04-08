@@ -1,0 +1,44 @@
+.projects-container {
+  padding: 2rem;
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    .project-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      &:hover {
+        transform: translateY(-5px);
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+      h3, p {
+        padding: 1rem;
+      }
+      a {
+        display: block;
+        text-align: center;
+        padding: 0.75rem;
+        background: #007bff;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.3s;
+        &:hover {
+          background: #0056b3;
+        }
+      }
+    }
+  }
+}
