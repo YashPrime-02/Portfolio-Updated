@@ -1,7 +1,8 @@
 <div class="projects-container">
-  <h2>My Projects</h2>
+  <h2 class="fade-in">My Projects</h2>
+  <p class="projects-subheading fade-in">Explore a selection of my development work, showcasing responsive designs, optimized performance, and innovative solutions across multiple platforms.</p>
+
   <div class="project-grid">
-    <!-- Repeat for each project -->
     <div class="col-12 col-md-6 col-lg-6 mb-4" *ngFor="let project of projects">
       <div class="project-card">
         <img [src]="project.imageUrl" alt="{{ project.title }}" class="img-fluid">

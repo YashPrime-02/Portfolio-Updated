@@ -1,50 +1,78 @@
 .projects-container {
   padding: 2rem;
-  background: linear-gradient(270deg, #000435, #2a344d, #000435); /* Match footer gradient */
-  color: #fff; /* Light text to contrast with background */
+  background: linear-gradient(270deg, #000435, #2a344d, #000435);
+  color: #fff;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37); /* Similar shadow effect as footer */
-  backdrop-filter: blur(15px); /* Glassy effect */
-  min-height: 100vh; /* Ensure the container fills the viewport height */
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(15px);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 0; /* Adjusted to avoid extra padding at the top */
+  padding-top: 0;
 }
 
+/* Heading with fade-in */
 .projects-container h2 {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.2rem; /* Larger for better visibility */
+  font-size: 2.2rem;
   font-weight: bold;
-  color: #fff;
+  color: #FFD700;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+/* Subheading with fade-in */
+.projects-subheading {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 20px;
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Ensure only 3 items per row */
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  width: 100%; /* Ensure grid fills the available width */
+  width: 100%;
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.15); /* Semi-transparent background for glass effect */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for separation */
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  transition: transform 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
-  backdrop-filter: blur(15px); /* Glassy effect */
   padding: 1.5rem;
-  position: relative; /* For positioning overlay */
-  overflow: hidden; /* Ensure no elements overflow the rounded borders */
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 15px 25px rgba(0, 0, 0, 0.15); /* More depth on hover */
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
 .project-card img {
@@ -54,15 +82,16 @@
   transition: transform 0.3s ease;
 }
 
-.project-card img:hover {
-  transform: scale(1.05); /* Slight zoom effect on image hover */
+.project-card:hover img {
+  transform: scale(1.05);
 }
 
 .project-card h3,
 .project-card p {
   padding: 0.75rem 0;
   font-family: 'Open Sans', sans-serif;
-  color: #fff; /* White text for readability */
+  color: #fff;
+  text-align: left;
 }
 
 .project-card a {
@@ -75,7 +104,7 @@
   font-weight: bold;
   border-radius: 4px;
   transition: background 0.3s, transform 0.3s ease;
-  margin-top: 1rem; /* Add some spacing from description */
+  margin-top: 1rem;
 }
 
 .project-card a:hover {
@@ -90,7 +119,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.1); /* Slight overlay for better readability */
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   pointer-events: none;
 }
@@ -98,30 +127,33 @@
 /* Responsive for tablets and smaller devices */
 @media (max-width: 1024px) {
   .projects-container h2 {
-    font-size: 2rem; /* Slightly smaller on tablets */
+    font-size: 2rem;
   }
-
   .project-card a {
-    font-size: 1.1rem; /* Adjusted button size */
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 768px) {
-  .projects-container h2 {
-    font-size: 1.8rem; /* Further reduced for mobile */
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-
+  .projects-container h2 {
+    font-size: 1.8rem;
+  }
   .project-card a {
-    font-size: 1rem; /* Adjusted for mobile readability */
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .projects-container h2 {
-    font-size: 1.5rem; /* Adjusted for small screens */
+  .project-grid {
+    grid-template-columns: 1fr;
   }
-
+  .projects-container h2 {
+    font-size: 1.5rem;
+  }
   .project-card a {
-    font-size: 0.9rem; /* Smaller button text */
+    font-size: 0.9rem;
   }
 }

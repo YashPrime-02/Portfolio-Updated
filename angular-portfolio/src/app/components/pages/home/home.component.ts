@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/javascript.svg' },
     { name: 'Angular', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/angular.svg' },
     { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/react.svg' },
-    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/node-dot-js.svg' },
+    // { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/node-dot-js.svg' },
     { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/git.svg' }
   ];
 
@@ -49,8 +49,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       image: 'assets/images/john_doe.jpg'
     },
     {
-      message: 'His design sense and front-end development skills are exceptional. Highly recommended!',
-      name: 'Jane Smith',
+      message: 'It was great working with you Yash Mishra. Loved the way you explained every minute details and the way you made me comfortable while working on this project. Would love to work with you in further projects.',
+      name: 'Preetam Ray',
       image: 'assets/images/jane_smith.jpg'
     },
     {
