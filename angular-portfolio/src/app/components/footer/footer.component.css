@@ -1,0 +1,177 @@
+/* Footer */
+.footer {
+  background: linear-gradient(270deg, #000435, #2a344d, #000435); /* Match navbar gradient */
+  color: #fff;
+  padding: 2rem 2rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(15px);
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+/* Footer content */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 1rem; /* Added for spacing on mobile */
+}
+
+/* Footer Logo */
+.footer-logo a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-logo a:hover {
+  color: #ffcc00;
+  transform: scale(1.1);
+}
+
+/* Footer Links */
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  padding: 0.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #ffcc00;
+  transform: translateY(-2px);
+}
+
+/* Social Icons */
+.footer-social {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem; /* Added for better spacing on mobile */
+}
+
+.footer-social a {
+  color: #ffffff;
+  font-size: 1.6rem; /* Increased size for better visibility */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: #ffcc00;
+  transform: scale(1.2);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  margin-top: 2rem;
+  font-size: 1.1rem; /* Slightly larger font size for better readability */
+}
+
+.footer-bottom p {
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; /* Increased gap for better readability on tablet */
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Increased spacing for mobile and tablet views */
+  }
+
+  .footer-social {
+    margin-top: 1.5rem; /* Adjusted for better spacing */
+  }
+
+  .footer-logo a {
+    font-size: 1.8rem; /* Slightly smaller logo text for tablets */
+  }
+
+  .footer-links li a {
+    font-size: 1.1rem; /* Adjusted for better readability on tablet */
+  }
+
+  .footer-social a {
+    font-size: 1.6rem; /* Increased social icon size */
+  }
+
+  .footer-bottom p {
+    font-size: 1rem; /* Increased font size for footer text */
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-social {
+    margin-top: 1.5rem;
+  }
+
+  .footer-logo a {
+    font-size: 1.7rem; /* Further reduced for mobile */
+  }
+
+  .footer-links li a {
+    font-size: 1.2rem; /* Larger font size for easier readability */
+  }
+
+  .footer-social a {
+    font-size: 1.8rem; /* Slightly larger icons for mobile */
+  }
+
+  .footer-bottom p {
+    font-size: 1rem; /* Adjusted text size */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-logo a {
+    font-size: 1.5rem; /* Adjusted logo size for very small screens */
+  }
+
+  .footer-links li a {
+    font-size: 1.1rem; /* Font size adjusted for small mobile screens */
+  }
+
+  .footer-social a {
+    font-size: 1.5rem; /* Optimized icon size */
+  }
+
+  .footer-bottom p {
+    font-size: 0.9rem; /* Smaller text for footer */
+  }
+}
