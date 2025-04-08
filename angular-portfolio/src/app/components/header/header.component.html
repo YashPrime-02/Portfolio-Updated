@@ -2,6 +2,13 @@
   <div class="logo">
     <a routerLink="/">Yash Mishra</a>
   </div>
+
+  <!-- Theme Toggle Button -->
+  <div class="theme-toggle" (click)="toggleTheme()">🌓</div>
+
+  <!-- Mobile Menu Toggle -->
+  <div class="menu-toggle" (click)="toggleMenu()">&#9776;</div>
+
   <ul class="nav-links">
     <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
     <li><a routerLink="/about" routerLinkActive="active">About</a></li>

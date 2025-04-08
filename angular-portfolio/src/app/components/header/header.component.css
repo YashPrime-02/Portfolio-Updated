@@ -1,39 +1,169 @@
+/* Global clean: remove scrollbar strictly */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Navbar container */
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   padding: 1rem 2rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
   position: sticky;
   top: 0;
   z-index: 1000;
+  background: linear-gradient(270deg, #6a11cb, #2575fc, #6a11cb);
+  background-size: 600% 600%;
+  animation: gradientAnimation 12s ease infinite;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  transition: all 0.5s ease;
+}
 
-  .logo a {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
+/* Gradient animation */
+@keyframes gradientAnimation {
+  0%, 100% {
+    background-position: 0% 50%;
   }
+  50% {
+    background-position: 100% 50%;
+  }
+}
 
+/* Logo */
+.logo {
+  flex: 1;
+  text-align: center;
+}
+
+.logo a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.logo a:hover {
+  color: #ffcc00;
+  transform: scale(1.1);
+}
+
+/* Nav Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  flex: 2;
+  justify-content: center;
+}
+
+.nav-links li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #ffcc00;
+  transition: width 0.4s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #ffcc00;
+  transform: translateY(-2px);
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+  width: 100%;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* Menu Toggle (Hamburger) */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #ffffff;
+  margin-left: auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
   .nav-links {
-    list-style: none;
-    display: flex;
-
-    li {
-      margin-left: 1.5rem;
-
-      a {
-        text-decoration: none;
-        color: #333;
-        font-family: 'Open Sans', sans-serif;
-        transition: color 0.3s;
-        &:hover,
-        &.active {
-          color: #007bff;
-        }
-      }
-    }
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0 0 12px 12px;
+    padding: 1rem 0;
   }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    margin: 0.8rem 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar.active .nav-links {
+    display: flex;
+  }
+}
+
+/* Dark Theme Mode */
+body.dark-theme {
+  background: #121212;
+  color: #ffffff;
+}
+
+body.dark-theme .navbar {
+  background: rgba(18, 18, 18, 0.85);
+}
+
+body.dark-theme .theme-toggle {
+  filter: invert(1);
 }
