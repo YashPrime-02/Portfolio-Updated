@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent} from './components/header/header.component'
+import { FooterComponent } from './components/footer/footer.component'; // ✅ Check your path
+import { CommonModule } from '@angular/common'; // ✅ Safe to import
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  standalone: true, // ✅ Standalone component
+  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent], // ✅ Imports
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'angular-portfolio';
-}
+export class AppComponent {}
