@@ -33,8 +33,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   numberOfTechnologies = 0;
 
   targetYearsOfExperience = 1;
-  targetNumberOfProjects = 10;
-  targetNumberOfTechnologies = 7;
+  targetNumberOfProjects = 9;
+  targetNumberOfTechnologies = 6;
 
   // Technologies
   technologies = [

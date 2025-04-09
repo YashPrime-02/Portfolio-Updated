@@ -418,14 +418,14 @@
 
 .duration {
   font-size: 0.9rem !important;
-  color: #F2C03D !important;
+  color: #FFFF !important;
 }
 
 /* Role subheading */
 .role {
   font-size: 1.2rem !important;
   margin: 5px 0 10px !important;
-  color: #FFD700 !important;
+  color: #FFF !important;
   font-weight: 500 !important;
 }
 
@@ -433,7 +433,7 @@
 .description {
   list-style-type: disc !important;
   margin-left: 25px !important;
-  color: #F2C03D !important;
+  color: #FFFF !important;
 }
 
 .description li {
