@@ -537,3 +537,7 @@
 body {
   overflow-x: hidden;
 }
+.typed-cursor {
+  color: yellow;
+  font-weight: bold;
+}

@@ -41,7 +41,7 @@ export class ProjectsComponent {
       projectUrl: 'https://github.com/YashPrime-02/Mental_Health_Portal-Main'
     },
     {
-      title: 'Budget Planner App Using Angular JS',
+      title: 'Budget Planner App ',
       description: 'Developed a Budget Planner App using AngularJS, enabling users to track expenses, set financial goals, and manage budgets effectively with responsive design and intuitive user-friendly interface.',
       imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/piggy-bank.svg', // Budget / finance icon
       projectUrl: 'https://github.com/YashPrime-02/Yash-Angular-Projects/tree/main/BudgetPlanner_App'
