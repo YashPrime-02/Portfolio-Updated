@@ -21,14 +21,15 @@ body::-webkit-scrollbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(270deg, #000435, #2a344d, #000435); /* Updated gradient */
+  background: linear-gradient(270deg, #000435, #2a344d, #000435);
   background-size: 600% 600%;
   animation: gradientAnimation 12s ease infinite;
   box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 12px;
-  transition: all 0.5s ease;
+  transition: all 0.4s ease;
+  transform: translateY(0);
 }
 
 /* Gradient animation */
@@ -134,11 +135,10 @@ body::-webkit-scrollbar {
     flex-direction: column;
     width: 100%;
     display: none;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 4, 53, 0.9);
     border-radius: 0 0 12px 12px;
     padding: 1rem 0;
-    gap: 0rem;
-
+    gap: 0;
   }
 
   .nav-links li {
@@ -154,6 +154,34 @@ body::-webkit-scrollbar {
   .navbar.active .nav-links {
     display: flex;
   }
+
+  .navbar {
+    flex-direction: column;
+    padding: 3%;
+    align-items: center;
+  }
+
+  .logo {
+    order: 1;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.8rem;
+  }
+
+  .menu-toggle {
+    order: 2;
+    margin-bottom: 0.5rem;
+  }
+
+  .theme-toggle {
+    order: 3;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-links {
+    order: 4;
+  }
 }
 
 /* Dark Theme Mode */
@@ -168,57 +196,4 @@ body.dark-theme .navbar {
 
 body.dark-theme .theme-toggle {
   filter: invert(1);
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column !important;
-    padding: 3% !important;
-    background: linear-gradient(270deg, #000435, #2a344d, #000435) !important; /* Updated gradient */
-    background-size: 600% 600% !important;
-    animation: gradientAnimation 12s ease infinite !important;
-    align-items: center !important;
-  }
-
-  .logo {
-    order: 1 !important;
-    width: 100% !important;
-    text-align: center !important;
-    margin-bottom: 0.8rem !important;
-  }
-
-  .menu-toggle {
-    order: 2 !important;
-    font-size: 2rem !important;
-    color: #ffffff !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  .theme-toggle {
-    order: 3 !important;
-    font-size: 1.8rem !important;
-    margin-bottom: 0.5rem !important;
-    color: #ffffff !important;
-  }
-
-  .nav-links {
-    order: 4 !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    display: none !important;
-    background: rgba(0, 4, 53, 0.9) !important;
-    border-radius: 0 0 12px 12px !important;
-    padding: 1rem 0 !important;
-  }
-
-  .nav-links li {
-    width: 100% !important;
-    text-align: center !important;
-    margin: 0.8rem 0 !important;
-  }
-
-  .navbar.active .nav-links {
-    display: flex !important;
-  }
 }

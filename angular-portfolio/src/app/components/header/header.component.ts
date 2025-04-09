@@ -13,14 +13,11 @@ export class HeaderComponent implements OnInit {
   isDarkMode = false;
 
   ngOnInit() {
-    // Theme initialization
     const savedTheme = localStorage.getItem('theme');
     this.isDarkMode = savedTheme === 'dark';
-
     this.updateThemeClass();
   }
 
-  // Update theme class on body based on current mode
   private updateThemeClass() {
     if (this.isDarkMode) {
       document.body.classList.add('dark-theme');
@@ -31,16 +28,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  // Toggle mobile menu
   toggleMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
     const navbar = document.querySelector('.navbar');
-
     menuToggle?.classList.toggle('active');
     navbar?.classList.toggle('active');
   }
 
-  // Toggle theme (dark/light)
   toggleTheme() {
     this.isDarkMode = !this.isDarkMode;
     localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
@@ -48,23 +42,21 @@ export class HeaderComponent implements OnInit {
     console.log('Theme switched to:', this.isDarkMode ? 'dark' : 'light');
   }
 
-
-  // Scroll behavior for header animation
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    const navbar = document.querySelector('.navbar');
+    const navbar = document.querySelector('.navbar') as HTMLElement;
     if (!navbar) return;
 
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    // Add or remove scrolled class
+    // Toggle shadow on scroll
     navbar.classList.toggle('scrolled', scrollTop > 50);
 
-    // Show/hide navbar on scroll direction
-    if (scrollTop > this.lastScrollTop) {
-      navbar.classList.add('hide');
+    // Hide/show on scroll direction
+    if (scrollTop > this.lastScrollTop && scrollTop > 100) {
+      navbar.style.transform = 'translateY(-100%)';
     } else {
-      navbar.classList.remove('hide');
+      navbar.style.transform = 'translateY(0)';
     }
 
     this.lastScrollTop = Math.max(0, scrollTop);
