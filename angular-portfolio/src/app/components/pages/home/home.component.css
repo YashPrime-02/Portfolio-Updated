@@ -359,3 +359,160 @@
 .arrow.right {
   right: 1rem;
 }
+/* ======= RESPONSIVE STYLES ======= */
+/* ===================== Responsive All At Once ===================== */
+
+/* Large devices (Desktops) */
+@media (max-width: 1200px) {
+  .hero {
+    padding: 2.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .stats-card {
+    width: 220px;
+  }
+
+  .testimonial-card {
+    width: 260px;
+  }
+}
+
+/* Medium devices (Tablets) */
+@media (max-width: 992px) {
+  .home-container {
+    padding: 1.5rem;
+  }
+
+  .hero {
+    padding: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .stats-heading h2,
+  .technologies-section h2,
+  .testimonials-section h2 {
+    font-size: 2rem;
+  }
+
+  .stats-card {
+    width: 200px;
+  }
+
+  .testimonial-card {
+    width: 240px;
+  }
+
+  .tech-icon {
+    width: 120px;
+  }
+
+  .tech-icon img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Small devices (Mobile landscape & Portrait) */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 1rem;
+  }
+
+  .hero {
+    padding: 5%;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .stats-heading h2,
+  .technologies-section h2,
+  .testimonials-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .stats-card {
+    width: 170px;
+    padding: 1.5rem;
+  }
+
+  .testimonial-card {
+    width: 200px;
+    padding: 1.5rem;
+  }
+
+  .tech-icon {
+    width: 100px;
+  }
+
+  .tech-icon img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Extra small devices (Mobile small screens) */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 0.85rem;
+  }
+
+  .stats-heading h2,
+  .technologies-section h2,
+  .testimonials-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .stats-card {
+    width: 140px;
+    padding: 1rem;
+  }
+
+  .testimonial-card {
+    width: 180px;
+    padding: 1rem;
+  }
+
+  .tech-icon {
+    width: 80px;
+  }
+
+  .tech-icon img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Universal - Prevent Horizontal Scroll */
+body {
+  overflow-x: hidden;
+}
