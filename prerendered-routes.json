@@ -1,0 +1,8 @@
+{
+  "routes": {
+    "/angular-portfolio": {},
+    "/angular-portfolio/about": {},
+    "/angular-portfolio/contact": {},
+    "/angular-portfolio/projects": {}
+  }
+}
