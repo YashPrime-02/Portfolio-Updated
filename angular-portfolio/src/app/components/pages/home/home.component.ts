@@ -114,7 +114,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.currentName = this.nameTranslations[this.nameIndex];
         this.nameFadeState = 'visible'; // Fade in
       }, 400); // Match fade-out duration
-    }, 2000);
+    }, 1500);
   }
 
   // Animated counters logic
