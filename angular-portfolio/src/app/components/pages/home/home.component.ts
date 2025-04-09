@@ -49,25 +49,37 @@ export class HomeComponent implements OnInit, AfterViewInit {
   // Testimonials
   testimonials = [
     {
-      message: 'During my tenure in E-Cell, I had the privilege of working under Yash sir as the President...',
+      message: 'I had the pleasure of collaborating with Yash and was impressed by his ability to lead, and uplift the entire team which makes him a great team player. He is high spirited and has a natural talent for taking initiative as well.',
+      name: 'Tarushi Singh',
+      image: 'assets/images/jane_smith.jpg'
+    },
+    {
+      message: 'During my tenure in E-Cell, I had the privilege of working under Yash sir as the President.  His knowledge of Front-end Development, design and mentorship have been truly commendable.',
       name: 'Divyam Kumar',
       image: 'assets/images/Dk.jpg'
     },
     {
-      message: 'Working under Yash Mishra mentorship in E-Cell was an incredible learning experience...',
+      message: 'Working alongside Yash Mishra on the E-Cell website was a great experience. His dedication and front-end development skills consistently elevated our project. As a team, we ensured every detail was refined, making the process both collaborative and rewarding.',
+      name: 'Neelansh Pandey',
+      image: 'assets/images/jane_smith.jpg'
+    },
+    {
+      message: 'Collaborating with Yash Mishra on the UI/UX design of the E-Cell website was an enriching experience. His creative approach and attention to detail made our teamwork smooth and effective, helping us bring the best version of our ideas to life.',
+      name: 'Shubhansh Mahawar',
+      image: 'assets/images/jane_smith.jpg'
+    },
+    {
+      message: 'Yash Mishra Sir is an inspiring mentor. Working under his guidance in E-Cell was a daily lesson in teamwork, front-end development, where his expertise truly stood out. He ensured every member felt heard always bringing out the best in us.',
       name: 'Shreya Singh',
       image: 'assets/images/john_doe.jpg'
     },
     {
-      message: 'It was great working with you Yash Mishra. Loved the way you explained every minute details...',
+      message: 'It was great working with you Yash Mishra. Loved the way you explained every minute details and the way you made me comfortable while working on this project. Would love to work with you in further projects.',
       name: 'Preetam Ray',
       image: 'assets/images/jane_smith.jpg'
     },
-    {
-      message: 'His design sense and front-end development skills are exceptional. Highly recommended!',
-      name: 'Jane Smith',
-      image: 'assets/images/jane_smith.jpg'
-    }
+
+
   ];
 
   // Rotating Name

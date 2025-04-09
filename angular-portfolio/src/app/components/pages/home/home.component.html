@@ -68,7 +68,7 @@
 
     <div class="testimonial-track" #testimonialTrack>
       <div *ngFor="let testimonial of testimonials.concat(testimonials)" class="testimonial-card">
-        <img [src]="testimonial.image" alt="{{ testimonial.name }}" class="testimonial-image" />
+        <!-- <img [src]="testimonial.image" alt="{{ testimonial.name }}" class="testimonial-image" /> -->
         <p>"{{ testimonial.message }}"</p>
         <h4>- {{ testimonial.name }}</h4>
       </div>

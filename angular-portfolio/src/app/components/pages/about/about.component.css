@@ -148,6 +148,7 @@
     width: 100px;
   }
 }
+
 /* Section General Styling (Card Look & Gradient) */
 .section,
 .experience-section,
@@ -155,7 +156,7 @@
   background: linear-gradient(270deg, #1a2a3b, #3a4e6f, #1a2a3b);
   padding: 40px 30px;
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.2);
+  box-shadow: 0 6px 20px linear-gradient(270deg, #1a2a3b, #3a4e6f, #1a2a3b);
   margin-bottom: 40px;
   color: #FFD700;
   transition: transform 0.4s, box-shadow 0.4s;
@@ -165,7 +166,7 @@
 .experience-section:hover,
 .soft-skills:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 10px 30px linear-gradient(270deg, #1a2a3b, #3a4e6f, #1a2a3b);
 }
 
 /* Headings inside Cards */
@@ -181,7 +182,7 @@
 .experience-section p,
 .soft-skills p {
   font-size: 1.1rem;
-  color: #F2C03D;
+  color: white;
   margin-bottom: 12px;
   position: relative;
   padding-left: 25px;
@@ -190,7 +191,7 @@
 .experience-section p::before,
 .soft-skills p::before {
   content: "✔";
-  color: #FFD700;
+  color: white;
   position: absolute;
   left: 0;
 }
@@ -209,6 +210,7 @@
   transform: translateY(-3px);
   box-shadow: 0 12px 24px rgba(255, 215, 0, 0.4);
 }
+
 /* Hero Section */
 .hero {
   min-height: 100vh !important;
@@ -229,7 +231,7 @@
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background: rgba(0, 0, 0, 0.5) !important; /* Dark overlay for contrast */
+  background: rgba(0, 0, 0, 0.5) !important;
   z-index: 1 !important;
 }
 
@@ -263,4 +265,190 @@
 
 .hero-btn:hover {
   transform: translateY(-3px) !important;
+}
+
+/* Soft Skills Section (Certificates) */
+.soft-skills {
+  margin: 20px auto !important;
+  padding: 10px !important;
+  max-width: 600px !important;
+}
+
+.soft-skills h3 {
+  margin-bottom: 15px !important;
+  font-size: 1.5rem !important;
+}
+
+.certificate-list {
+  list-style-type: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.certificate-list li {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 10px 0 !important;
+  border-bottom: 1px solid #ddd !important;
+  color: #fff;
+}
+
+.certificate-list li:last-child {
+  border-bottom: none !important;
+}
+
+.btn-cert {
+  margin-left: 12px !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  padding: 8px 16px !important;
+  border-radius: 10px !important;
+  text-decoration: none !important;
+  font-size: 0.9rem !important;
+  transition: all 0.4s ease !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  display: inline-block !important;
+}
+
+.btn-cert::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -75% !important;
+  width: 200% !important;
+  height: 100% !important;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0)) !important;
+  transition: left 0.6s ease !important;
+}
+
+.btn-cert:hover::before {
+  left: 125% !important;
+}
+
+.btn-cert:hover {
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3), 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+}
+
+@media (max-width: 480px) {
+  .certificate-list li {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .btn-cert {
+    margin-top: 10px !important;
+    margin-left: 0 !important;
+    width: auto !important;
+  }
+}
+.experience-section {
+  background: linear-gradient(270deg, #1a2a3b, #3a4e6f, #1a2a3b) !important;
+  padding: 40px 30px !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(58, 78, 111, 0.5), 0 4px 12px rgba(242, 192, 61, 0.3) !important;
+  margin-bottom: 40px !important;
+  color: #FFD700 !important;
+  text-align: left !important;
+  transition: box-shadow 0.4s ease, transform 0.3s ease !important;
+}
+
+/* Hover Effects */
+.experience-section:hover {
+  box-shadow: 0 12px 32px rgba(58, 78, 111, 0.7), 0 6px 18px rgba(242, 192, 61, 0.5) !important;
+  transform: translateY(-4px) scale(1.02) !important;
+  animation: pulseGlow 1.5s infinite !important;
+}
+
+/* Pulse Animation */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 12px 32px rgba(58, 78, 111, 0.7), 0 6px 18px rgba(242, 192, 61, 0.5);
+  }
+  50% {
+    box-shadow: 0 16px 36px rgba(58, 78, 111, 0.8), 0 8px 22px rgba(242, 192, 61, 0.6);
+  }
+  100% {
+    box-shadow: 0 12px 32px rgba(58, 78, 111, 0.7), 0 6px 18px rgba(242, 192, 61, 0.5);
+  }
+}
+
+.experience-section h3 {
+  font-size: 2rem !important;
+  margin-bottom: 30px !important;
+  text-align: center !important;
+}
+
+/* Experience List */
+.experience-list {
+  list-style-type: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.experience-entry {
+  margin-bottom: 30px !important;
+  padding-bottom: 15px !important;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3) !important;
+}
+
+.experience-entry:last-child {
+  border-bottom: none !important;
+}
+
+/* Header: Company & Duration */
+.exp-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: baseline !important;
+  margin-bottom: 5px !important;
+}
+
+.company {
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+}
+
+.duration {
+  font-size: 0.9rem !important;
+  color: #F2C03D !important;
+}
+
+/* Role subheading */
+.role {
+  font-size: 1.2rem !important;
+  margin: 5px 0 10px !important;
+  color: #FFD700 !important;
+  font-weight: 500 !important;
+}
+
+/* Description List */
+.description {
+  list-style-type: disc !important;
+  margin-left: 25px !important;
+  color: #F2C03D !important;
+}
+
+.description li {
+  margin-bottom: 8px !important;
+  font-size: 1rem !important;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .exp-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .duration {
+    margin-top: 5px !important;
+  }
 }
