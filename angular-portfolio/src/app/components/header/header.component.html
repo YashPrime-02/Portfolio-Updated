@@ -1,18 +1,18 @@
-<nav class="navbar">
+<nav class="navbar" [class.active]="menuOpen">
   <div class="logo">
     <a routerLink="/">Yash Mishra</a>
   </div>
 
-  <!-- Theme Toggle Button -->
-  <!-- <div class="theme-toggle" (click)="toggleTheme()">🌓</div> -->
+  <div class="menu-toggle" (click)="toggleMenu()">
+    <span [class.active]="menuOpen"></span>
+    <span [class.active]="menuOpen"></span>
+    <span [class.active]="menuOpen"></span>
+  </div>
 
-  <!-- Mobile Menu Toggle -->
-  <div class="menu-toggle" (click)="toggleMenu()">&#9776;</div>
-
-  <ul class="nav-links">
+  <ul class="nav-links" [class.open]="menuOpen">
     <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
     <li><a routerLink="/about" routerLinkActive="active">About</a></li>
     <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
-    <li><a routerLink="/contact" routerLinkActive="active">Contact Me </a></li>
+    <li><a routerLink="/contact" routerLinkActive="active">Contact Me</a></li>
   </ul>
 </nav>

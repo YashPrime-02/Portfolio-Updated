@@ -6,7 +6,7 @@
     <!-- <h1 class="hero-title">Elevating Digital Experiences</h1> -->
     <h1 class="hero-heading">
       Hello, I'm
-      <span style="color: #4B0082;">
+      <span style="color: #FFD700;">
         <strong><i>{{ currentName }}</i></strong>
       </span>
     </h1>
@@ -36,15 +36,15 @@
 
   <section class="stats-container">
     <div class="stats-card">
-      <h3>{{ yearsOfExperience }}+ Years</h3>
+      <h3>{{ yearsOfExperience }}  Years</h3>
       <p>Experience</p>
     </div>
     <div class="stats-card">
-      <h3>{{ numberOfProjects }}+</h3>
+      <h3>{{ numberOfProjects }} </h3>
       <p>Projects</p>
     </div>
     <div class="stats-card">
-      <h3>{{ numberOfTechnologies }}+</h3>
+      <h3>{{ numberOfTechnologies }} </h3>
       <p>Technologies</p>
     </div>
   </section>
@@ -60,20 +60,24 @@
     </div>
   </section>
 
-  <!-- Testimonials Section -->
+
  <!-- Testimonials Section -->
- <section class="testimonials-section">
-  <h2>What People Say</h2>
-  <div class="testimonial-carousel">
-    <div class="testimonial-track" #testimonialTrack>
-      <div *ngFor="let testimonial of testimonials.concat(testimonials)" class="testimonial-card">
-        <img [src]="testimonial.image" alt="{{ testimonial.name }}" class="testimonial-image" />
-        <p>"{{ testimonial.message }}"</p>
-        <h4>- {{ testimonial.name }}</h4>
+<section class="testimonials-section py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">What People Say</h2>
+
+    <div class="testimonial-carousel position-relative overflow-hidden">
+      <div class="testimonial-track d-flex flex-nowrap" #testimonialTrack>
+        <div *ngFor="let testimonial of testimonials.concat(testimonials)" class="testimonial-card flex-shrink-0 px-3">
+          <!-- <img [src]="testimonial.image" alt="{{ testimonial.name }}" class="testimonial-image mb-3" /> -->
+          <p class="testimonial-message">"{{ testimonial.message }}"</p>
+          <h4 class="testimonial-name">- {{ testimonial.name }}</h4>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
 
 
 
