@@ -11,6 +11,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   lastScrollTop = 0;
   isDarkMode = false;
+  menuOpen = false;
 
   ngOnInit() {
     const savedTheme = localStorage.getItem('theme');
@@ -29,17 +30,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navbar = document.querySelector('.navbar');
-    menuToggle?.classList.toggle('active');
-    navbar?.classList.toggle('active');
-  }
-
-  toggleTheme() {
-    this.isDarkMode = !this.isDarkMode;
-    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
-    this.updateThemeClass();
-    console.log('Theme switched to:', this.isDarkMode ? 'dark' : 'light');
+    this.menuOpen = !this.menuOpen;
   }
 
   @HostListener('window:scroll', [])
@@ -48,9 +39,6 @@ export class HeaderComponent implements OnInit {
     if (!navbar) return;
 
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Toggle shadow on scroll
-    navbar.classList.toggle('scrolled', scrollTop > 50);
 
     // Hide/show on scroll direction
     if (scrollTop > this.lastScrollTop && scrollTop > 100) {
