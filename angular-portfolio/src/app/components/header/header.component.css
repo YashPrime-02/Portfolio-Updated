@@ -17,7 +17,7 @@ body::-webkit-scrollbar {
   align-items: center;
   flex-wrap: wrap;
   padding: 1rem 2rem;
-  width: 95%;
+  width: 96%;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -137,6 +137,8 @@ body::-webkit-scrollbar {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 0 0 12px 12px;
     padding: 1rem 0;
+    gap: 0rem;
+
   }
 
   .nav-links li {
@@ -172,7 +174,7 @@ body.dark-theme .theme-toggle {
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column !important;
-    padding: 1rem !important;
+    padding: 3% !important;
     background: linear-gradient(270deg, #000435, #2a344d, #000435) !important; /* Updated gradient */
     background-size: 600% 600% !important;
     animation: gradientAnimation 12s ease infinite !important;

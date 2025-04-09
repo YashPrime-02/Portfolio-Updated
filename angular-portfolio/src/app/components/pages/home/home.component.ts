@@ -44,6 +44,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   // Testimonials
   testimonials = [
     {
+      message: 'During my tenure in E-Cell, I had the privilege of working under Yash sir as the President. His leadership was both inspiring and impactful. Later, as I took charge as a lead, he guided me as a mentor with utmost dedication. A skilled web developer, which greatly benefited our members. His knowledge and mentorship have been truly commendable.',
+      name: 'Divyam Kumar',
+      image: 'assets/images/Dk.jpg'
+    },
+
+    {
       message: 'Working under Yash Mishra mentorship in E-Cell was an incredible learning experience. His leadership made every member feel heard and valued and his ability to bring out the best in the team is truly admirable. I am grateful to have learned from him.',
       name: 'Shreya Singh',
       image: 'assets/images/john_doe.jpg'
@@ -53,11 +59,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       name: 'Preetam Ray',
       image: 'assets/images/jane_smith.jpg'
     },
-    {
-      message: 'A true problem-solver, Yash solutions are always innovative and efficient.',
-      name: 'Mark Lee',
-      image: 'assets/images/mark_lee.jpg'
-    },
+
     {
       message: 'His design sense and front-end development skills are exceptional. Highly recommended!',
       name: 'Jane Smith',
