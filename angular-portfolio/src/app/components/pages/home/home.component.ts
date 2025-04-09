@@ -54,11 +54,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
       image: 'assets/images/jane_smith.jpg'
     },
     {
-      message: 'During my tenure in E-Cell, I had the privilege of working under Yash sir as the President.  His knowledge of Front-end Development, design and mentorship have been truly commendable.',
-      name: 'Divyam Kumar',
-      image: 'assets/images/Dk.jpg'
-    },
-    {
       message: 'Working alongside Yash Mishra on the E-Cell website was a great experience. His dedication and front-end development skills consistently elevated our project. As a team, we ensured every detail was refined, making the process both collaborative and rewarding.',
       name: 'Neelansh Pandey',
       image: 'assets/images/jane_smith.jpg'
@@ -68,6 +63,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
       name: 'Shubhansh Mahawar',
       image: 'assets/images/jane_smith.jpg'
     },
+    {
+      message: 'During my tenure in E-Cell, I had the privilege of working under Yash sir as the President.  His knowledge of Front-end Development, design and mentorship have been truly commendable.',
+      name: 'Divyam Kumar',
+      image: 'assets/images/Dk.jpg'
+    },
+    {
+      message: 'Yash Mishra Sir’s presence was truly inspiring. Collaborating with him during our time in E-Cell taught me invaluable lessons in teamwork and collective effort. His calm leadership and constant encouragement created an environment where ideas flourished and every contribution mattered. I’m grateful for the growth I experienced.',
+      name: 'Tanishka Saharawat',
+      image: 'assets/images/TAS.jpg'
+    },
+
     {
       message: 'Yash Mishra Sir is an inspiring mentor. Working under his guidance in E-Cell was a daily lesson in teamwork, front-end development, where his expertise truly stood out. He ensured every member felt heard always bringing out the best in us.',
       name: 'Shreya Singh',
