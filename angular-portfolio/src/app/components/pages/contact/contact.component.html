@@ -1,20 +1,32 @@
-<div class="contact-container animate__animated animate__fadeInUp">
-  <h2>Contact Me</h2>
-  <div class="input-group">
-    <span class="input-icon"><i class="fas fa-user"></i></span>
-    <input formControlName="name" type="text" placeholder="Your Name">
+
+  <div class="contact-container animate__animated animate__fadeInUp">
+    <h2>Contact Me</h2>
+
+    <div class="input-group">
+      <span class="input-icon"><i class="fas fa-user"></i></span>
+      <input formControlName="name" type="text" placeholder="Your Name" required>
+    </div>
+
+    <div class="input-group">
+      <span class="input-icon"><i class="fas fa-building"></i></span>
+      <input formControlName="company" type="text" placeholder="Project Demand And Deadline" required>
+    </div>
+
+    <div class="input-group">
+      <span class="input-icon"><i class="fas fa-envelope"></i></span>
+      <input formControlName="email" type="email" placeholder="Your Email" required>
+    </div>
+
+    <div class="input-group">
+      <span class="input-icon"><i class="fas fa-phone"></i></span>
+      <input formControlName="phone" type="tel" placeholder="Your Phone Number (Optional)">
+    </div>
+    <div class="input-group">
+      <span class="input-icon"><i class="fas fa-comment"></i></span>
+      <textarea formControlName="message" placeholder="Your Message"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send Message</button>
   </div>
 
-  <div class="input-group">
-    <span class="input-icon"><i class="fas fa-envelope"></i></span>
-    <input formControlName="email" type="email" placeholder="Your Email">
-  </div>
 
-  <div class="input-group">
-    <span class="input-icon"><i class="fas fa-comment"></i></span>
-    <textarea formControlName="message" placeholder="Your Message"></textarea>
-  </div>
 
-  <button type="submit" class="btn btn-primary">Send Message</button>
-
-</div>

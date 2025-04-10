@@ -190,7 +190,7 @@
 
 .experience-section p::before,
 .soft-skills p::before {
-  content: "✔";
+ content: "✔";
   color: white;
   position: absolute;
   left: 0;
@@ -432,7 +432,7 @@
 /* Description List */
 .description {
   list-style-type: disc !important;
-  margin-left: 25px !important;
+  margin-left: -28px !important;
   color: #FFFF !important;
 }
 
@@ -450,5 +450,134 @@
 
   .duration {
     margin-top: 5px !important;
+  }
+}
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .description {
+    margin-left: 15px !important;
+  }
+
+  .description li {
+    font-size: 0.95rem !important;
+    margin-bottom: 6px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .description {
+    margin-left: -40px !important;
+  }
+
+  .description li {
+    font-size: 0.9rem !important;
+    margin-bottom: 5px !important;
+  }
+}
+/* Smooth typing animation look */
+.quote-animation {
+  display: inline-block;
+  border-right: 2px solid #f2c03d;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blinkCursor 0.7s steps(44) infinite normal;
+  color: #f2c03d;
+}
+
+/* Cursor blink */
+@keyframes blinkCursor {
+  0% { border-color: #f2c03d; }
+  50% { border-color: transparent; }
+  100% { border-color: #f2c03d; }
+}
+
+/* Responsive styling */
+.responsive-quote {
+  display: block;
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin: 20px auto;
+  max-width: 90%;
+  padding: 0 15px;
+  color: #f2c03d;
+}
+
+/* Tablet screens */
+@media (max-width: 768px) {
+  .responsive-quote {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    padding: 0 10px;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+  .responsive-quote {
+    font-size: 1rem;
+    line-height: 1.4;
+    padding: 0 8px;
+  }
+}
+:root {
+  --primary-color: #f2c03d;
+  --font-size-desktop: 1.3rem;
+  --font-size-tablet: 1.1rem;
+  --font-size-mobile: 1rem;
+  --line-height-desktop: 1.6;
+  --line-height-tablet: 1.5;
+  --line-height-mobile: 1.4;
+  --padding-desktop: 15px;
+  --padding-tablet: 10px;
+  --padding-mobile: 8px;
+  --cursor-width: 2px;
+  --cursor-blink-duration: 0.7s;
+}
+
+/* Smooth typing animation look */
+.quote-animation {
+  display: inline-block;
+  border-right: var(--cursor-width) solid var(--primary-color);
+  white-space: nowrap;
+  overflow: hidden;
+  color: var(--primary-color);
+  animation: blinkCursor var(--cursor-blink-duration) steps(44) infinite;
+}
+
+/* Cursor blink animation */
+@keyframes blinkCursor {
+  0% { border-color: var(--primary-color); }
+  50% { border-color: transparent; }
+  100% { border-color: var(--primary-color); }
+}
+
+/* Responsive styling for quote text */
+.responsive-quote {
+  display: block;
+  text-align: center;
+  font-size: var(--font-size-desktop);
+  line-height: var(--line-height-desktop);
+  margin: 20px auto;
+  max-width: 90%;
+  padding: 0 var(--padding-desktop);
+  color: var(--primary-color);
+}
+
+/* Tablet screens */
+@media (max-width: 768px) {
+  .responsive-quote {
+    font-size: var(--font-size-tablet);
+    line-height: var(--line-height-tablet);
+    padding: 0 var(--padding-tablet);
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+  .responsive-quote {
+    font-size: var(--font-size-mobile);
+    line-height: var(--line-height-mobile);
+    padding: 0 var(--padding-mobile);
   }
 }
