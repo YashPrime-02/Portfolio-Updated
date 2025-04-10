@@ -5,15 +5,55 @@ body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   background: linear-gradient(270deg, #3a4e6f, #5b6f87, #3a4e6f); /* Adjusted to make it lighter */
+  background-size: 600% 600%;
+  animation: gradientAnimation 15s ease infinite;
   color: #FFD700; /* Shiny golden font color */
+  line-height: 1.6;
+  transition: background 0.4s ease;
+}
+
+@keyframes gradientAnimation {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 p {
   color: white;
   line-height: 1.6;
-  font-size: 1.1rem; /* Slightly increased font size for better readability */
+  font-size: 1.1rem;
+  transition: font-size 0.3s ease;
 }
 
+/* Responsive Typography */
+@media (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}
 
 
 @keyframes fadeIn {
