@@ -7,12 +7,13 @@ import { ProjectsComponent } from './components/pages/projects/projects.componen
 import { ContactComponent } from './components/pages/contact/contact.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'projects', component: ProjectsComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: '', component: HomeComponent, data: { title: 'Home' } },
+  { path: 'about', component: AboutComponent, data: { title: 'About' } },
+  { path: 'projects', component: ProjectsComponent,data: { title: 'Projects' } },
+  { path: 'contact', component: ContactComponent,data: { title: 'Contact' } },
   { path: '**', redirectTo: '' } // Redirect unknown paths to home
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],

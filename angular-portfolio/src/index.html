@@ -5,13 +5,32 @@
   <title>Yash Mishra Portfolio</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+  <div id="loader-wrapper">
+    <div id="loader-content">
+      <div class="loader-spinner">
+        <svg width="40" height="40" viewBox="0 0 50 50">
+          <circle cx="25" cy="25" r="20" stroke="#FFD700" stroke-width="4" fill="none" stroke-linecap="round" />
+        </svg>
+      </div>
+      <div class="loader-text">Loading Portfolio...</div>
+      <div class="loader-percentage">0%</div>
+      <div class="loader-bar">
+        <div class="loader-progress"></div>
+      </div>
+    </div>
+  </div>
+
   <app-root></app-root>
+
+
 </body>
+
 </html>
