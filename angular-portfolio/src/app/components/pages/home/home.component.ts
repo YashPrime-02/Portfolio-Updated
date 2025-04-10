@@ -51,39 +51,70 @@ export class HomeComponent implements OnInit, AfterViewInit {
     {
       message: 'I had the pleasure of collaborating with Yash and was impressed by his ability to lead, and uplift the entire team which makes him a great team player. He is high spirited and has a natural talent for taking initiative as well.',
       name: 'Tarushi Singh',
-      image: 'assets/images/jane_smith.jpg'
+      image: ''
     },
     {
-      message: 'During my tenure in E-Cell, I had the privilege of working under Yash sir as the President.  His knowledge of Front-end Development, design and mentorship have been truly commendable.',
-      name: 'Divyam Kumar',
-      image: 'assets/images/Dk.jpg'
+      message: 'Working with Yash was a truly rewarding experience. His ability to energize the team and consistently take initiative made a big impact. He’s a natural collaborator, always uplifting those around him and driving the team forward with enthusiasm.',
+      name: 'Priyanka Singh',
+      image: ''
     },
     {
       message: 'Working alongside Yash Mishra on the E-Cell website was a great experience. His dedication and front-end development skills consistently elevated our project. As a team, we ensured every detail was refined, making the process both collaborative and rewarding.',
       name: 'Neelansh Pandey',
-      image: 'assets/images/jane_smith.jpg'
+      image: ''
     },
     {
       message: 'Collaborating with Yash Mishra on the UI/UX design of the E-Cell website was an enriching experience. His creative approach and attention to detail made our teamwork smooth and effective, helping us bring the best version of our ideas to life.',
       name: 'Shubhansh Mahawar',
-      image: 'assets/images/jane_smith.jpg'
+      image: ''
     },
+    {
+      message: 'During my tenure in E-Cell, I had the privilege of working under Yash sir as the President.  His knowledge of Front-end Development, design and mentorship have been truly commendable.',
+      name: 'Divyam Kumar',
+      image: ''
+    },
+    {
+      message: 'Yash Mishra Sir’s presence was truly inspiring. Collaborating with him during our time in E-Cell taught me invaluable lessons in teamwork and collective effort. His calm leadership and constant encouragement created an environment where ideas flourished and every contribution mattered. I’m grateful for the growth I experienced.',
+      name: 'Tanishka Saharawat',
+      image: ''
+    },
+
     {
       message: 'Yash Mishra Sir is an inspiring mentor. Working under his guidance in E-Cell was a daily lesson in teamwork, front-end development, where his expertise truly stood out. He ensured every member felt heard always bringing out the best in us.',
       name: 'Shreya Singh',
-      image: 'assets/images/john_doe.jpg'
+      image: ''
     },
     {
       message: 'It was great working with you Yash Mishra. Loved the way you explained every minute details and the way you made me comfortable while working on this project. Would love to work with you in further projects.',
       name: 'Preetam Ray',
-      image: 'assets/images/jane_smith.jpg'
+      image: ''
     },
 
 
   ];
 
   // Rotating Name
-  nameTranslations: string[] = ['Yash Mishra', 'यश मिश्रा', 'யாஷ் மிஷ்ரா', 'యాష్ మిశ్రా', 'Яш Мишра', 'Yash ミシュラ'];
+  nameTranslations: string[] = [
+    'Yash Mishra',
+    'यश मिश्रा',        // Hindi
+    'ਯਸ਼ ਮਿਸ਼ਰਾ',         // Punjabi (Gurmukhi)
+    'یَش مِشرا',         // Urdu
+    'ଯଶ ମିଶ୍ର',          // Odia
+    'यशः मिश्रः',         // Sanskrit
+    'Yash Mishra',
+    'যশ মিশ্র',          // Bengali
+    'યશ મિશ્રા',         // Gujarati
+    'ಯಶ್ ಮಿಶ್ರಾ',         // Kannada
+    'യശ് മിശ്ര',          // Malayalam
+    'Yash Mishra',
+    'யாஷ் மிஷ்ரா',       // Tamil
+    'యాష్ మిశ్రా',       // Telugu
+    'Yash ミシュラ',      // Japanese
+    'Yash Mishra',
+    'Яш Мишра',         // Russian
+    'Yash Míshra',      // Spanish (with accent for flair!)
+  ];
+
   currentName: string = this.nameTranslations[0];
   nameIndex: number = 0;
   nameFadeState: 'visible' | 'hidden' = 'visible';

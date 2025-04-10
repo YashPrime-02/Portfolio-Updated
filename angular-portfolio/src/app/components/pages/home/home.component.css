@@ -383,8 +383,8 @@
   /* existing styles */
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 1s ease forwards;
-  animation-delay: calc(var(--card-index) * 0.3s);
+  animation: fadeInUp 1.5s ease forwards;
+  animation-delay: calc(var(--card-index) * 0.5s);
 }
 
 @keyframes fadeInUp {
@@ -394,7 +394,7 @@
   }
 }
 .testimonial-track {
-  animation: scroll 30s linear infinite;
+  animation: scroll 60s linear infinite;
 }
 .arrow {
   position: absolute;

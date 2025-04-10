@@ -18,9 +18,14 @@ export class ContactComponent implements OnInit {
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
+      company: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      phone: [''], // optional
       message: ['', Validators.required],
     });
+
+
+
   }
 
   ngOnInit(): void {
