@@ -11,86 +11,94 @@ const texts = [
   "Loading your portfolio..."
 ];
 
-let currentTextIndex = 0;
-const loaderTextElement = document.querySelector('.loader-text') as HTMLElement;
-const loaderPercentageElement = document.querySelector('.loader-percentage') as HTMLElement;
-const loaderProgressElement = document.querySelector('.loader-progress') as HTMLElement;
-
-// Text transition function with fade
-function rotateText() {
-  if (!loaderTextElement) return;
-  gsap.to(loaderTextElement, {
-    opacity: 0,
-    duration: 0.3,
-    onComplete: () => {
-      currentTextIndex = (currentTextIndex + 1) % texts.length;
-      loaderTextElement.textContent = texts[currentTextIndex];
-      gsap.to(loaderTextElement, { opacity: 1, duration: 0.3 });
-    }
-  });
-}
-
-function preloadImages(images: string[]) {
-  let loaded = 0;
-  const total = images.length;
-
-  return new Promise<void>((resolve) => {
-    images.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-      img.onload = img.onerror = () => {
-        loaded++;
-        if (loaded === total) resolve();
-      };
-    });
-  });
-}
-
-// Example images (replace with your assets!)
 const imagesToPreload = [
   'assets/images/image1.jpg',
   'assets/images/image2.jpg',
   'assets/images/image3.png',
 ];
 
-let fakeProgress = 0;
-const totalDuration = 8000; // total loader time in ms (8 seconds for premium feel)
-const intervalTime = 100;
-const steps = totalDuration / intervalTime;
+document.addEventListener('DOMContentLoaded', () => {
+  const loaderTextElement = document.querySelector('.loader-text') as HTMLElement;
+  const loaderPercentageElement = document.querySelector('.loader-percentage') as HTMLElement;
+  const loaderProgressElement = document.querySelector('.loader-progress') as HTMLElement;
+  const loaderWrapper = document.getElementById('loader-wrapper');
 
-const progressIncrement = 100 / steps;
-
-const intervalId = setInterval(() => {
-  fakeProgress = Math.min(fakeProgress + progressIncrement, 99); // keep it under 100 until done
-  loaderPercentageElement.textContent = `${Math.floor(fakeProgress)}%`;
-  loaderProgressElement.style.width = `${fakeProgress}%`;
-
-  if (Math.floor(fakeProgress) % 20 === 0) { // text change every ~20%
-    rotateText();
+  if (!loaderTextElement || !loaderPercentageElement || !loaderProgressElement || !loaderWrapper) {
+    console.error('Loader elements not found!');
+    bootstrapApplication(AppComponent, appConfig)
+      .catch(err => console.error(err));
+    return;
   }
 
-  if (fakeProgress >= 99) {
-    clearInterval(intervalId);
-  }
-}, intervalTime);
+  let currentTextIndex = 0;
+  let fakeProgress = 0;
+  const totalDuration = 8000; // 8s for premium feel
+  const intervalTime = 100;
+  const steps = Math.floor(totalDuration / intervalTime);
+  const progressIncrement = 100 / steps;
+  const textChangeInterval = Math.floor(steps / texts.length);
+  let currentStep = 0;
 
-Promise.all([preloadImages(imagesToPreload)])
-  .then(() => {
+  function rotateText() {
+    gsap.to(loaderTextElement, {
+      opacity: 0,
+      duration: 0.3,
+      onComplete: () => {
+        currentTextIndex = (currentTextIndex + 1) % texts.length;
+        loaderTextElement.textContent = texts[currentTextIndex];
+        gsap.to(loaderTextElement, { opacity: 1, duration: 0.3 });
+      }
+    });
+  }
+
+  function preloadImages(images: string[]) {
+    return new Promise<void>((resolve) => {
+      let loaded = 0;
+      const total = images.length;
+
+      if (total === 0) resolve();
+
+      images.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = img.onerror = () => {
+          loaded++;
+          if (loaded === total) resolve();
+        };
+      });
+    });
+  }
+
+  const intervalId = setInterval(() => {
+    fakeProgress = Math.min(fakeProgress + progressIncrement, 99);
+    loaderPercentageElement.textContent = `${Math.floor(fakeProgress)}%`;
+    loaderProgressElement.style.width = `${fakeProgress}%`;
+
+    currentStep++;
+    if (currentStep % textChangeInterval === 0) {
+      rotateText();
+    }
+
+    if (fakeProgress >= 99) {
+      clearInterval(intervalId);
+    }
+  }, intervalTime);
+
+  preloadImages(imagesToPreload).then(() => {
     clearInterval(intervalId);
     loaderPercentageElement.textContent = `100%`;
     loaderProgressElement.style.width = `100%`;
 
-    // GSAP smooth fade out
-    gsap.to('#loader-wrapper', {
+    gsap.to(loaderWrapper, {
       opacity: 0,
-      duration: 2,
+      duration: 1.5,
       onComplete: () => {
-        const loader = document.getElementById('loader-wrapper');
-        if (loader) loader.style.display = 'none';
+        loaderWrapper.style.display = 'none';
+
+        // Now bootstrap
+        bootstrapApplication(AppComponent, appConfig)
+          .catch(err => console.error(err));
       }
     });
-  })
-  .finally(() => {
-    bootstrapApplication(AppComponent, appConfig)
-      .catch(err => console.error(err));
   });
+});
