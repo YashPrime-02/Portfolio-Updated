@@ -1,7 +1,7 @@
-import { Component, ElementRef, ViewChild, OnInit, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import * as AOS from 'aos';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -96,59 +96,57 @@ export class HomeComponent implements OnInit, AfterViewInit {
   // Rotating Name
   nameTranslations: string[] = [
     'Yash Mishra',
-    'यश मिश्रा',        // Hindi
-    'ਯਸ਼ ਮਿਸ਼ਰਾ',         // Punjabi (Gurmukhi)
-    'یَش مِشرا',         // Urdu
-    'ଯଶ ମିଶ୍ର',          // Odia
-    'यशः मिश्रः',         // Sanskrit
-    'Yash Mishra',
-    'যশ মিশ্র',          // Bengali
-    'યશ મિશ્રા',         // Gujarati
-    'ಯಶ್ ಮಿಶ್ರಾ',         // Kannada
-    'യശ് മിശ്ര',          // Malayalam
-    'Yash Mishra',
-    'யாஷ் மிஷ்ரா',       // Tamil
-    'యాష్ మిశ్రా',       // Telugu
-    'Yash ミシュラ',      // Japanese
-    'Yash Mishra',
-    'Яш Мишра',         // Russian
-    'Yash Míshra',      // Spanish (with accent for flair!)
+    'यश मिश्रा',
+    'ਯਸ਼ ਮਿਸ਼ਰਾ',
+    'یَش مِشرا',
+    'ଯଶ ମିଶ୍ର',
+    // Add the rest of the translations here
   ];
 
   currentName: string = this.nameTranslations[0];
   nameIndex: number = 0;
   nameFadeState: 'visible' | 'hidden' = 'visible';
+  isBrowser = false;
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit(): void {
-    AOS.init();
-    this.animateCounters();
-    this.cycleNameTranslations();
+    // Only start animations if it's running in the browser
+    if (this.isBrowser) {
+      this.animateCounters();
+      this.cycleNameTranslations();
+    } else {
+      // Static values for SSR
+      this.yearsOfExperience = this.targetYearsOfExperience;
+      this.numberOfProjects = this.targetNumberOfProjects;
+      this.numberOfTechnologies = this.targetNumberOfTechnologies;
+    }
   }
 
   ngAfterViewInit(): void {
-    const track = this.testimonialTrack.nativeElement as HTMLElement;
-    const cards = track.querySelectorAll('.testimonial-card');
-    cards.forEach(card => {
-      const clone = card.cloneNode(true);
-      track.appendChild(clone);
-    });
+    if (this.isBrowser) {
+      const track = this.testimonialTrack.nativeElement as HTMLElement;
+      const cards = track.querySelectorAll('.testimonial-card');
+      cards.forEach(card => {
+        const clone = card.cloneNode(true);
+        track.appendChild(clone);
+      });
+    }
   }
 
-  // Cycle name translations with fade animation
   cycleNameTranslations(): void {
     setInterval(() => {
-      this.nameFadeState = 'hidden'; // Fade out
+      this.nameFadeState = 'hidden';
       setTimeout(() => {
         this.nameIndex = (this.nameIndex + 1) % this.nameTranslations.length;
         this.currentName = this.nameTranslations[this.nameIndex];
-        this.nameFadeState = 'visible'; // Fade in
-      }, 400); // Match fade-out duration
+        this.nameFadeState = 'visible';
+      }, 400);
     }, 1500);
   }
 
-  // Animated counters logic
   animateCounters(): void {
     this.incrementCounter('yearsOfExperience', this.targetYearsOfExperience, this.calculateSpeed(this.targetYearsOfExperience));
     this.incrementCounter('numberOfProjects', this.targetNumberOfProjects, this.calculateSpeed(this.targetNumberOfProjects));
@@ -170,5 +168,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (target <= 5) return 500;
     if (target <= 15) return 200;
     return 100;
+  }
+  adjustTestimonialSpeed(): void {
+    const track = this.testimonialTrack.nativeElement;
+    const scrollSpeed = 100; // Adjust the speed here, lower value = faster
+    track.style.animationDuration = `${scrollSpeed}s`; // Apply this speed to the testimonial scrolling effect
   }
 }

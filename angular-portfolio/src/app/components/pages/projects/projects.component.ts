@@ -17,13 +17,13 @@ export class ProjectsComponent {
       projectUrl: 'https://sionvarsity.com/',
       workedUnder: 'EUODIAS Technologies'
     },
-    {
-      title: 'Sion Semi AI',
-      description: 'Developed and optimized sionsemi.ai using Angular, focusing on responsive design, performance enhancements, and seamless user experience. Collaborated with cross-functional teams to implement scalable solutions and ensure smooth deployment.',
-      imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/circuit-3.svg',
-      projectUrl: 'https://sionsemi.ai/',
-      workedUnder: 'EUODIAS Technologies'
-    },
+    // {
+    //   title: 'Sion Semi AI',
+    //   description: 'Developed and optimized sionsemi.ai using Angular, focusing on responsive design, performance enhancements, and seamless user experience. Collaborated with cross-functional teams to implement scalable solutions and ensure smooth deployment.',
+    //   imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/circuit-3.svg',
+    //   projectUrl: 'https://sionsemi.ai/',
+    //   workedUnder: 'EUODIAS Technologies'
+    // },
     {
       title: 'Doctor Helper',
       description: 'Built Doctor Helper, a full-stack web app for booking doctor appointments. Used Django for secure backend, SQLite for data management, and responsive frontend with HTML, CSS, Bootstrap. Ensured smooth user flow, authentication, and real-time scheduling.',
