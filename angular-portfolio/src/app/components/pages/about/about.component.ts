@@ -1,4 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-about',
@@ -21,28 +22,32 @@ export class AboutComponent implements OnInit {
   private typingIndex = 0;
   private fullText = '';
   private intervalId: any;
-  private typingSpeed = 50; // ms per character
+  private typingSpeed = 50;
   isPaused = false;
+  isBrowser = false;
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit(): void {
     this.shuffleQuotes();
-    this.displayNewQuote();
+    const randomQuote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
+    this.fullText = randomQuote.text;
+    this.currentAuthor = randomQuote.author;
+
+    if (this.isBrowser) {
+      this.currentQuote = '';
+      this.typingIndex = 0;
+      this.typeQuote();
+    } else {
+      // Static quote for SSR
+      this.currentQuote = this.fullText;
+    }
   }
 
   shuffleQuotes(): void {
     this.quotes.sort(() => Math.random() - 0.5);
-  }
-
-  displayNewQuote(): void {
-    const randomQuote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
-    this.fullText = randomQuote.text;
-    this.currentAuthor = randomQuote.author;
-    this.currentQuote = '';
-    this.typingIndex = 0;
-
-    this.typeQuote();
   }
 
   typeQuote(): void {
@@ -52,10 +57,25 @@ export class AboutComponent implements OnInit {
         this.typingIndex++;
       }
 
-      this.intervalId = setTimeout(() => this.typeQuote(), this.typingSpeed);
+      if (this.isBrowser) {
+        this.intervalId = setTimeout(() => this.typeQuote(), this.typingSpeed);
+      }
     } else {
-      // Wait 3 seconds, then show new quote
-      this.intervalId = setTimeout(() => this.displayNewQuote(), 3000);
+      if (this.isBrowser) {
+        this.intervalId = setTimeout(() => this.displayNewQuote(), 3000);
+      }
+    }
+  }
+
+  displayNewQuote(): void {
+    const randomQuote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
+    this.fullText = randomQuote.text;
+    this.currentAuthor = randomQuote.author;
+    this.currentQuote = '';
+    this.typingIndex = 0;
+
+    if (this.isBrowser) {
+      this.typeQuote();
     }
   }
 
@@ -68,5 +88,4 @@ export class AboutComponent implements OnInit {
   onMouseLeave() {
     this.isPaused = false;
   }
-
 }

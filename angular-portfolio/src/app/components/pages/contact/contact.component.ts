@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
-import AOS from 'aos';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -12,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule]
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent {
   contactForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -23,13 +22,6 @@ export class ContactComponent implements OnInit {
       phone: [''], // optional
       message: ['', Validators.required],
     });
-
-
-
-  }
-
-  ngOnInit(): void {
-    AOS.init();
   }
 
   onSubmit(): void {
@@ -39,7 +31,7 @@ export class ContactComponent implements OnInit {
       formData.append('entry.0987654321', this.contactForm.value.email);
       formData.append('entry.1122334455', this.contactForm.value.message);
 
-      fetch('https://docs.google.com/forms/u/0/d/e/your-form-id/formResponse', { // ✅ Replace with your form ID
+      fetch('https://docs.google.com/forms/u/0/d/e/your-form-id/formResponse', {
         method: 'POST',
         mode: 'no-cors',
         body: formData,

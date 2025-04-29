@@ -1,6 +1,7 @@
+<div class="contact-container">
+  <h2>Contact Me</h2>
 
-  <div class="contact-container animate__animated animate__fadeInUp">
-    <h2>Contact Me</h2>
+  <form  (ngSubmit)="onSubmit()">
 
     <div class="input-group">
       <span class="input-icon"><i class="fas fa-user"></i></span>
@@ -21,12 +22,13 @@
       <span class="input-icon"><i class="fas fa-phone"></i></span>
       <input formControlName="phone" type="tel" placeholder="Your Phone Number (Optional)">
     </div>
+
     <div class="input-group">
       <span class="input-icon"><i class="fas fa-comment"></i></span>
-      <textarea formControlName="message" placeholder="Your Message"></textarea>
+      <textarea formControlName="message" placeholder="Your Message" required></textarea>
     </div>
+
     <button type="submit" class="btn btn-primary">Send Message</button>
-  </div>
 
-
-
+  </form>
+</div>
