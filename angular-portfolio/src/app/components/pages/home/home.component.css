@@ -60,6 +60,14 @@
   transform: translateY(-2px);
 }
 
+/* Mobile Responsive Tweaks */
+@media (max-width: 600px) {
+  .btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
 /* ======= Stats Section ======= */
 .stats-heading {
   margin-top: 4rem;

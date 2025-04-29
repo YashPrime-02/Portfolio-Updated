@@ -62,9 +62,9 @@ body::-webkit-scrollbar {
 
 .logo a:hover {
   color: transparent;
-background: linear-gradient(93deg, #FAB656 -2.93%, #C766FF 102.1%);
--webkit-background-clip: text;
-background-clip: text;
+  background: linear-gradient(93deg, #FAB656 -2.93%, #C766FF 102.1%);
+  -webkit-background-clip: text;
+  background-clip: text;
 
   transform: scale(1.1);
 }
@@ -110,11 +110,11 @@ background-clip: text;
 .nav-links li a:hover,
 .nav-links li a.active {
   font-family: Poppins;
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    color: white
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: white
 }
 
 .nav-links li a:hover::after,
@@ -183,7 +183,7 @@ background-clip: text;
     width: 100%;
     max-height: 0;
     overflow: hidden;
-    background: rgba(0, 4, 53, 0.9);
+    /* background: rgba(0, 4, 53, 0.9); */
 
     backdrop-filter: blur(15px);
     border-radius: 0 0 12px 12px;
