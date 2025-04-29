@@ -5,7 +5,7 @@
   align-items: center;
   flex-direction: column;
   min-height: calc(100vh - 80px);
-  background: linear-gradient(270deg, #1a2a3b, #3a4e6f, #1a2a3b);
+  /* background: linear-gradient(270deg, #1a2a3b, #3a4e6f, #1a2a3b); */
   color: #FFD700;
   padding: 2rem;
   box-sizing: border-box;
@@ -32,25 +32,31 @@
 }
 
 .hero p {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.3rem;
-  margin-bottom: 2rem;
-  color: #F2C03D;
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px; /* 158.333% */
 }
 
 .btn {
+  border-radius: 50px;
+  border: 2px solid linear-gradient(93deg, #FAB656 -2.93%, #C766FF 102.1%);
   text-decoration: none;
-  padding: 1rem 2rem;
-  background-color: #007bff;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 4px;
-  transition: 0.3s;
-  font-size: 1.1rem;
+  background:linear-gradient(144deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.15) 100%);
+  color: var(--text, #FFF);
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
+
 .btn:hover {
-  background-color: #0056b3;
+  background: linear-gradient(93deg, #FAB656 -2.93%, #C766FF 102.1%);
+
   transform: translateY(-2px);
 }
 
@@ -60,11 +66,18 @@
 }
 
 .stats-heading h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.5rem;
-  color: #FFD700;
+  font-family: 'Poppins', sans-serif;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
   margin-bottom: 2rem;
 }
+
 
 .stats-container {
   display: flex;
@@ -75,10 +88,11 @@
 }
 
 .stats-card {
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(144deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.15) 100%);
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  /* box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37); */
+
   backdrop-filter: blur(15px);
   text-align: center;
   width: 250px;
@@ -90,15 +104,27 @@
 }
 
 .stats-card h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: #fff;
+  color: #FFF;
+text-align: center;
+
+/* Name heading */
+font-family: Poppins;
+font-size: 64px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 }
 
 .stats-card p {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
+  color: #FFF;
+  text-align: center;
+
+  /* Text */
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 /* ======= Technologies Section ======= */
@@ -107,10 +133,15 @@
 }
 
 .technologies-section h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.5rem;
-  color: #FFD700;
-  margin-bottom: 2rem;
+  color: #FFF;
+
+text-align: center;
+/* H2 */
+font-family: Poppins;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 }
 
 .tech-icons {
@@ -139,6 +170,11 @@
 }
 
 .tech-icon:hover {
+
+  color: gray;
+
+
+
   transform: scale(1.1);
 }
 
@@ -147,23 +183,11 @@
 }
 
 /* ======= Testimonials Section ======= */
-.testimonials-section {
-  margin-top: 4rem;
-  padding: 40px 0px;
-  max-width: 1446px;
-  margin-inline: auto;
-  border-radius: 16px;
-  background: linear-gradient(270deg, #1a2a3b, #3a4e6f, #1a2a3b);
-  box-shadow: 0 8px 24px rgba(58, 78, 111, 0.5);
-  text-align: center;
-  overflow: hidden;
-  position: relative;
-}
 
 .testimonials-section h2 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 2.5rem;
-  color: #FFD700;
+  color: #ffffff;
   margin-bottom: 2rem;
 }
 
@@ -197,7 +221,7 @@
   flex: 0 0 auto;
   width: 300px;
   margin: 0 1rem 2rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(144deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.15) 100%);
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -216,15 +240,21 @@
 }
 
 .testimonial-card p {
-  font-family: 'Open Sans', sans-serif;
-  color: #E5E5E5;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+  color: #FFF !important;
+  font-family: Poppins !important;
+  font-size: 15px !important;
+  /* font-style: normal !important; */
+  font-weight: 200 !important;
+  line-height: normal !important;
 }
 
 .testimonial-card h4 {
-  font-family: 'Montserrat', sans-serif;
-  color: #FFD700;
+  color: #FFF!important;
+  font-family: Poppins!important;
+  font-size: 14px!important;
+  font-style: italic!important;
+  font-weight: 400!important;
+  line-height: normal!important;
 }
 
 .testimonial-image {

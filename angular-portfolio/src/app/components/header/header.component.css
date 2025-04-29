@@ -13,7 +13,7 @@ body::-webkit-scrollbar {
 /* Navbar - Desktop View Updated */
 .navbar {
   display: flex;
-  justify-content: space-between; /* Updated */
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   padding: 1rem 2rem;
@@ -21,20 +21,27 @@ body::-webkit-scrollbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(270deg, #000435, #2a344d, #000435);
+  /* background: linear-gradient(270deg, #000435, #2a344d, #000435); */
   background-size: 600% 600%;
-  animation: gradientAnimation 12s ease infinite;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  animation: _ngcontent-ng-c1468072967_gradientAnimation 12s ease infinite;
+  /* box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37); */
+  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
   border-radius: 12px;
   transition: all 0.4s ease;
-  transform: translateY(0);
 }
 
 @keyframes gradientAnimation {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* Logo - Desktop View Updated */
@@ -54,7 +61,11 @@ body::-webkit-scrollbar {
 }
 
 .logo a:hover {
-  color: #ffcc00;
+  color: transparent;
+background: linear-gradient(93deg, #FAB656 -2.93%, #C766FF 102.1%);
+-webkit-background-clip: text;
+background-clip: text;
+
   transform: scale(1.1);
 }
 
@@ -91,14 +102,19 @@ body::-webkit-scrollbar {
   height: 2px;
   left: 0;
   bottom: 0;
-  background-color: #ffcc00;
+  background: linear-gradient(93deg, #FAB656 -2.93%, #C766FF 102.1%);
+
   transition: width 0.4s ease;
 }
 
 .nav-links li a:hover,
 .nav-links li a.active {
-  color: #ffcc00;
-  transform: translateY(-2px);
+  font-family: Poppins;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: white
 }
 
 .nav-links li a:hover::after,

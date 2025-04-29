@@ -6,19 +6,26 @@
       <!-- <h1 class="hero-title">Elevating Digital Experiences</h1> -->
       <h1 class="hero-heading">
         Hello, I'm
-        <span style="color: #FFD700;">
+        <span style="background: linear-gradient(93deg, #FAB656 -2.93%, #C766FF 102.1%); -webkit-background-clip: text;-webkit-text-fill-color: transparent;">
           <strong><i>{{ currentName }}</i></strong>
         </span>
+
+
+
       </h1>
       <p class="hero-subtitle">
-        A Front-end developer who bridges design and technology to deliver innovative, user-centric solutions for global businesses.
+        A Front-end developer who bridges design and technology to deliver innovative, user-centric solutions for global
+        businesses.
       </p>
 
-      <a href="/projects" class="btn btn-primary hero-btn" style="width: 180px; padding: 10px 20px; text-align: center;">
+      <a href="/projects" class="btn btn-primary hero-btn"
+        style="width: 180px; padding: 10px 20px; text-align: center;">
         Explore My Work
       </a>
 
-      <a href="https://drive.google.com/file/d/1SaN_Ncwk1VVXEL1CO5G9u9Oim1ZzeaZZ/view?usp=sharing" target="_blank" class="btn btn-primary hero-btn" style="width: 180px; padding: 10px 20px; text-align: center; margin-left: 20px;">
+      <a href="https://drive.google.com/file/d/1SaN_Ncwk1VVXEL1CO5G9u9Oim1ZzeaZZ/view?usp=sharing" target="_blank"
+        class="btn btn-primary hero-btn"
+        style="width: 180px; padding: 10px 20px; text-align: center; margin-left: 20px;">
         <i class="fas fa-download" style="margin-right: 8px;"></i> View CV
       </a>
     </div>
@@ -26,13 +33,13 @@
 
   <!-- Counter Section -->
   <section class="stats-heading">
-    <h2>Key Stats</h2>
+    <h2>Key <span class="span-element">Highlights</span></h2>
   </section>
 
   <section class="stats-container">
     <div class="stats-card">
-      <h3>{{ yearsOfExperience }} Years</h3>
-      <p>Experience</p>
+      <h3>{{ yearsOfExperience }} </h3>
+      <p>Years of Experience</p>
     </div>
     <div class="stats-card">
       <h3>{{ numberOfProjects }}</h3>
@@ -46,7 +53,7 @@
 
   <!-- Technologies Section -->
   <section class="technologies-section">
-    <h2>Technologies I've Worked on</h2>
+    <h2>Technologies <span class="span-element"> I've Worked on</span></h2>
     <div class="tech-icons">
       <div class="tech-icon" *ngFor="let tech of technologies">
         <img [src]="tech.icon" alt="{{ tech.name }}" />
@@ -58,11 +65,12 @@
   <!-- Testimonials Section -->
   <section class="testimonials-section py-5">
     <div class="container text-center">
-      <h2 class="mb-4">What People Say</h2>
+      <h2 class="mb-4">What <span class="span-element"> People Say</span></h2>
 
       <div class="testimonial-carousel position-relative overflow-hidden">
         <div class="testimonial-track d-flex flex-nowrap" #testimonialTrack>
-          <div *ngFor="let testimonial of testimonials.concat(testimonials)" class="testimonial-card flex-shrink-0 px-3">
+          <div *ngFor="let testimonial of testimonials.concat(testimonials)"
+            class="testimonial-card flex-shrink-0 px-3">
             <!-- <img [src]="testimonial.image" alt="{{ testimonial.name }}" class="testimonial-image mb-3" /> -->
             <p class="testimonial-message">"{{ testimonial.message }}"</p>
             <h4 class="testimonial-name">- {{ testimonial.name }}</h4>
