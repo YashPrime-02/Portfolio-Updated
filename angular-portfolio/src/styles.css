@@ -1,6 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -8,7 +8,7 @@ body {
   background:#1C1D1D; /* Adjusted to make it lighter */
   background-size: 600% 600%;
   animation: gradientAnimation 15s ease infinite;
-  color: #FFD700; /* Shiny golden font color */
+  color:white; /* Shiny golden font color */
   line-height: 1.6;
   transition: background 0.4s ease;
 }
@@ -24,12 +24,6 @@ body {
   background: linear-gradient(93deg, #FAB656 -2.93%, #C766FF 102.1%); -webkit-background-clip: text;-webkit-text-fill-color: transparent;
 }
 
-p {
-  color: white;
-  line-height: 1.6;
-  /* font-size: 1.1rem; */
-  transition: font-size 0.3s ease;
-}
 
 /* Responsive Typography */
 @media (max-width: 1024px) {

@@ -51,6 +51,13 @@ export class ProjectsComponent {
       imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/currency-dollar.svg',
       projectUrl: 'https://github.com/YashPrime-02/Yash-Angular-Projects/tree/main/BudgetPlanner_App',
       workedUnder: 'Self Project'
+    },
+    {
+      title: 'Unofficial IRCTC Improvised Clone Site',
+      description: 'Developed an unofficial IRCTC Improvised Clone Site using AngularJS, replicating core functionalities like train search, booking, and PNR status, with enhanced UI/UX, improved performance',
+      imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/currency-dollar.svg',
+      projectUrl: '',
+      workedUnder: 'Self Project'
     }
   ];
 }

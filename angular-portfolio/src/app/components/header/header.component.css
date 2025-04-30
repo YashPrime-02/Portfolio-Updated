@@ -54,7 +54,7 @@ body::-webkit-scrollbar {
 .logo a {
   font-family: 'Montserrat', sans-serif;
   font-size: 2rem;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #ffffff;
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
@@ -88,11 +88,12 @@ body::-webkit-scrollbar {
 .nav-links li a {
   color: #ffffff;
   text-decoration: none;
-  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
   font-weight: 500;
   position: relative;
   padding: 0.5rem;
   transition: color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.25);
 }
 
 .nav-links li a::after {
@@ -104,16 +105,17 @@ body::-webkit-scrollbar {
   bottom: 0;
   background: linear-gradient(93deg, #FAB656 -2.93%, #C766FF 102.1%);
 
+
   transition: width 0.4s ease;
 }
 
 .nav-links li a:hover,
 .nav-links li a.active {
   font-family: Poppins;
-  font-size: 17px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: normal;transform: scale(1.25);
   color: white
 }
 

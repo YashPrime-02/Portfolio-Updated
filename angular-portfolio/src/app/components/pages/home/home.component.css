@@ -17,7 +17,7 @@
 /* ======= Hero Section ======= */
 .hero {
   border-radius: 12px;
-  padding: 3rem;
+  /* padding: 3rem; */
   backdrop-filter: blur(15px);
   max-width: 800px;
   width: 100%;
@@ -25,10 +25,14 @@
 }
 
 .hero h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: white;
+  color: #FFF;
+
+/* Name heading */
+font-family: Poppins;
+font-size: 64px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 }
 
 .hero p {
@@ -37,7 +41,7 @@
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 38px; /* 158.333% */
+  line-height: 40px; /* 158.333% */
 }
 
 .btn {
@@ -47,9 +51,9 @@
   background:linear-gradient(144deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.15) 100%);
   color: var(--text, #FFF);
   font-family: Poppins;
-  font-size: 18px;
+  font-size: 20px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
 }
 
@@ -142,14 +146,13 @@ line-height: normal;
 
 .technologies-section h2 {
   color: #FFF;
-
-text-align: center;
-/* H2 */
-font-family: Poppins;
-font-size: 32px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  MARGIN-BOTTOM: 6%;
 }
 
 .tech-icons {
@@ -174,7 +177,12 @@ line-height: normal;
 }
 
 .tech-icon p {
-  font-family: 'Open Sans', sans-serif;
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 14px;
+  /* font-style: italic; */
+  font-weight: 400;
+  line-height: normal;
 }
 
 .tech-icon:hover {
@@ -194,7 +202,7 @@ line-height: normal;
 
 .testimonials-section h2 {
   font-family: "Poppins", sans-serif;
-  font-size: 2.5rem;
+  font-size: 64px;
   color: #ffffff;
   margin-bottom: 2rem;
 }
@@ -208,7 +216,7 @@ line-height: normal;
 .testimonial-track {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   flex-wrap: wrap;
   width: 100%;
   overflow: hidden;
@@ -237,10 +245,16 @@ line-height: normal;
   backdrop-filter: blur(10px);
   transition: transform 0.3s;
   text-align: left;
-  opacity: 0;
-  transform: translateY(20px);
+  /* opacity: 0; */
+  /* transform: translateY(20px); */
   animation: fadeInUp 1.5s ease forwards;
   animation-delay: calc(var(--card-index) * 0.5s);
+  color: #FFF;
+font-family: Poppins;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 
 .testimonial-card:hover {
@@ -250,7 +264,7 @@ line-height: normal;
 .testimonial-card p {
   color: #FFF !important;
   font-family: Poppins !important;
-  font-size: 15px !important;
+  font-size: 16px !important;
   /* font-style: normal !important; */
   font-weight: 200 !important;
   line-height: normal !important;

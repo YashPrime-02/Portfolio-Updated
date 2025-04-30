@@ -9,13 +9,15 @@ import { isPlatformBrowser } from '@angular/common';
 export class AboutComponent implements OnInit {
 
   quotes = [
-    { text: 'Design is not just what it looks like and feels like. Design is how it works.', author: 'Steve Jobs' },
-    { text: 'Good design is obvious. Great design is transparent.', author: 'Joe Sparano' },
     { text: 'Websites promote you 24/7: No employee will do that.', author: 'Paul Cookson' },
     { text: 'Leadership is not about a title or a designation. It’s about impact, influence, and inspiration.', author: 'Robin S. Sharma' },
-    { text: 'The details are not the details. They make the design.', author: 'Charles Eames' },
-    { text: 'A leader is one who knows the way, goes the way, and shows the way.', author: 'John C. Maxwell' }
+    { text: 'A leader is one who knows the way, goes the way, and shows the way.', author: 'John C. Maxwell' },
+    { text: 'First, solve the problem. Then, write the code.', author: 'John Johnson' },
+    { text: 'JavaScript is the duct tape of the Internet.', author: 'Charlie Campbell' },
+    { text: 'Code is like humor. When you have to explain it, it’s bad.', author: 'Cory House' },
+    { text: 'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.', author: 'Martin Fowler' }
   ];
+
 
   currentQuote = '';
   currentAuthor = '';

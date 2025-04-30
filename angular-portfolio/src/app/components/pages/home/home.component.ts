@@ -33,8 +33,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   numberOfTechnologies = 0;
 
   targetYearsOfExperience = 1;
-  targetNumberOfProjects = 9;
-  targetNumberOfTechnologies = 6;
+  targetNumberOfProjects = 6;
+  targetNumberOfTechnologies = 8;
 
   // Technologies
   technologies = [
@@ -43,7 +43,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/javascript.svg' },
     { name: 'Angular', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/angular.svg' },
     { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/react.svg' },
-    { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/git.svg' }
+    { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/git.svg' },
+    { name: 'Docker', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/docker.svg' },
+    { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/mongodb.svg' },
   ];
 
   // Testimonials

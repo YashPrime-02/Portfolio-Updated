@@ -8,7 +8,7 @@
 
   padding: 1rem 2.5%;  /* Reduced padding for smaller footer */
   text-align: center;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  /* box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37); */
   backdrop-filter: blur(15px);
   border-radius: 12px;
   margin-top: 2rem;
@@ -30,12 +30,14 @@
 
 /* Footer Logo */
 .footer-logo a {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.6rem;  /* Slightly smaller logo size */
-  font-weight: bold;
-  color: #ffffff;
-  text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .footer-logo a:hover {
@@ -57,11 +59,12 @@
 
 .footer-links li a {
   color: #ffffff;
-  text-decoration: none;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 500;
-  padding: 0.5rem;
-  transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    /* font-family: "Open Sans", sans-serif; */
+    font-weight: 500;
+    padding: 0.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 24px;
 }
 
 .footer-links li a:hover {
@@ -70,7 +73,7 @@
   -webkit-background-clip: text;
   background-clip: text;
 
-  transform: scale(1.1);
+  transform: scale(1.25);
   transform: translateY(-2px);
 }
 
@@ -102,11 +105,11 @@
     color: #FFF;
     text-align: center;
     font-family: Poppins;
-    font-size: 14px;
+    font-size: 17px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-left: 3%;
+    margin-left: 4%;
 }
 
 /* Mobile Responsive */
@@ -197,11 +200,11 @@
 }
 .footer-bottom {
   text-align: center !important;
-  font-size: 1.2rem !important;
+  /* font-size: 1.2rem !important; */
   color: #555 !important;
   padding: 20px !important;
   /* background-color: #1a2a3b !important; */
-  color: #FFD700 !important; /* golden text color */
+  /* color: #FFD700 !important; golden text color */
 }
 
 .footer-bottom span {
