@@ -33,7 +33,7 @@ export class ProjectsComponent {
     },
     {
       title: 'E-CELL WEBSITE',
-      description: 'Conceptualized, built, and coordinated the official website for E-CELL using React, providing a dynamic and engaging platform for event announcements, team showcases, and entrepreneurial resources that are required for students.',
+      description: 'Conceptualized, built, and coordinated the official website for E-CELL using React, providing a dynamic and engaging platform for event announcements, team showcases, and entrepreneurial resources that are required for students and integral on the basis of world.',
       imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/rocket.svg',
       projectUrl: 'https://ecell-website-v2.vercel.app/',
       workedUnder: 'E-CELL ABESEC TEAM'
