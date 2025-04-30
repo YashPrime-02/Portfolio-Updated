@@ -95,6 +95,23 @@ body::-webkit-scrollbar {
   transition: color 0.3s ease, transform 0.3s ease;
   transform: scale(1.25);
 }
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .nav-links li a {
+    font-size: 20px;
+    transform: scale(1.1);
+    padding: 0.4rem;
+  }
+}
+
+/* Mobile devices (480px and below) */
+@media (max-width: 480px) {
+  .nav-links li a {
+    font-size: 16px;
+    transform: scale(1);
+    padding: 0.3rem;
+  }
+}
 
 .nav-links li a::after {
   content: '';
@@ -112,7 +129,7 @@ body::-webkit-scrollbar {
 .nav-links li a:hover,
 .nav-links li a.active {
   font-family: Poppins;
-  font-size: 24px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;transform: scale(1.25);
@@ -178,6 +195,7 @@ body::-webkit-scrollbar {
 
   .menu-toggle {
     display: flex;
+    margin-top: 3%;
   }
 
   .nav-links {
@@ -209,6 +227,7 @@ body::-webkit-scrollbar {
     width: 100%;
     text-align: center;
     margin: 0.8rem 0;
+    font-size: 15px;
   }
 }
 

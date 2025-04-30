@@ -95,6 +95,23 @@ line-height: normal;
   display: inline-block;
   margin-bottom: 2rem;
 }
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .stats-heading h2 {
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Mobile devices (480px and below) */
+@media (max-width: 480px) {
+  .stats-heading h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+}
 
 
 .stats-container {
@@ -190,6 +207,55 @@ line-height: normal;
   font-weight: 400;
   line-height: normal;
 }
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .technologies-section h2 {
+    font-size: 36px;
+    margin-bottom: 4%;
+  }
+
+  .tech-icon {
+    width: 120px;
+  }
+
+  .tech-icon img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .tech-icon p {
+    font-size: 13px;
+  }
+}
+
+/* Mobile devices (480px and below) */
+@media (max-width: 480px) {
+  .technologies-section {
+    margin-top: 2rem;
+  }
+
+  .technologies-section h2 {
+    font-size: 28px;
+    margin-bottom: 3rem;
+  }
+
+  .tech-icons {
+    gap: 0.75rem;
+  }
+
+  .tech-icon {
+    width: 100px;
+  }
+
+  .tech-icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tech-icon p {
+    font-size: 12px;
+  }
+}
 
 .tech-icon:hover {
 
@@ -262,6 +328,51 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 }
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .testimonials-section h2 {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .testimonial-card {
+    width: 260px;
+    padding: 1.25rem;
+    font-size: 15px;
+    margin: 0 0.5rem 1.5rem;
+  }
+
+  .testimonial-track {
+    gap: 0.75rem;
+  }
+}
+
+/* Mobile devices (480px and below) */
+@media (max-width: 480px) {
+  .testimonials-section h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-card {
+    width: 90%;
+    padding: 1rem;
+    font-size: 14px;
+    margin: 0 auto 1.5rem;
+  }
+
+
+
+  .testimonial-card {
+    scroll-snap-align: center;
+  }
+}
+
+
+
+
 
 .testimonial-card:hover {
   transform: scale(1.05);
