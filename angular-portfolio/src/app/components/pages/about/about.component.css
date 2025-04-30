@@ -489,7 +489,7 @@
 .experience-description-2 {
   color: #FFF;
   font-family: Poppins;
-  font-size: 24px;
+  font-size: 21px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -500,13 +500,29 @@
 .custom-quote {
   font-family: Poppins;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 16px;
   line-height: 100%;
   letter-spacing: 0%;
   vertical-align: middle;
   color: white;
   /* background-color: white; */
   border-radius: 8px;
+}
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .custom-quote {
+    font-size: 14px;
+    line-height: 120%;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-quote {
+    font-size: 13px;
+    line-height: 130%;
+    padding: 8px;
+  }
 }
 .company-name{
   font-family: Poppins;
@@ -612,7 +628,7 @@
   }
 
   .experience-description-2 {
-    font-size: 18px;
+    font-size: 14px;
     margin-bottom: 4%;
     margin-left: 2%;
   }

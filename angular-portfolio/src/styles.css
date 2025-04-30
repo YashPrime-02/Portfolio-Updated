@@ -5,12 +5,13 @@
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  background:#1C1D1D; /* Adjusted to make it lighter */
+ background:#1C1D1D;
+
   background-size: 600% 600%;
-  animation: gradientAnimation 15s ease infinite;
+
   color:white; /* Shiny golden font color */
   line-height: 1.6;
-  transition: background 0.4s ease;
+
 }
 
 @keyframes gradientAnimation {

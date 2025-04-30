@@ -1,12 +1,12 @@
 <div class="projects-container">
-  <h2 class="fade-in">My Projects</h2>
+  <h2 class="fade-in">My <span class="span-element">Projects</span></h2>
   <p class="projects-subheading fade-in">Explore a selection of my development work, showcasing responsive designs, optimized performance, and innovative solutions across multiple platforms.</p>
 
   <div class="project-grid">
     <div class="col-12 col-md-6 col-lg-6 mb-4" *ngFor="let project of projects">
       <div class="project-card">
-        <h2 style="color: #FFD700; text-align: center;">{{ project.title }}</h2>
-        <h4 style="text-align: center; color: #F2C03D; margin-bottom: 10px;">{{project.workedUnder}}</h4>
+        <h3 style="color: white; text-align: center;">{{ project.title }}</h3>
+        <h4 style="text-align: center; color:white; margin-bottom: 10px;">{{project.workedUnder}}</h4>
         <p>{{ project.description }}</p>
         <a [href]="project.projectUrl" target="_blank" class="btn btn-primary mt-2">View Project</a>
       </div>

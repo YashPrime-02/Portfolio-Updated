@@ -33,28 +33,28 @@ export class ProjectsComponent {
     },
     {
       title: 'E-CELL WEBSITE',
-      description: 'Conceptualized, built, and coordinated the official website for E-CELL using React, providing a dynamic and engaging platform for event announcements, team showcases, and entrepreneurial resources.',
+      description: 'Conceptualized, built, and coordinated the official website for E-CELL using React, providing a dynamic and engaging platform for event announcements, team showcases, and entrepreneurial resources that are required for students.',
       imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/rocket.svg',
       projectUrl: 'https://ecell-website-v2.vercel.app/',
       workedUnder: 'E-CELL ABESEC TEAM'
     },
     {
       title: 'Mental Health Portal',
-      description: 'Designed and developed a comprehensive Mental Health Portal as the major project for the final year, aimed at promoting mental health and well-being through accessible resources and interactive features.',
+      description: 'Designed and developed a comprehensive Mental Health Portal as the major project for the final year, aimed at promoting mental health and well-being through accessible resources and interactive features which are helpful.',
       imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/meditation.svg',
       projectUrl: 'https://github.com/YashPrime-02/Mental_Health_Portal-Main',
       workedUnder: 'Academic Major Project'
     },
     {
       title: 'Budget Planner App',
-      description: 'Developed a Budget Planner App using AngularJS, enabling users to track expenses, set financial goals, and manage budgets effectively with responsive design and intuitive user-friendly interface.',
+      description: 'Developed a Budget Planner App using AngularJS, enabling users to track expenses, set financial goals, and manage budgets effectively with responsive design and intuitive user-friendly interface with easy to navigate website.',
       imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/currency-dollar.svg',
       projectUrl: 'https://github.com/YashPrime-02/Yash-Angular-Projects/tree/main/BudgetPlanner_App',
       workedUnder: 'Self Project'
     },
     {
       title: 'Unofficial IRCTC Improvised Clone Site',
-      description: 'Developed an unofficial IRCTC Improvised Clone Site using AngularJS, replicating core functionalities like train search, booking, and PNR status, with enhanced UI/UX, improved performance',
+      description: 'Developed an unofficial IRCTC Improvised Clone Site using AngularJS, replicating core functionalities like train search, booking, and PNR status, with enhanced UI/UX, improved performance.',
       imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/currency-dollar.svg',
       projectUrl: '',
       workedUnder: 'Self Project'
