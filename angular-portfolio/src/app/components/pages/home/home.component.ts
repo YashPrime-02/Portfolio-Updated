@@ -97,24 +97,24 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   // Rotating Name
   nameTranslations: string[] = [
-    'Yash Mishra',         // English
-    'यश मिश्रा',           // Hindi (Devanagari)
-    'ਯਸ਼ ਮਿਸ਼ਰਾ',           // Punjabi (Gurmukhi)
-    'ଯଶ ମିଶ୍ର',            // Odia
-    'યશ મિશ્રા',           // Gujarati
-    'Yash Mishra',         // English
-    'ಯಶ ಮಿಶ್ರ',            // Kannada
-    'యశ్ మిశ్రా',           // Telugu
-    'யஷ் மிஷ்ரா',           // Tamil
-    'യഷ് മിശ്ര',            // Malayalam
-    'যশ মিশ্রা',            // Bengali
-    'Yash Mishra',         // English
-    'यश मिश्र',            // Sanskrit (minor variation)
-    'Yash Mishra',         // English
-    'Яш Мишра',            // Russian (Cyrillic transliteration)
-    'Yash Mishra',         // English
-    'ਯਸ਼ ਮਿਸ਼ਰਾ',            // Alternate Punjabi spelling
-    'ヤシュ・ミシュラ',     // Japanese Katakana
+    'Yash Mishra ',         // English
+    'यश मिश्रा ',           // Hindi (Devanagari)
+    'ਯਸ਼ ਮਿਸ਼ਰਾ ',           // Punjabi (Gurmukhi)
+    'ଯଶ ମିଶ୍ର ',            // Odia
+    'યશ મિશ્રા ',           // Gujarati
+    'Yash Mishra ',         // English
+    'ಯಶ ಮಿಶ್ರ ',            // Kannada
+    'యశ్ మిశ్రా ',           // Telugu
+    'யஷ் மிஷ்ரா ',           // Tamil
+    'യഷ് മിശ്ര ',            // Malayalam
+    'যশ মিশ্রা ',            // Bengali
+    'Yash Mishra ',         // English
+    'यश मिश्र ',            // Sanskrit (minor variation)
+    'Yash Mishra ',         // English
+    'Яш Мишра ',            // Russian (Cyrillic transliteration)
+    'Yash Mishra ',         // English
+    'ਯਸ਼ ਮਿਸ਼ਰਾ ',            // Alternate Punjabi spelling
+
 
   ];
 
