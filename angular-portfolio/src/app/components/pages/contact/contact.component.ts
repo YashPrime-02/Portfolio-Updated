@@ -1,61 +1,55 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import Swal from 'sweetalert2';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css'],
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule]
+  styleUrls: ['./contact.component.css']
 })
-export class ContactComponent {
-  contactForm: FormGroup;
+export class ContactComponent implements OnInit {
+  contactForm!: FormGroup;
+  submitted = false;
 
-  constructor(private fb: FormBuilder) {
-    this.contactForm = this.fb.group({
+  constructor(private formBuilder: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm(): void {
+    this.contactForm = this.formBuilder.group({
       name: ['', Validators.required],
-      company: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: [''], // optional
-      message: ['', Validators.required],
+      phone: [''],
+      projectDescription: [''],
+      message: ['', Validators.required]
     });
   }
 
-  onSubmit(): void {
-    if (this.contactForm.valid) {
-      const formData = new FormData();
-      formData.append('entry.1234567890', this.contactForm.value.name); // ✅ Update with your Google Form field IDs
-      formData.append('entry.0987654321', this.contactForm.value.email);
-      formData.append('entry.1122334455', this.contactForm.value.message);
-
-      fetch('https://docs.google.com/forms/u/0/d/e/your-form-id/formResponse', {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formData,
-      }).then(() => {
-        Swal.fire('Success!', 'Your message has been sent.', 'success');
-        this.downloadSubmission();
-        this.contactForm.reset();
-      }).catch(() => {
-        Swal.fire('Oops!', 'Something went wrong. Try again later.', 'error');
-        window.location.href = `mailto:youremail@example.com?subject=Contact Form Submission&body=Name: ${this.contactForm.value.name}%0AEmail: ${this.contactForm.value.email}%0AMessage: ${this.contactForm.value.message}`;
-      });
-    } else {
-      this.contactForm.markAllAsTouched();
-    }
+  // Convenience getter for easy access to form fields
+  get f() {
+    return this.contactForm.controls;
   }
 
-  downloadSubmission(): void {
-    const { name, email, message } = this.contactForm.value;
-    const content = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
-    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'ContactFormSubmission.txt';
-    link.click();
-    URL.revokeObjectURL(link.href);
+  onSubmit(): void {
+    this.submitted = true;
+
+    // Stop here if form is invalid
+    if (this.contactForm.invalid) {
+      return;
+    }
+
+    // Form is valid - implement your form submission logic here
+    console.log('Form submitted successfully', this.contactForm.value);
+
+    // You would typically call a service to send the message
+    // this.contactService.sendMessage(this.contactForm.value).subscribe(...)
+
+    // Reset form after successful submission
+    this.contactForm.reset();
+    this.submitted = false;
+
+    // Could show a success message to the user
+    alert('Your message has been sent successfully!');
   }
 }

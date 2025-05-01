@@ -1,34 +1,38 @@
 <div class="contact-container">
-  <h2>Contact Me</h2>
-
-  <form  (ngSubmit)="onSubmit()">
-
-    <div class="input-group">
-      <span class="input-icon"><i class="fas fa-user"></i></span>
-      <input formControlName="name" type="text" placeholder="Your Name" required>
+  <div class="contact-content">
+    <div class="left-section">
+      <h1><strong>Let's <span class="span-element">Connect</span></strong></h1>
+      <p>Whether it's a quick question or a new opportunity, I'm just a message away. Let's start the conversation.</p>
     </div>
 
-    <div class="input-group">
-      <span class="input-icon"><i class="fas fa-building"></i></span>
-      <input formControlName="company" type="text" placeholder="Project Demand And Deadline" required>
+    <div class="right-section">
+      <form>
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Name" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Email" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <input type="tel" name="phone" placeholder="Phone No (optional)" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="projectDescription" placeholder="Project Description (optional)" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <textarea name="message" placeholder="Your Message" rows="5" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="submit-btn">Send Message</button>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <div class="input-group">
-      <span class="input-icon"><i class="fas fa-envelope"></i></span>
-      <input formControlName="email" type="email" placeholder="Your Email" required>
-    </div>
-
-    <div class="input-group">
-      <span class="input-icon"><i class="fas fa-phone"></i></span>
-      <input formControlName="phone" type="tel" placeholder="Your Phone Number (Optional)">
-    </div>
-
-    <div class="input-group">
-      <span class="input-icon"><i class="fas fa-comment"></i></span>
-      <textarea formControlName="message" placeholder="Your Message" required></textarea>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Send Message</button>
-
-  </form>
+  <div class="background-graphic"></div>
 </div>
