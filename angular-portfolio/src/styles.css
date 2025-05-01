@@ -24,6 +24,12 @@ body {
 {
   background: linear-gradient(93deg, #FAB656 -2.93%, #C766FF 102.1%); -webkit-background-clip: text;-webkit-text-fill-color: transparent;
 }
+.span-element-2
+{
+color: red;
+
+}
+
 
 
 /* Responsive Typography */
