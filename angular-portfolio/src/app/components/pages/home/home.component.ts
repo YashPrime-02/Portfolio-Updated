@@ -53,44 +53,59 @@ export class HomeComponent implements OnInit, AfterViewInit {
     {
       message: 'I had the pleasure of collaborating with Yash and was impressed by his ability to lead, and uplift the entire team which makes him a great team player. He is high spirited and has a natural talent for taking initiative as well.',
       name: 'Tarushi Singh',
-      image: ''
+      image: '/assets/Testimonial_Photos/Tarushi_Singh.jpg',
+      linkedinUrl:'https://www.linkedin.com/in/tarushi-singh/',
     },
     {
       message: 'Working with Yash was a truly rewarding experience. His ability to energize the team and consistently take initiative made a big impact. He’s a natural collaborator, always uplifting those around him and driving the team forward with enthusiasm.',
       name: 'Priyanka Singh',
-      image: ''
+      image: '/assets/Testimonial_Photos/Priyanka_Singh.jpg',
+      linkedinUrl:'https://www.linkedin.com/in/priyanka-singh-801674196/',
     },
     {
       message: 'Working alongside Yash Mishra on the E-Cell website was a great experience. His dedication and front-end development skills consistently elevated our project. As a team, we ensured every detail was refined, making the process both collaborative and rewarding.',
       name: 'Neelansh Pandey',
-      image: ''
+      image: '/assets/Testimonial_Photos/Neelansh_Pandey.jpg',
+      linkedinUrl:'https://www.linkedin.com/in/neelansh-pandey-81348b21b/',
     },
+    {
+      message: 'Yash stands out because he leads by doing, never just directing. He rolls up his sleeves, brings everyone together, and tackles every challenge with genuine passion and professionalism. On the technical side, his Angular skills are top‑notch—he builds clean, modular components, masters reactive data flows with RxJS, and ensures fast, responsive apps with lazy loading and AOT compilation. His hands‑on leadership and technical excellence make him an inspiring teammate and a talented developer.',
+      name: 'Divyanshu Gupta',
+      image: '/assets/Testimonial_Photos/Divyanshu_Gupta.jpg',
+      linkedinUrl:'https://www.linkedin.com/in/divyanshu-gupta-691310202/',
+    },
+
     {
       message: 'Collaborating with Yash Mishra on the UI/UX design of the E-Cell website was an enriching experience. His creative approach and attention to detail made our teamwork smooth and effective, helping us bring the best version of our ideas to life.',
       name: 'Shubhansh Mahawar',
-      image: ''
+      image: '/assets/Testimonial_Photos/Shubhansh_Mahawar.jpg',
+      linkedinUrl:'https://www.linkedin.com/in/shubhansh-mahawar-5a822420b/',
     },
     {
       message: 'During my tenure in E-Cell, I had the privilege of working under Yash sir as the President.  His knowledge of Front-end Development, design and mentorship have been truly commendable.',
       name: 'Divyam Kumar',
-      image: ''
+      image: '/assets/Testimonial_Photos/Divyam_Kumar.jpg',
+      linkedinUrl:'https://www.linkedin.com/in/divyam-kumar-b7406a258/',
     },
     {
       message: 'Yash Mishra Sir’s presence was truly inspiring. Collaborating with him during our time in E-Cell taught me invaluable lessons in teamwork and collective effort. His calm leadership and constant encouragement created an environment where ideas flourished and every contribution mattered. I’m grateful for the growth I experienced.',
       name: 'Tanishka Saharawat',
-      image: ''
-    },
-
-    {
-      message: 'Yash Mishra Sir is an inspiring mentor. Working under his guidance in E-Cell was a daily lesson in teamwork, front-end development, where his expertise truly stood out. He ensured every member felt heard always bringing out the best in us.',
-      name: 'Shreya Singh',
-      image: ''
+      image: '/assets/Testimonial_Photos/Tanishka_Saharawat.jpg',
+      linkedinUrl:'https://www.linkedin.com/in/tanishka-saharawat/',
     },
     {
       message: 'It was great working with you Yash Mishra. Loved the way you explained every minute details and the way you made me comfortable while working on this project. Would love to work with you in further projects.',
       name: 'Preetam Ray',
-      image: ''
+      image: '/assets/Testimonial_Photos/Preetam_Ray.jpg',
+      linkedinUrl:'https://www.linkedin.com/in/preetamray16/',
     },
+    {
+      message: 'Yash Mishra Sir is an inspiring mentor. Working under his guidance in E-Cell was a daily lesson in teamwork, front-end development, where his expertise truly stood out. He ensured every member felt heard always bringing out the best in us.',
+      name: 'Shreya Singh',
+      image: '/assets/Testimonial_Photos/Shreya_Singh.jpg',
+      linkedinUrl:'https://www.linkedin.com/in/shreyasingh38/',
+    },
+
 
 
   ];
