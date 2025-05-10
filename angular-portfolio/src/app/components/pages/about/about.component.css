@@ -680,7 +680,7 @@
   pointer-events: none;
   left: 50%;
   transform: translateX(-50%);
-  top: 40%;
+  top: 45%;
   width: 100%;
   max-width: 1000px; /* Prevents overflow */
   height: auto;
