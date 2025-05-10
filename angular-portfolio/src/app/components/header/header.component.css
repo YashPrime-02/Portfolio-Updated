@@ -25,16 +25,38 @@ body::-webkit-scrollbar {
   position: sticky;
   top: 0;
   z-index: 1000;
+
+  /* Animated gradient background */
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.08)
+  );
   background-size: 600% 600%;
-  animation: gradientAnimation 12s ease infinite;
-  backdrop-filter: blur(15px);
-  border-radius: 12px;
+  animation: gradientAnimation 10s ease infinite;
+
+  /* Glassmorphism styles */
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  background-blend-mode: overlay;
+
+  box-shadow:
+    inset 0 0 0.75px rgba(255, 255, 255, 0.4),
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    0 4px 6px rgba(255, 255, 255, 0.05);
+/*
+  border-radius: 12px; */
   transition: all 0.4s ease;
 }
 
 @keyframes gradientAnimation {
-  0%, 100%   { background-position: 0% 50%; }
-  50%        { background-position: 100% 50%; }
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* Logo */
