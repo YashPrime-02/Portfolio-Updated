@@ -8,26 +8,11 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css'],
   imports: [RouterModule],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   lastScrollTop = 0;
   isDarkMode = false;
   menuOpen = false;
 
-  ngOnInit() {
-    const savedTheme = localStorage.getItem('theme');
-    this.isDarkMode = savedTheme === 'dark';
-    this.updateThemeClass();
-  }
-
-  private updateThemeClass() {
-    if (this.isDarkMode) {
-      document.body.classList.add('dark-theme');
-      document.body.classList.remove('light-theme');
-    } else {
-      document.body.classList.add('light-theme');
-      document.body.classList.remove('dark-theme');
-    }
-  }
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
