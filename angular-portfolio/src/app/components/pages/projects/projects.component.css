@@ -95,8 +95,8 @@
 }
 
 .project-card img {
-  width: 100%;
-  height: auto;
+  width: 90%;
+  height: 170px;
   border-radius: 8px;
   transition: transform 0.3s ease;
 }
@@ -110,7 +110,7 @@
   margin-bottom: 1rem;
   font-family: Poppins;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 22px;
   line-height: 100%;
   letter-spacing: 0%;
   text-align: center;
@@ -131,7 +131,7 @@
   margin-bottom: 1rem;
   font-family: Poppins;
   font-weight: 700;
-  font-size: 23px;
+  font-size: 16px;
   line-height: 100%;
   letter-spacing: 0%;
   text-align: center;
@@ -144,7 +144,7 @@
   margin-bottom: 1rem;
   font-family: Poppins;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 13px;
   line-height: 35px;
   letter-spacing: 0%;
   text-align: left;
@@ -195,7 +195,7 @@
   margin-top: 1rem;
   font-family: Poppins;
   font-weight: 600;
-  font-size: 17.38px;
+  font-size: 14.38px;
   line-height: 100%;
   letter-spacing: 0%;
   border-radius: 50px;
