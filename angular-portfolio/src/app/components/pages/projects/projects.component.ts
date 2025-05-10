@@ -11,9 +11,9 @@ import { CommonModule } from '@angular/common';
 export class ProjectsComponent {
   projects = [
     {
-      title: 'Sion Varsity',
-      description: 'Developed SionVarsity.com as an Angular Developer, focusing on responsive design, improved UI/UX, and performance optimization. Enhanced user engagement and ensured seamless navigation, contributing to a scalable and efficient web platform.',
-      imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/school.svg',
+      title: 'Sion Varsity Website',
+      description: 'Developed SionVarsity.com as an Angular Developer for EUODIAS Technologies, focusing on responsive design, improved UI/UX, and performance optimization. Enhanced user engagement and ensured seamless navigation, contributing to a scalable and efficient web platform.',
+      imageUrl: '/assets/SION-VARSITY.png',
       projectUrl: 'https://sionvarsity.com/',
       workedUnder: 'EUODIAS Technologies'
     },
@@ -25,38 +25,38 @@ export class ProjectsComponent {
     //   workedUnder: 'EUODIAS Technologies'
     // },
     {
-      title: 'Doctor Helper',
-      description: 'Built Doctor Helper, a full-stack web app for booking doctor appointments. Used Django for secure backend, SQLite for data management, and responsive frontend with HTML, CSS, Bootstrap. Ensured smooth user flow, authentication, and real-time scheduling.',
-      imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/heart-rate-monitor.svg',
+      title: 'Doctor Helper Portal',
+      description: 'Built Doctor Helper, a full-stack web app for booking doctor appointments. Used Django for secure backend, SQLite for data management, and responsive frontend with  HTML, CSS, Bootstrap. Ensured smooth user flow, authentication, and real-time scheduling.',
+      imageUrl: '/assets/Doctor_Helper.png',
       projectUrl: 'https://github.com/YashPrime-02/Doctor_Helper',
       workedUnder: 'Academic Minor Project'
     },
     {
       title: 'E-CELL WEBSITE',
       description: 'Conceptualized, built, and coordinated the official website for E-CELL using React, providing a dynamic and engaging platform for event announcements, team showcases, and entrepreneurial resources that are required for students and integral on the basis of world.',
-      imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/rocket.svg',
+      imageUrl: '/assets/E-CELL-ABESEC.png',
       projectUrl: 'https://ecell-website-v2.vercel.app/',
       workedUnder: 'E-CELL ABESEC TEAM'
     },
     {
       title: 'Mental Health Portal',
       description: 'Designed and developed a comprehensive Mental Health Portal as the major project for the final year, aimed at promoting mental health and well-being through accessible resources and interactive features which are helpful.',
-      imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/meditation.svg',
+      imageUrl: '/assets/MENTAL-HEALTH-1.jpg',
       projectUrl: 'https://github.com/YashPrime-02/Mental_Health_Portal-Main',
       workedUnder: 'Academic Major Project'
     },
     {
       title: 'Budget Planner App',
       description: 'Developed a Budget Planner App using AngularJS, enabling users to track expenses, set financial goals, and manage budgets effectively with responsive design and intuitive user-friendly interface with easy to navigate website.',
-      imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/currency-dollar.svg',
+      imageUrl: '/assets/Budget-Planner.jpg',
       projectUrl: 'https://github.com/YashPrime-02/Yash-Angular-Projects/tree/main/BudgetPlanner_App',
       workedUnder: 'Self Project'
     },
     {
       title: 'Unofficial IRCTC Improvised Clone Site',
       description: 'Developed an unofficial IRCTC Improvised Clone Site using AngularJS, replicating core functionalities like train search, booking, and PNR status, with enhanced UI/UX, improved performance.',
-      imageUrl: 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/currency-dollar.svg',
-      projectUrl: '',
+      imageUrl: '/assets/IRCTC.png',
+      projectUrl: 'https://github.com/YashPrime-02/IRCTC-IMPROVISED-CLONE',
       workedUnder: 'Self Project'
     }
   ];

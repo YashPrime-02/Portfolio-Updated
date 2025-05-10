@@ -71,9 +71,15 @@
         <div class="testimonial-track d-flex flex-nowrap" #testimonialTrack>
           <div *ngFor="let testimonial of testimonials.concat(testimonials)"
             class="testimonial-card flex-shrink-0 px-3">
-            <!-- <img [src]="testimonial.image" alt="{{ testimonial.name }}" class="testimonial-image mb-3" /> -->
+            <img [src]="testimonial.image" alt="{{ testimonial.image }}" class="testimonial-image mb-3" />
             <p class="testimonial-message">"{{ testimonial.message }}"</p>
-            <h4 class="testimonial-name">- {{ testimonial.name }}</h4>
+            <h4 class="testimonial-name">- {{ testimonial.name }} <br>  <a [href]="testimonial.linkedinUrl" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/linkedin-logo.svg" alt="LinkedIn Profile" class="testimonial-id mb-3" />
+            </a>
+
+          </h4>
+
+
           </div>
         </div>
       </div>

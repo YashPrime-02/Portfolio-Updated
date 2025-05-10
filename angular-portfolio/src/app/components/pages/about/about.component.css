@@ -35,14 +35,56 @@
   margin-bottom: 50px;
 }
 
-.about-photo img {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 5px solid #FFD700;
+
+.card-container {
+  flex: 0 0 auto;
+  width: 260px;      /* increased from 200px */
+  height: 360px;     /* increased from 280px */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  background: #000;
 }
 
+@media (max-width: 576px) {
+  .card-container {
+    width: 220px;    /* mobile-friendly size */
+    height: 300px;
+  }
+}
+
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.experience-wrapper {
+  flex: 1 1 0;         /* text takes remaining space */
+  max-width: 600px;    /* optional cap */
+}
+
+.stats-heading {
+  margin-bottom: 1rem;
+}
+
+/* Ensure it stays side-by-side even on small screens (with horizontal scroll if needed) */
+@media (max-width: 576px) {
+  .about-me {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 1rem; /* space for scroll bar */
+  }
+}
+
+
+
+
+
+
+/* End of About Me Section */
 .about-text {
   flex: 1;
   padding-left: 30px;
@@ -59,84 +101,7 @@
   line-height: 1.8;
 }
 
-/* Technologies Section */
-.technologies-section {
-  text-align: center;
-  margin-bottom: 50px;
-}
 
-.technologies-section h2 {
-  composes: section-title text-dark;
-}
-
-.tech-icons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.tech-icon {
-  text-align: center;
-  width: 120px;
-}
-
-.tech-icon img {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 10px;
-}
-
-.tech-icon p {
-  font-size: 1rem;
-  color: #444;
-}
-
-/* Testimonials Section */
-.testimonials-section {
-  text-align: center;
-}
-
-.testimonials-section h2 {
-  composes: section-title text-dark;
-}
-
-.testimonial-carousel {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-}
-
-.testimonial-card {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  max-width: 400px;
-  text-align: center;
-}
-
-.testimonial-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 15px;
-}
-
-.testimonial-card p {
-  composes: fz-1-1rem;
-  color: #555;
-  font-style: italic;
-  margin-bottom: 10px;
-}
-
-.testimonial-card h4 {
-  font-size: 1.2rem;
-  color: #333;
-  font-weight: 600;
-}
 
 /* Section Card Layouts */
 .section,
@@ -479,7 +444,7 @@
 
 .experience-section-2 {
   background: linear-gradient(144deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.15) 100%);
-  padding: 40px 30px;
+  padding: 20px 30px;
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(26, 42, 59, 0.4);
   margin-bottom: 40px;
@@ -715,7 +680,7 @@
   pointer-events: none;
   left: 50%;
   transform: translateX(-50%);
-  top: 0;
+  top: 45%;
   width: 100%;
   max-width: 1000px; /* Prevents overflow */
   height: auto;
@@ -725,7 +690,7 @@
 @media (max-width: 1024px) {
   .contact-graphic {
     max-width: 800px;
-    top: 30px;
+    top: 150%;
   }
 }
 
@@ -741,6 +706,115 @@
 @media (max-width: 480px) {
   .contact-graphic {
     max-width: 500px;
-    top: 80px;
+    top: 120%;
   }
+}
+.card-container {
+  position: relative;
+  width: 303px;
+  height: 425px;
+  margin: 40px auto 4%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  background: #000;
+  top: 1%;
+  transition: transform 0.3s ease;
+}
+
+.card-container:hover {
+  transform: translateY(-5px);
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.3s ease;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.card-container:hover .card-img {
+  filter: grayscale(100%);
+}
+
+.card-container:hover .overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.social-icon {
+  color: #fff;
+  font-size: 1.75rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #ddd;
+}
+
+/* Tablet and small desktop */
+@media (max-width: 992px) {
+  .card-container {
+    width: 260px;
+    height: 365px;
+    margin: 32px auto 3%;
+  }
+}
+
+/* Large phones and phablets */
+@media (max-width: 768px) {
+  .card-container {
+    width: 220px;
+    height: 310px;
+    margin: 24px auto 2%;
+  }
+}
+
+/* Portrait phones */
+@media (max-width: 576px) {
+  .card-container {
+    width: 90%;        /* fluid width */
+    height: auto;      /* height adjusts to image aspect */
+    margin: 16px auto 2%;
+  }
+  .card-img {
+    height: auto;
+  }
+}
+.about-social-icon i {
+  color: #ffffff; /* Default color */
+  transition: color 0.3s ease;
+  height: auto;
+  width: auto;
+}
+
+.about-social-icon:hover i {
+  color: #E1306C; /* Instagram pink or any custom color */
+}
+
+/* Specific colors for each platform (optional) */
+.about-social-icon[href*="instagram"]:hover i {
+  color: #E1306C; /* Instagram */
+}
+
+.about-social-icon[href*="linkedin"]:hover i {
+  color: #0077B5; /* LinkedIn */
 }

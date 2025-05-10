@@ -24,7 +24,7 @@ export class AboutComponent implements OnInit {
   private typingIndex = 0;
   private fullText = '';
   private intervalId: any;
-  private typingSpeed = 50;
+  private typingSpeed = 70;
   isPaused = false;
   isBrowser = false;
 
@@ -81,13 +81,13 @@ export class AboutComponent implements OnInit {
     }
   }
 
-  @HostListener('mouseenter')
-  onMouseEnter() {
-    this.isPaused = true;
-  }
+  // @HostListener('mouseenter')
+  // onMouseEnter() {
+  //   this.isPaused = true;
+  // }
 
-  @HostListener('mouseleave')
-  onMouseLeave() {
-    this.isPaused = false;
-  }
+  // @HostListener('mouseleave')
+  // onMouseLeave() {
+  //   this.isPaused = false;
+  // }
 }
