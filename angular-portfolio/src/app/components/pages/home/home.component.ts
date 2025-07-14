@@ -33,20 +33,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
   numberOfTechnologies = 0;
 
   targetYearsOfExperience = 1;
-  targetNumberOfProjects = 6;
-  targetNumberOfTechnologies = 8;
+  targetNumberOfProjects = 8;
+  targetNumberOfTechnologies = 12;
 
-  // Technologies
-  technologies = [
-    { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/html5.svg' },
-    { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/css3.svg' },
-    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/javascript.svg' },
-    { name: 'Angular', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/angular.svg' },
-    { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/react.svg' },
-    { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/git.svg' },
-    { name: 'Docker', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/docker.svg' },
-    { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/mongodb.svg' },
-  ];
+// Technologies
+technologies = [
+  { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/html5.svg' },
+  { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/css3.svg' },
+  { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/javascript.svg' },
+  { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/typescript.svg' },
+  { name: 'Angular', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/angular.svg' },
+  { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/react.svg' },
+  { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/git.svg' },
+  { name: 'Docker', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/docker.svg' },
+  { name: 'Express', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/express.svg' },
+  { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/postgresql.svg' },
+  { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/mysql.svg' },
+  { name: 'CI/CD (GitHub Actions)', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/githubactions.svg' }
+];
+
 
   // Testimonials
   testimonials = [
