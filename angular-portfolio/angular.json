@@ -11,7 +11,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/angular-portfolio",
             "index": "src/index.html",
@@ -20,18 +20,13 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/assets",
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              { "glob": "**/*", "input": "public" }
             ],
             "styles": ["src/styles.css"],
             "scripts": [],
             "server": "src/main.server.ts",
             "prerender": true,
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "ssr": { "entry": "src/server.ts" }
           },
           "configurations": {
             "production": {
@@ -43,16 +38,8 @@
               "vendorChunk": false,
               "buildOptimizer": true,
               "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "900kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "9kB",
-                  "maximumError": "10kB"
-                }
+                { "type": "initial", "maximumWarning": "900kB", "maximumError": "1MB" },
+                { "type": "anyComponentStyle", "maximumWarning": "9kB", "maximumError": "10kB" }
               ]
             },
             "development": {
@@ -68,12 +55,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "angular-portfolio:build:production"
-            },
-            "development": {
-              "buildTarget": "angular-portfolio:build:development"
-            }
+            "production": { "buildTarget": "angular-portfolio:build:production" },
+            "development": { "buildTarget": "angular-portfolio:build:development" }
           },
           "defaultConfiguration": "development"
         },
@@ -101,9 +84,7 @@
             "routes": ["/", "/about"]
           }
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
-        },
+        "extract-i18n": { "builder": "@angular-devkit/build-angular:extract-i18n" },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -111,10 +92,7 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/assets",
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              { "glob": "**/*", "input": "public" }
             ],
             "styles": ["src/styles.css"],
             "scripts": []
