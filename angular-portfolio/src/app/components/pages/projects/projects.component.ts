@@ -26,7 +26,7 @@ description: 'Developed SionVarsity.com as an Angular Developer for EUODIAS Tech
     // },
     {
       title: 'Unofficial IRCTC Improvised Clone Site',
-description: 'Built Prime Coder, an advanced online code editor using React, featuring real-time HTML, CSS, JavaScript, and TypeScript editing with instant live preview. Implemented a fully responsive interface with custom CSS styling and high-quality animations to deliver a modern, polished, and engaging user experience across devices.  Integrated copy-to-clipboard with animated effects, seamless code compilation, and error handling with visual feedback. Optimized application performance.',
+description: 'Built Prime Coder, an advanced online code editor using React, featuring real-time HTML, CSS, JavaScript, and TypeScript editing with instant live preview. Implemented a fully responsive interface with custom CSS styling and high-quality animations to deliver a modern, polished, and engaging user experience across devices.  Integrated copy-to-clipboard with animated effects, seamless code compilation, and error handling with visual feedback. Optimized application performance by 30% approx.',
       imageUrl: '/assets/Gifs/Train Station Racing GIF by Burger Records.gif',
       projectUrl: 'https://github.com/YashPrime-02/IRCTC-IMPROVISED-CLONE',
       workedUnder: 'Self Project'
