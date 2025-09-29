@@ -9,13 +9,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ContactComponent implements OnInit {
   contactForm!: FormGroup;
   submitted = false;
+  title: any;
+  meta: any;
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.initForm();
-  }
 
+    // 🔹 SEO Meta Tags
+    this.title.setTitle('Contact | Yash Mishra Portfolio');
+    this.meta.updateTag({ name: 'description', content: 'Get in touch with Yash Mishra for collaborations, job opportunities, or project discussions.' });
+    this.meta.updateTag({ property: 'og:title', content: 'Contact | Yash Mishra Portfolio' });
+    this.meta.updateTag({ property: 'og:description', content: 'Reach out to Yash Mishra via the contact form for software development projects and opportunities.' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://portfolio-updated-lwhs.vercel.app/contact' });
+  }
   initForm(): void {
     this.contactForm = this.formBuilder.group({
       name: ['', Validators.required],

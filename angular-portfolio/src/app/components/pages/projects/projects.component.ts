@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { Meta, Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-projects',
   standalone: true,
@@ -8,7 +8,17 @@ import { CommonModule } from '@angular/common';
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css']
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit {
+  constructor(private title: Title, private meta: Meta) {}
+
+  ngOnInit(): void {
+    // 🔹 SEO Meta Tags
+    this.title.setTitle('Projects | Yash Mishra Portfolio');
+    this.meta.updateTag({ name: 'description', content: 'Explore projects by Yash Mishra, including Angular apps, Node.js backends, React apps, and full-stack web applications.' });
+    this.meta.updateTag({ property: 'og:title', content: 'Projects | Yash Mishra Portfolio' });
+    this.meta.updateTag({ property: 'og:description', content: 'Showcasing Angular, React, and full-stack projects built by Yash Mishra.' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://portfolio-updated-lwhs.vercel.app/projects' });
+  }
   projects = [
     {
       title: 'Sion Varsity Website',

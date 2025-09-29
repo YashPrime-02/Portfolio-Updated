@@ -3,6 +3,8 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
 import { CommonModule } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
 
+import { Meta, Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -25,6 +27,38 @@ import { isPlatformBrowser } from '@angular/common';
   ]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
+
+  constructor(
+    private meta: Meta,
+    private title: Title,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+  ngOnInit(): void {
+    // 🔹 SEO Meta Tags
+    if (this.title && this.meta) {
+      this.title.setTitle('Home | Yash Mishra Portfolio');
+      this.meta.updateTag({ name: 'description', content: 'Welcome to Yash Mishra’s portfolio showcasing skills in Angular, Node.js, and full-stack development.' });
+      this.meta.updateTag({ name: 'robots', content: 'index, follow' });
+      this.meta.updateTag({ property: 'og:title', content: 'Home | Yash Mishra Portfolio' });
+      this.meta.updateTag({ property: 'og:description', content: 'Portfolio homepage of Yash Mishra, software developer specialized in Angular and full-stack projects.' });
+      this.meta.updateTag({ property: 'og:url', content: 'https://portfolio-updated-lwhs.vercel.app/' });
+      this.meta.updateTag({ property: 'og:type', content: 'website' });
+    }
+
+    // Only start animations if it's running in the browser
+    if (this.isBrowser) {
+      this.animateCounters();
+      this.cycleNameTranslations();
+    } else {
+      // Static values for SSR
+      this.yearsOfExperience = this.targetYearsOfExperience;
+      this.numberOfProjects = this.targetNumberOfProjects;
+      this.numberOfTechnologies = this.targetNumberOfTechnologies;
+    }
+  }
   @ViewChild('testimonialTrack', { static: false }) testimonialTrack!: ElementRef;
 
   // Animated Counters
@@ -157,22 +191,7 @@ technologies = [
   nameFadeState: 'visible' | 'hidden' = 'visible';
   isBrowser = false;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    this.isBrowser = isPlatformBrowser(this.platformId);
-  }
-
-  ngOnInit(): void {
-    // Only start animations if it's running in the browser
-    if (this.isBrowser) {
-      this.animateCounters();
-      this.cycleNameTranslations();
-    } else {
-      // Static values for SSR
-      this.yearsOfExperience = this.targetYearsOfExperience;
-      this.numberOfProjects = this.targetNumberOfProjects;
-      this.numberOfTechnologies = this.targetNumberOfTechnologies;
-    }
-  }
+  // (Removed duplicate ngOnInit)
 
   ngAfterViewInit(): void {
     if (this.isBrowser) {
