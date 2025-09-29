@@ -1,4 +1,6 @@
+# robots.txt for Yash Mishra Portfolio
 User-agent: *
-Allow: /
+Disallow:
 
-Sitemap: https://portfolio-updated-lwhs.vercel.app/sitemap.xml
+# Sitemap location
+Sitemap: https://portfolio-updated-lwhs.vercel.app/assets/sitemap.xml

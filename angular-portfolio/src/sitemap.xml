@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://portfolio-updated-lwhs.vercel.app/</loc>
+    <lastmod>2025-09-29</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://portfolio-updated-lwhs.vercel.app/about</loc>
+    <lastmod>2025-09-29</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://portfolio-updated-lwhs.vercel.app/projects</loc>
+    <lastmod>2025-09-29</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://portfolio-updated-lwhs.vercel.app/contact</loc>
-    <priority>0.7</priority>
+    <lastmod>2025-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
+
 </urlset>
