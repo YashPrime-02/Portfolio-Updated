@@ -118,7 +118,7 @@ technologies = [
     {
       message: 'Yash Mishra Sir is an inspiring mentor. Working under his guidance in E-Cell was a daily lesson in teamwork, front-end development, where his expertise truly stood out. He ensured every member felt heard always bringing out the best in us.',
       name: 'Shreya Singh (E-CELL ABESEC TEAM)',
-      image: '/assets/Testimonial_Photos/Shreya_Singh.jpg',
+      image: '/assets/Testimonial_Photos/Shreya_Singh.webp',
       linkedinUrl:'https://www.linkedin.com/in/shreyasingh38/',
     },
 
