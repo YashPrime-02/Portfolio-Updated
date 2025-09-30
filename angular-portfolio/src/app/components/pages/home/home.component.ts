@@ -91,7 +91,7 @@ technologies = [
   testimonials = [
 
     {
-      message: ' I had the opportunity to mentor Yash Mishra during his tenure as President of the E-CELL NEC. Yash consistently demonstrated outstanding leadership, strategic insight, and a deep commitment to innovation throughout his time with us. Under his leadership, the E-CELL NEC achieved remarkable success, including securing an All India Rank 27 at the national level — a reflection of his ability to set ambitious goals and drive high-performance execution. Beyond his leadership capabilities, Yash also showcased strong technical skills, notably spearheading the development of the official E-CELL website, enhancing the organization digital presence and operational efficiency',
+      message: ' I had the opportunity to mentor Yash Mishra during his tenure as President of the E-CELL. Yash consistently demonstrated outstanding leadership, strategic insight. Under his leadership, the E-CELL NEC achieved remarkable success, including securing an All India Rank 27 at the national level',
 
       name: 'Mahendra Kr Gupta (CEO INurture Incubation Foundation)',
       image: '/assets/Testimonial_Photos/mahendra sir.webp',
