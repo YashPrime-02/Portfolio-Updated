@@ -23,10 +23,7 @@
               { "glob": "**/*", "input": "public" }
             ],
             "styles": ["src/styles.css"],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": { "entry": "src/server.ts" }
+            "scripts": []
           },
           "configurations": {
             "production": {
