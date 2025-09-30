@@ -112,7 +112,7 @@ technologies = [
       linkedinUrl:'https://www.linkedin.com/in/priyanka-singh-801674196/',
     },
     {
-      message: 'Yash stands out because he leads by doing, never just directing. He rolls up his sleeves, brings everyone together, and tackles every challenge with genuine passion and professionalism. On the technical side, his Angular skills are top‑notch—he builds clean, modular components, masters reactive data flows with RxJS, and ensures fast, responsive apps with lazy loading and AOT compilation. His hands‑on leadership and technical excellence make him an inspiring teammate and a talented developer.',
+      message: 'Yash stands out because he leads by doing, never just directing. He brings everyone together, and tackles every challenge with genuine passion and professionalism. On the technical side, his Angular skills are top‑notch—he builds clean, modular components, masters reactive data flows with RxJS, and ensures fast, responsive apps with lazy loading and AOT compilation.',
       name: 'Divyanshu Gupta (Armstrong Finance Limited)',
       image: '/assets/Testimonial_Photos/Divyanshu_Gupta.jpg',
       linkedinUrl:'https://www.linkedin.com/in/divyanshu-gupta-691310202/',
