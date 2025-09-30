@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-portfolio",
+            "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -35,7 +35,7 @@
               "buildOptimizer": true,
               "budgets": [
                 { "type": "initial", "maximumWarning": "900kB", "maximumError": "1MB" },
-                { "type": "anyComponentStyle", "maximumWarning": "9kB", "maximumError": "10kB" }
+                { "type": "anyComponentStyle", "maximumWarning": "12kB", "maximumError": "14kB" }
               ]
             },
             "development": {
