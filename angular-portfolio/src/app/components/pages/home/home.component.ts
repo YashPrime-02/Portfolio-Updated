@@ -71,18 +71,27 @@ export class HomeComponent implements OnInit, AfterViewInit {
   targetNumberOfTechnologies = 12;
 
 // Technologies
-technologies = [
+  technologies = [
+  // Core Web Languages (highest SEO value)
   { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/html5.svg' },
   { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/css3.svg' },
   { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/javascript.svg' },
   { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/typescript.svg' },
-  { name: 'Angular', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/angular.svg' },
+
+  // Frontend Frameworks (high recruiter & SEO weight)
   { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/react.svg' },
-  { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/git.svg' },
-  { name: 'Docker', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/docker.svg' },
+  { name: 'Angular', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/angular.svg' },
+
+  // Backend Stack
+  { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/nodedotjs.svg' },
   { name: 'Express', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/express.svg' },
+
+  // Databases
   { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/postgresql.svg' },
-  { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/mysql.svg' },
+
+  // Tools & DevOps
+  { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/github.svg' },
+  { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/git.svg' },
   { name: 'CI/CD (GitHub Actions)', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/githubactions.svg' }
 ];
 
@@ -91,7 +100,7 @@ technologies = [
   testimonials = [
 
     {
-      message: ' I had the opportunity to mentor Yash Mishra during his tenure as President of the E-CELL. Yash consistently demonstrated outstanding leadership, strategic insight. Under his leadership, the E-CELL NEC achieved remarkable success, including securing an All India Rank 27 at the national level',
+      message: ' I had the opportunity to mentor Yash Mishra during his tenure as President of the E-CELL ABESEC. Yash consistently demonstrated outstanding leadership, strategic insight, and a deep commitment to innovation throughout his time with us. Under his leadership, the E-CELL NEC achieved remarkable success, including securing an All India Rank 27 at the national level — a reflection of his ability to set ambitious goals and drive high-performance execution. Beyond his leadership capabilities, Yash also showcased strong technical skills, notably spearheading the development of the official E-CELL website, enhancing the organization digital presence and operational efficiency',
 
       name: 'Mahendra Kr Gupta (CEO INurture Incubation Foundation)',
       image: '/assets/Testimonial_Photos/mahendra sir.webp',

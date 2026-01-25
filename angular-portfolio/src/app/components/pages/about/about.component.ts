@@ -1,4 +1,4 @@
-import { Component, HostListener, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -18,14 +18,12 @@ export class AboutComponent implements OnInit {
     { text: 'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.', author: 'Martin Fowler' }
   ];
 
-
   currentQuote = '';
   currentAuthor = '';
   private typingIndex = 0;
   private fullText = '';
   private intervalId: any;
   private typingSpeed = 70;
-  isPaused = false;
   isBrowser = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
@@ -54,10 +52,8 @@ export class AboutComponent implements OnInit {
 
   typeQuote(): void {
     if (this.typingIndex < this.fullText.length) {
-      if (!this.isPaused) {
-        this.currentQuote += this.fullText.charAt(this.typingIndex);
-        this.typingIndex++;
-      }
+      this.currentQuote += this.fullText.charAt(this.typingIndex);
+      this.typingIndex++;
 
       if (this.isBrowser) {
         this.intervalId = setTimeout(() => this.typeQuote(), this.typingSpeed);
@@ -81,13 +77,4 @@ export class AboutComponent implements OnInit {
     }
   }
 
-  // @HostListener('mouseenter')
-  // onMouseEnter() {
-  //   this.isPaused = true;
-  // }
-
-  // @HostListener('mouseleave')
-  // onMouseLeave() {
-  //   this.isPaused = false;
-  // }
 }
