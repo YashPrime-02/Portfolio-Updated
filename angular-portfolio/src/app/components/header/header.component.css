@@ -21,7 +21,6 @@ body::-webkit-scrollbar {
   align-items: center;
   flex-wrap: wrap;
   padding: 1rem 2rem;
-  width: 95.5%;
   position: sticky;
   top: 0;
   z-index: 1000;
