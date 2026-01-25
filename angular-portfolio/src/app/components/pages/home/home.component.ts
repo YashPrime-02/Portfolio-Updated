@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   numberOfTechnologies = 0;
 
   targetYearsOfExperience = 2;
-  targetNumberOfProjects = 8;
+  targetNumberOfProjects = 9;
   targetNumberOfTechnologies = 12;
 
 // Technologies
@@ -100,7 +100,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   testimonials = [
 
     {
-      message: ' I had the opportunity to mentor Yash Mishra during his tenure as President of the E-CELL ABESEC. Yash consistently demonstrated outstanding leadership, strategic insight, and a deep commitment to innovation throughout his time with us. Under his leadership, the E-CELL NEC achieved remarkable success, including securing an All India Rank 27 at the national level — a reflection of his ability to set ambitious goals and drive high-performance execution. Beyond his leadership capabilities, Yash also showcased strong technical skills, notably spearheading the development of the official E-CELL website, enhancing the organization digital presence and operational efficiency',
+      message: ' I had the opportunity to mentor Yash Mishra during his tenure as President of the E-CELL ABESEC. Yash consistently demonstrated outstanding leadership, strategic insight,Under his leadership, the E-CELL ABESEC achieved remarkable success, including securing an All India Rank 27 at the national level — a reflection of his ability to set ambitious goals and drive high-performance execution.',
 
       name: 'Mahendra Kr Gupta (CEO INurture Incubation Foundation)',
       image: '/assets/Testimonial_Photos/mahendra sir.webp',
