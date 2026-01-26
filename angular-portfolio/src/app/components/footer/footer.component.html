@@ -1,32 +1,31 @@
 <footer class="footer">
   <div class="footer-content">
+
     <div class="footer-logo">
-      <a href="/">Yash Mishra</a>
+      <a [routerLink]="['/']">Yash Mishra</a>
     </div>
 
     <ul class="footer-links">
-      <li><a href="/" class="active">Home</a></li>
-      <li><a href="/about" class="active">About</a></li>
-      <li><a href="/projects" class="active">Projects</a></li>
-      <li><a href="/contact" class="active">Contact Me</a></li>
-
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['/about']">About</a></li>
+      <li><a [routerLink]="['/projects']">Projects</a></li>
+      <li><a [routerLink]="['/contact']">Contact Me</a></li>
     </ul>
 
     <div class="footer-social">
       <a href="https://github.com/YashPrime-02" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/yashmishra02" target="_blank" aria-label="LinkedIn"><i
-          class="fab fa-linkedin"></i></a>
+      <a href="https://www.linkedin.com/in/yashmishra02" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yashprime000@gmail.com&su=Inquiry&body=Hi%20Yash%2C"
-        target="_blank" rel="noopener noreferrer" aria-label="Email (opens Gmail compose)">
+         target="_blank" rel="noopener noreferrer" aria-label="Email">
         <i class="fas fa-envelope"></i>
       </a>
-      <a href="https://www.instagram.com/yashprime02/" target="_blank" aria-label="Instagram"><i
-          class="fab fa-instagram"></i></a>
+      <a href="https://www.instagram.com/yashprime02/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>Made with <span style="color: red;">&#10084;</span> using Angular JS by Yash Mishra </p>
-    <p>All copyrights reserved 2025-26</p>
+
   </div>
 
+  <div class="footer-bottom">
+    <p>Made with <span style="color: red;">&#10084;</span> using Angular by Yash Mishra</p>
+    <p>All copyrights reserved 2025-26</p>
+  </div>
 </footer>

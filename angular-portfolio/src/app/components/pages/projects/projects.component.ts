@@ -8,7 +8,8 @@ import { Meta, Title } from '@angular/platform-browser';
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css']
 })
-export class ProjectsComponent {
+export class ProjectsComponent 
+{
  projects = [
 
   {

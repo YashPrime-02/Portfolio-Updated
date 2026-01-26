@@ -3,6 +3,9 @@ import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import gsap from 'gsap';
 
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { routes } from './app/app.routes';   // 🔹 make sure this path matches your project
+
 const texts = [
   "Loading assets...",
   "Preparing animations...",
@@ -25,14 +28,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!loaderTextElement || !loaderPercentageElement || !loaderProgressElement || !loaderWrapper) {
     console.error('Loader elements not found!');
-    bootstrapApplication(AppComponent, appConfig)
-      .catch(err => console.error(err));
+    bootstrapApplication(AppComponent, {
+      ...appConfig,
+      providers: [
+        ...(appConfig.providers ?? []),
+
+        // 🔹 SCROLL TO TOP ON EVERY ROUTE CHANGE
+        provideRouter(
+          routes,
+          withInMemoryScrolling({
+            scrollPositionRestoration: 'top',
+            anchorScrolling: 'enabled'
+          })
+        )
+      ]
+    }).catch(err => console.error(err));
     return;
   }
 
   let currentTextIndex = 0;
   let fakeProgress = 0;
-  const totalDuration = 8000; // 8s for premium feel
+  const totalDuration = 8000;
   const intervalTime = 100;
   const steps = Math.floor(totalDuration / intervalTime);
   const progressIncrement = 100 / steps;
@@ -95,9 +111,21 @@ document.addEventListener('DOMContentLoaded', () => {
       onComplete: () => {
         loaderWrapper.style.display = 'none';
 
-        // Now bootstrap
-        bootstrapApplication(AppComponent, appConfig)
-          .catch(err => console.error(err));
+        // 🔹 BOOTSTRAP WITH SCROLL-TO-TOP ENABLED
+        bootstrapApplication(AppComponent, {
+          ...appConfig,
+          providers: [
+            ...(appConfig.providers ?? []),
+
+            provideRouter(
+              routes,
+              withInMemoryScrolling({
+                scrollPositionRestoration: 'top',
+                anchorScrolling: 'enabled'
+              })
+            )
+          ]
+        }).catch(err => console.error(err));
       }
     });
   });

@@ -1,16 +1,30 @@
-import { Component, ElementRef, ViewChild, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  ViewChildren,
+  QueryList,
+  OnInit,
+  AfterViewInit,
+  Inject,
+  PLATFORM_ID,
+  HostListener
+} from '@angular/core';
+
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
 
 import { Meta, Title } from '@angular/platform-browser';
+import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   animations: [
     trigger('fadeInAnimation', [
       transition(':enter', [
@@ -27,6 +41,7 @@ import { Meta, Title } from '@angular/platform-browser';
   ]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
+  @ViewChild('railRef', { static: false }) railRef!: ElementRef<HTMLDivElement>;
 
   constructor(
     private meta: Meta,
@@ -70,30 +85,30 @@ export class HomeComponent implements OnInit, AfterViewInit {
   targetNumberOfProjects = 9;
   targetNumberOfTechnologies = 12;
 
-// Technologies
+  // Technologies
   technologies = [
-  // Core Web Languages (highest SEO value)
-  { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/html5.svg' },
-  { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/css3.svg' },
-  { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/javascript.svg' },
-  { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/typescript.svg' },
+    // Core Web Languages (highest SEO value)
+    { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/html5.svg' },
+    { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/css3.svg' },
+    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/javascript.svg' },
+    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/typescript.svg' },
 
-  // Frontend Frameworks (high recruiter & SEO weight)
-  { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/react.svg' },
-  { name: 'Angular', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/angular.svg' },
+    // Frontend Frameworks (high recruiter & SEO weight)
+    { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/react.svg' },
+    { name: 'Angular', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/angular.svg' },
 
-  // Backend Stack
-  { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/nodedotjs.svg' },
-  { name: 'Express', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/express.svg' },
+    // Backend Stack
+    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/nodedotjs.svg' },
+    { name: 'Express', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/express.svg' },
 
-  // Databases
-  { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/postgresql.svg' },
+    // Databases
+    { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/postgresql.svg' },
 
-  // Tools & DevOps
-  { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/github.svg' },
-  { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/git.svg' },
-  { name: 'CI/CD (GitHub Actions)', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/githubactions.svg' }
-];
+    // Tools & DevOps
+    { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/github.svg' },
+    { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/git.svg' },
+    { name: 'CI/CD (GitHub Actions)', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/githubactions.svg' }
+  ];
 
 
   // Testimonials
@@ -104,33 +119,33 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       name: 'Mahendra Kr Gupta (CEO INurture Incubation Foundation)',
       image: '/assets/Testimonial_Photos/mahendra sir.webp',
-      linkedinUrl:'https://www.linkedin.com/in/mahendrakgupta/',
+      linkedinUrl: 'https://www.linkedin.com/in/mahendrakgupta/',
     },
 
     {
       message: 'I had the pleasure of collaborating with Yash and was impressed by his ability to lead, and uplift the entire team which makes him a great team player. He is high spirited and has a natural talent for taking initiative as well.',
-      name: 'Tarushi Singh (InfoEdge Pvt Ltd)',
+      name: 'Tarushi Singh (PhonePay Pvt Ltd)',
       image: '/assets/Testimonial_Photos/Tarushi_Singh.jpg',
-      linkedinUrl:'https://www.linkedin.com/in/tarushi-singh/',
+      linkedinUrl: 'https://www.linkedin.com/in/tarushi-singh/',
     },
 
     {
       message: 'Working with Yash was a truly rewarding experience. His ability to energize the team and consistently take initiative made a big impact. He’s a natural collaborator, always uplifting those around him and driving the team forward with enthusiasm.',
       name: 'Priyanka Singh (Bharat Pay)',
       image: '/assets/Testimonial_Photos/Priyanka_Singh.jpg',
-      linkedinUrl:'https://www.linkedin.com/in/priyanka-singh-801674196/',
+      linkedinUrl: 'https://www.linkedin.com/in/priyanka-singh-801674196/',
     },
     {
       message: 'Yash stands out because he leads by doing, never just directing. He brings everyone together, and tackles every challenge with genuine passion and professionalism. On the technical side, his Angular skills are top‑notch—he builds clean, modular components, masters reactive data flows with RxJS, and ensures fast, responsive apps with lazy loading and AOT compilation.',
       name: 'Divyanshu Gupta (Armstrong Finance Limited)',
       image: '/assets/Testimonial_Photos/Divyanshu_Gupta.jpg',
-      linkedinUrl:'https://www.linkedin.com/in/divyanshu-gupta-691310202/',
+      linkedinUrl: 'https://www.linkedin.com/in/divyanshu-gupta-691310202/',
     },
     {
       message: 'Working alongside Yash Mishra on the E-Cell website was a great experience. His dedication and front-end development skills consistently elevated our project. As a team, we ensured every detail was refined, making the process both collaborative and rewarding.',
       name: 'Neelansh Pandey (KSOLVES Pvt Ltd)',
       image: '/assets/Testimonial_Photos/Neelansh_Pandey.jpg',
-      linkedinUrl:'https://www.linkedin.com/in/neelansh-pandey-81348b21b/',
+      linkedinUrl: 'https://www.linkedin.com/in/neelansh-pandey-81348b21b/',
     },
 
 
@@ -138,7 +153,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       message: 'Collaborating with Yash Mishra on the UI/UX design of the E-Cell website was an enriching experience. His creative approach and attention to detail made our teamwork smooth and effective, helping us bring the best version of our ideas to life.',
       name: 'Shubhansh Mahawar (Goldenflitch)',
       image: '/assets/Testimonial_Photos/Shubhansh_Mahawar.jpg',
-      linkedinUrl:'https://www.linkedin.com/in/shubhansh-mahawar-5a822420b/',
+      linkedinUrl: 'https://www.linkedin.com/in/shubhansh-mahawar-5a822420b/',
     },
     // {
     //   message: 'During my tenure in E-Cell, I had the privilege of working under Yash sir as the President.  His knowledge of Front-end Development, design and mentorship have been truly commendable.',
@@ -150,7 +165,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       message: 'Yash Mishra Sir’s presence was truly inspiring. Collaborating with him during our time in E-Cell taught me invaluable lessons in teamwork and collective effort. His calm leadership and constant encouragement created an environment where ideas flourished and every contribution mattered. I’m grateful for the growth I experienced.',
       name: 'Tanishka Saharawat (BossCoder Academy)',
       image: '/assets/Testimonial_Photos/Tanishka_Saharawat.jpg',
-      linkedinUrl:'https://www.linkedin.com/in/tanishka-saharawat/',
+      linkedinUrl: 'https://www.linkedin.com/in/tanishka-saharawat/',
     },
     //  {
     //    message: 'It was great working with you Yash Mishra. Loved the way you explained every minute details and the way you made me comfortable while working on this project. Would love to work with you in further projects.',
@@ -162,7 +177,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       message: 'Yash Mishra Sir is an inspiring mentor. Working under his guidance in E-Cell was a daily lesson in teamwork, front-end development, where his expertise truly stood out. He ensured every member felt heard always bringing out the best in us.',
       name: 'Shreya Singh (E-CELL ABESEC TEAM)',
       image: '/assets/Testimonial_Photos/Shreya_Singh.webp',
-      linkedinUrl:'https://www.linkedin.com/in/shreyasingh38/',
+      linkedinUrl: 'https://www.linkedin.com/in/shreyasingh38/',
     },
 
 
@@ -170,6 +185,82 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
   ];
+
+
+
+  // ================= RECENT ACHIEVEMENTS TIMELINE =================
+
+  @ViewChild('timelineRef', { static: false }) timelineRef!: ElementRef<HTMLDivElement>;
+  @ViewChildren('itemRef') itemRefs!: QueryList<ElementRef<HTMLElement>>;
+
+  timelineProgress = 0;
+  activeTimelineIndex = 0;
+
+  achievementsTimeline = [
+  {
+    title: 'Technology Leader Award — ABES Alumni Awards',
+    text: 'Built high-performance Angular and React applications, including an IRCTC-inspired booking platform with ~30% performance improvement and a custom multi-language web compiler. Honored for technical leadership and product innovation.',
+    year: 'December 2025',
+    image: 'assets/achievements/award.webp',
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7410946619614912512/'
+  },
+
+  {
+    title: 'NEC Lead — AIR 27, National Entrepreneurship Challenge',
+    text: 'Led ABES Engineering College team to All India Rank 27 at the National Entrepreneurship Challenge 2023. Coordinated strategy, execution, and team leadership in a national-level competition.',
+    year: 'February 2024',
+    image: 'assets/achievements/nec.webp',
+    link: 'https://www.linkedin.com/posts/yashmishra02_nec-finals-certificate-and-team-photographs-activity-7181351351103156224-Tmsy?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADUr38oBP8z1CC48TL61PuygOofTkl5WD1Y'
+  },
+
+  {
+    title: 'Internship Trainee — Research Design & Standards Organisation (RDSO)',
+    text: 'Developed a Django-based web application with scalable architecture, implemented core backend features, and integrated frontend components in a high-standard public sector engineering environment.',
+    year: 'July 2023',
+    image: 'assets/achievements/rdso.webp',
+    link: 'https://www.linkedin.com/posts/yashmishra02_indianrailways-internshipcompletion-itintern-activity-7113549593144963073-8G2I?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADUr38oBP8z1CC48TL61PuygOofTkl5WD1Y'
+  }
+];
+
+
+
+
+  @HostListener('window:scroll', [])
+  handleAchievementsScroll(): void {
+    if (!this.isBrowser || !this.timelineRef || !this.railRef) return;
+
+    const timelineEl = this.timelineRef.nativeElement;
+    const railEl = this.railRef.nativeElement;
+
+    const timelineRect = timelineEl.getBoundingClientRect();
+    const timelineTop = timelineRect.top + window.scrollY;
+    const timelineHeight = timelineEl.scrollHeight;
+
+    const scrollY = window.scrollY + window.innerHeight / 2;
+    const scrolled = scrollY - timelineTop;
+    const percent = scrolled / timelineHeight;
+
+    const clamped = Math.min(Math.max(percent, 0), 1);
+    this.timelineProgress = clamped;
+
+    /* 🔹 MOVE BALL IN PIXELS (THIS FIXES IT) */
+    const railHeight = railEl.clientHeight;
+    const orbSize = 22; // ball height
+    const travel = (railHeight - orbSize) * clamped;
+
+    railEl.querySelector('.pulse-orb')!
+      .setAttribute('style', `transform: translateY(${travel}px)`);
+
+    /* ACTIVE CARD DETECTION */
+    this.itemRefs.forEach((item, index) => {
+      const rect = item.nativeElement.getBoundingClientRect();
+
+      if (rect.top < window.innerHeight * 0.55 && rect.bottom > 0) {
+        this.activeTimelineIndex = index;
+      }
+    });
+  }
+
 
   // Rotating Name
   nameTranslations: string[] = [
@@ -211,6 +302,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
         track.appendChild(clone);
       });
     }
+    // 🔹 initialize achievements timeline position once
+    setTimeout(() => {
+      this.handleAchievementsScroll();
+    }, 50);
   }
 
   cycleNameTranslations(): void {
