@@ -37,7 +37,7 @@ export class ProjectsComponent
   },
 
   {
-    title: 'YOMATO – Online Food Delivery Web Application',
+    title: 'DevEats – Online Food Delivery Web Application',
     description: 'Designed and developed a fully responsive online food delivery web application using React JS, featuring dynamic restaurant listings, interactive menus, cart management, and smooth user navigation. Implemented component-based architecture, reusable UI components, and clean routing to ensure scalability and performance. Focused on  mobile-first responsiveness.',
     imageUrl: '/assets/yomato.gif',
     projectUrl: 'https://github.com/YashPrime-02/Food-Delivary-App',
