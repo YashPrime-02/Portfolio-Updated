@@ -19,23 +19,7 @@ export class ProjectsComponent
     projectUrl: 'https://sionvarsity.com/',
     workedUnder: 'EUODIAS Technologies'
   },
-
-  {
-    title: 'TaskFlow – Team Task Manager & Performance Tracker',
-    description: 'Designed and developed a modern team management and performance tracking application using React, Implemented task assignment, status updates, filtering, and real-time UI state management using Context API and localStorage persistence. Integrated interactive performance charts, clean modular component architecture, and smooth UI animations to deliver a scalable, production-style dashboard experience.',
-    imageUrl: '/assets/task-manager.webp',
-    projectUrl: 'https://github.com/YashPrime-02/Taskflow-App',
-    workedUnder: 'Self Project'
-  },
-
-  {
-    title: 'REST API Admin Panel & Backend Management System',
-    description: 'Designed and developed a secure RESTful API–driven admin panel using Node.js, Express, and MySQL, providing full CRUD operations, Implemented modular backend architecture, request validation Built for scalability, maintainability, and real-world backend workflows with clean API design and structured error handling.',
-    imageUrl: '/assets/admin-management-tools.webp',
-    projectUrl: 'https://github.com/YashPrime-02/REST-API-Admin-Panel',
-    workedUnder: 'Self Project'
-  },
-
+  
   {
     title: 'Unofficial IRCTC Improvised Clone Site',
     description: 'Built Prime Coder, an advanced online code editor using React, featuring real-time HTML, CSS, JavaScript, and TypeScript editing with instant live preview. Implemented a fully responsive interface with custom CSS styling and high-quality animations to deliver a modern, polished, and engaging user experience across devices.  Integrated copy-to-clipboard with animated effects, seamless code compilation, and error handling with visual feedback. Optimized application performance by 30% approx.',
@@ -59,6 +43,22 @@ export class ProjectsComponent
     projectUrl: 'https://github.com/YashPrime-02/Food-Delivary-App',
     workedUnder: 'Self Project',
     liveUrl: 'https://food-delivary-app-jet.vercel.app/'
+  },
+
+   {
+    title: 'REST API Admin Panel & Backend Management System',
+    description: 'Designed and developed a secure RESTful API–driven admin panel using Node.js, Express, and MySQL, providing full CRUD operations, Implemented modular backend architecture, request validation Built for scalability, maintainability, and real-world backend workflows with clean API design and structured error handling.',
+    imageUrl: '/assets/admin-management-tools.webp',
+    projectUrl: 'https://github.com/YashPrime-02/REST-API-Admin-Panel',
+    workedUnder: 'Self Project'
+  },
+
+  {
+    title: 'TaskFlow – Team Task Manager & Performance Tracker',
+    description: 'Designed and developed a modern team management and performance tracking application using React, Implemented task assignment, status updates, filtering, and real-time UI state management using Context API and localStorage persistence. Integrated interactive performance charts, clean modular component architecture, and smooth UI animations.',
+    imageUrl: '/assets/task-manager.webp',
+    projectUrl: 'https://github.com/YashPrime-02/Taskflow-App',
+    workedUnder: 'Self Project'
   },
 
   {

@@ -1,20 +1,9 @@
 import {
-  Component,
-  ElementRef,
-  ViewChild,
-  ViewChildren,
-  QueryList,
-  OnInit,
-  AfterViewInit,
-  Inject,
-  PLATFORM_ID,
-  HostListener
+  Component, ElementRef, ViewChild, ViewChildren, QueryList, OnInit, AfterViewInit, Inject, PLATFORM_ID, HostListener
 } from '@angular/core';
-
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
-
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 
@@ -40,6 +29,7 @@ import { RouterLink } from '@angular/router';
     ])
   ]
 })
+
 export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('railRef', { static: false }) railRef!: ElementRef<HTMLDivElement>;
 
@@ -83,32 +73,54 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   targetYearsOfExperience = 2;
   targetNumberOfProjects = 9;
-  targetNumberOfTechnologies = 12;
+  targetNumberOfTechnologies = 16;
 
-  // Technologies
+  // Technologies (Professional + Balanced Count)
   technologies = [
-    // Core Web Languages (highest SEO value)
+    // Core Web
     { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/html5.svg' },
     { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/css3.svg' },
     { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/javascript.svg' },
     { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/typescript.svg' },
 
-    // Frontend Frameworks (high recruiter & SEO weight)
+    // Frontend Frameworks
     { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/react.svg' },
     { name: 'Angular', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/angular.svg' },
 
-    // Backend Stack
+    // UI / Styling
+    { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/bootstrap.svg' },
+
+    // API / Tools
+    { name: 'Postman', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/postman.svg' },
+
+    // Testing (React)
+    { name: 'Jest', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/jest.svg' },
+    // { name: 'React Testing Library', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/testinglibrary.svg' },
+
+    // Performance / Accessibility
+    { name: 'Google Lighthouse', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/googlechrome.svg' },
+    { name: 'WCAG', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/w3c.svg' },
+
+    // Backend
     { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/nodedotjs.svg' },
     { name: 'Express', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/express.svg' },
 
-    // Databases
+    // Database / BaaS
     { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/postgresql.svg' },
+    { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/supabase.svg' },
 
-    // Tools & DevOps
-    { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/github.svg' },
+    // Deployment
+    { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/vercel.svg' },
+
+    // Version Control / CI
     { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/git.svg' },
-    { name: 'CI/CD (GitHub Actions)', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/githubactions.svg' }
+    { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/github.svg' },
+    { name: 'GitHub Actions', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/githubactions.svg' },
+
+    // UI/UX Design
+    { name: 'Figma', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/figma.svg' }
   ];
+
 
 
   // Testimonials
@@ -197,30 +209,30 @@ export class HomeComponent implements OnInit, AfterViewInit {
   activeTimelineIndex = 0;
 
   achievementsTimeline = [
-  {
-    title: 'Technology Leader Award — ABES Alumni Awards',
-    text: 'Built high-performance Angular and React applications, including an IRCTC-inspired booking platform with ~30% performance improvement and a custom multi-language web compiler. Honored for technical leadership and product innovation.',
-    year: 'December 2025',
-    image: 'assets/achievements/award.webp',
-    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7410946619614912512/'
-  },
+    {
+      title: 'Technology Leader Award — ABES Alumni Awards',
+      text: 'Built high-performance Angular and React applications, including an IRCTC-inspired booking platform with ~30% performance improvement and a custom multi-language web compiler. Honored for technical leadership and product innovation.',
+      year: 'December 2025',
+      image: 'assets/achievements/award.webp',
+      link: 'https://www.linkedin.com/feed/update/urn:li:activity:7410946619614912512/'
+    },
 
-  {
-    title: 'NEC Lead — AIR 27, National Entrepreneurship Challenge',
-    text: 'Led ABES Engineering College team to All India Rank 27 at the National Entrepreneurship Challenge 2023. Coordinated strategy, execution, and team leadership in a national-level competition.',
-    year: 'February 2024',
-    image: 'assets/achievements/nec.webp',
-    link: 'https://www.linkedin.com/posts/yashmishra02_nec-finals-certificate-and-team-photographs-activity-7181351351103156224-Tmsy?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADUr38oBP8z1CC48TL61PuygOofTkl5WD1Y'
-  },
+    {
+      title: 'NEC Lead — AIR 27, National Entrepreneurship Challenge',
+      text: 'Led ABES Engineering College team to All India Rank 27 at the National Entrepreneurship Challenge 2023. Coordinated strategy, execution, and team leadership in a national-level competition.',
+      year: 'February 2024',
+      image: 'assets/achievements/nec.webp',
+      link: 'https://www.linkedin.com/posts/yashmishra02_nec-finals-certificate-and-team-photographs-activity-7181351351103156224-Tmsy?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADUr38oBP8z1CC48TL61PuygOofTkl5WD1Y'
+    },
 
-  {
-    title: 'Internship Trainee — Research Design & Standards Organisation (RDSO)',
-    text: 'Developed a Django-based web application with scalable architecture, implemented core backend features, and integrated frontend components in a high-standard public sector engineering environment.',
-    year: 'July 2023',
-    image: 'assets/achievements/rdso.webp',
-    link: 'https://www.linkedin.com/posts/yashmishra02_indianrailways-internshipcompletion-itintern-activity-7113549593144963073-8G2I?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADUr38oBP8z1CC48TL61PuygOofTkl5WD1Y'
-  }
-];
+    {
+      title: 'Internship Trainee — Research Design & Standards Organisation (RDSO)',
+      text: 'Developed a Django-based web application with scalable architecture, implemented core backend features, and integrated frontend components in a high-standard public sector engineering environment.',
+      year: 'July 2023',
+      image: 'assets/achievements/rdso.webp',
+      link: 'https://www.linkedin.com/posts/yashmishra02_indianrailways-internshipcompletion-itintern-activity-7113549593144963073-8G2I?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADUr38oBP8z1CC48TL61PuygOofTkl5WD1Y'
+    }
+  ];
 
 
 
