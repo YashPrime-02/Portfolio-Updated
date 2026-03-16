@@ -83,7 +83,15 @@ export class ProjectsComponent
     imageUrl: '/assets/Gifs/Mr Bean Thumbs Up GIF.gif',
     projectUrl: 'https://github.com/YashPrime-02/Doctor_Helper',
     workedUnder: 'Academic Minor Project'
-  }
+  },
+
+  {
+  title: 'F1 Career Simulator & Analyzer',
+  description: 'Built a full-stack Formula 1 career simulation platform using React, Node.js, Express, and PostgreSQL. Features race weekend simulation, championship tracking, driver career progression, and AI-generated race commentary and narrative storytelling powered by Ollama.',
+  imageUrl: 'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTJ0Z2hubmJldnk5aWtycGFzYmUwbHh1bmtqejJqamJ2dTd1azNmcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LZfnGqS8d3Bt8WMnLF/giphy.gif',
+  projectUrl: 'https://github.com/YashPrime-02/F1-25-GAME-SIMULATOR---ANALYSER',
+  workedUnder: 'Personal Project'
+}
 
 ];
 

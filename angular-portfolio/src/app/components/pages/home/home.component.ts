@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   numberOfTechnologies = 0;
 
   targetYearsOfExperience = 2;
-  targetNumberOfProjects = 9;
+  targetNumberOfProjects = 10;
   targetNumberOfTechnologies = 16;
 
   // Technologies (Professional + Balanced Count)
