@@ -1,44 +1,65 @@
-<div class="home-container">
+<!-- LOADER -->
+<div class="loader" *ngIf="isLoading" [class.fade-out]="!isLoading">
+ <div class="bg-orbs">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+  <div class="loader-box">
+
+    <h1 class="logo-text">YASH MISHRA</h1>
+
+    <!-- 🔥 Added role -->
+    <p class="loader-role">FRONTEND DEVELOPER</p>
+
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+
+    <p class="loader-tagline">
+      Building seamless digital experiences...
+    </p>
+
+  </div>
+
+</div>
+
+<!-- MAIN CONTENT -->
+<div *ngIf="!isLoading" class="home-container" @fadeInAnimation>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <!-- <h1 class="hero-title">Elevating Digital Experiences</h1> -->
       <h1 class="hero-heading">
         Hello, I'm
-        <span style="background: linear-gradient(93deg, #FAB656 -2.93%, #C766FF 102.1%); -webkit-background-clip: text;-webkit-text-fill-color: transparent;">
-          <strong><i>{{ currentName }}</i></strong>
+        <span style="background: linear-gradient(93deg, #FAB656, #C766FF); -webkit-background-clip: text;-webkit-text-fill-color: transparent;">
+          <strong><i [@nameFade]="nameFadeState">{{ currentName }}</i></strong>
         </span>
-
-
-
       </h1>
+
       <p class="hero-subtitle">
-        A Frontend  Developer who bridges design and technology to deliver innovative, user-centric solutions for global
-        businesses.
+        A Frontend Developer who bridges design and technology to deliver innovative, user-centric solutions.
       </p>
 
-      <a routerLink="/contact" class="btn btn-primary hero-btn"
-        style="width: 180px; padding: 10px 20px; text-align: center;">
-        Contact Me
-      </a>
+      <a routerLink="/contact" class="btn-premium">Contact Me</a>
 
-      <a href="https://drive.google.com/file/d/1ODZRLE265tlFCqUi9qq86H8_9lU1HYK2/view?usp=drive_link" target="_blank"
-        class="btn btn-primary hero-btn"
-        style="width: 180px; padding: 10px 20px; text-align: center; margin-left: 20px;">
-        <i class="fas fa-download" style="margin-right: 8px;"></i> View CV
+      <a href="https://drive.google.com/file/d/1slTkOgsUhTxDllqmTfjlNgna9ExuvgQf/view?usp=sharing"
+         target="_blank"
+         class="btn-premium">
+        <i class="fas fa-download me-2"></i> View CV
       </a>
     </div>
   </section>
 
-  <!-- Counter Section -->
+  <!-- Stats -->
   <section class="stats-heading">
     <h2>Key <span class="span-element">Highlights</span></h2>
   </section>
 
   <section class="stats-container">
     <div class="stats-card">
-      <h3>{{ yearsOfExperience }} </h3>
+      <h3>{{ yearsOfExperience }}</h3>
       <p>Years of Experience</p>
     </div>
     <div class="stats-card">
@@ -51,82 +72,77 @@
     </div>
   </section>
 
-  <!-- Technologies Section -->
+  <!-- Technologies -->
   <section class="technologies-section">
-    <h2>Technologies <span class="span-element"> I've Worked on</span></h2>
+    <h2>Technologies <span class="span-element">I've Worked on</span></h2>
+
     <div class="tech-icons">
       <div class="tech-icon" *ngFor="let tech of technologies">
-        <img [src]="tech.icon" alt="{{ tech.name }}" />
+        <img [src]="tech.icon" [alt]="tech.name" loading="lazy" />
         <p>{{ tech.name }}</p>
       </div>
     </div>
   </section>
 
+  <!-- Achievements -->
+  <h2 class="Achivement-Heading">Recent <span class="span-element">Achievements</span></h2>
 
-  <h2 class="Achivement-Heading">Recent <span class="span-element"> Achievements</span></h2>
-
-  <!-- Recent Achievements Section  -->
   <section class="chrono-vortex-zone">
 
-    <!-- LEFT RAIL -->
     <div class="orbital-rail" #railRef>
       <div class="pulse-orb"></div>
     </div>
-  
-  
-    <!-- RIGHT CARDS -->
+
     <div class="glass-stack" #timelineRef>
-  
-      <div *ngFor="let item of achievementsTimeline; let i = index" #itemRef class="aura-slab"
-        [class.orb-hit]="activeTimelineIndex === i">
-      
+      <div *ngFor="let item of achievementsTimeline; let i = index"
+           #itemRef
+           class="aura-slab"
+           [class.orb-hit]="activeTimelineIndex === i">
+
         <h3>{{ item.title }}</h3>
         <p>{{ item.text }}</p>
         <span>{{ item.year }}</span>
-        
-        <br/>
-        <!-- LINK BUTTON -->
-        <a *ngIf="item.link" [attr.href]="item.link" target="_blank" rel="noopener noreferrer" class="aura-link-btn">
+         <br/>
+        <a *ngIf="item.link"
+           [href]="item.link"
+           target="_blank"
+           class="aura-link-btn">
           View Post
         </a>
-      
       </div>
     </div>
-  
   </section>
 
-
-
-  <!-- Testimonials Section -->
+  <!-- Testimonials -->
   <section class="testimonials-section py-5">
     <div class="container text-center">
-      <h2 class="mb-4">What <span class="span-element"> People Say</span></h2>
+      <h2>What <span class="span-element">People Say</span></h2>
 
-      <div class="testimonial-carousel position-relative overflow-hidden">
+      <div class="testimonial-carousel overflow-hidden">
         <div class="testimonial-track d-flex flex-nowrap" #testimonialTrack>
-          <div *ngFor="let testimonial of testimonials.concat(testimonials)"
-            class="testimonial-card flex-shrink-0 px-3">
-            <img [src]="testimonial.image" alt="{{ testimonial.image }}" class="testimonial-image mb-3" />
-            <p class="testimonial-message">"{{ testimonial.message }}"</p>
-            <h4 class="testimonial-name">- {{ testimonial.name }} <br>  <a [href]="testimonial.linkedinUrl" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/linkedin-logo.svg" alt="LinkedIn Profile" class="testimonial-id mb-3" />
-            </a>
 
-          </h4>
+          <div *ngFor="let testimonial of testimonials"
+               class="testimonial-card px-3">
 
+            <img [src]="testimonial.image"
+                 loading="lazy"
+                 class="testimonial-image mb-3" />
+
+            <p>"{{ testimonial.message }}"</p>
+
+            <h4>
+              - {{ testimonial.name }}
+              <br>
+              <a [href]="testimonial.linkedinUrl" target="_blank">
+                <img src="/assets/linkedin-logo.svg" class="testimonial-id" />
+              </a>
+            </h4>
 
           </div>
+
         </div>
       </div>
-
     </div>
   </section>
-
-  <div class="background-graphic">
-    <img class="hero-graphic" src="/assets/hero gradient pattern.svg" alt="hero-section">
-  </div>
-
-
-
 
 </div>

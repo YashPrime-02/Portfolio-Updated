@@ -1,19 +1,27 @@
 import {
-  Component, ElementRef, ViewChild, ViewChildren, QueryList, OnInit, AfterViewInit, Inject, PLATFORM_ID, HostListener
+  Component,
+  ElementRef,
+  ViewChild,
+  ViewChildren,
+  QueryList,
+  OnInit,
+  AfterViewInit,
+  Inject,
+  PLATFORM_ID,
+  HostListener
 } from '@angular/core';
+
 import { trigger, transition, style, animate, state } from '@angular/animations';
-import { CommonModule } from '@angular/common';
-import { isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 
-
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
   standalone: true,
   imports: [CommonModule, RouterLink],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
   animations: [
     trigger('fadeInAnimation', [
       transition(':enter', [
@@ -24,14 +32,12 @@ import { RouterLink } from '@angular/router';
     trigger('nameFade', [
       state('visible', style({ opacity: 1 })),
       state('hidden', style({ opacity: 0 })),
-      transition('visible => hidden', [animate('400ms ease-out')]),
-      transition('hidden => visible', [animate('400ms ease-in')])
+      transition('visible => hidden', animate('400ms ease-out')),
+      transition('hidden => visible', animate('400ms ease-in'))
     ])
   ]
 })
-
 export class HomeComponent implements OnInit, AfterViewInit {
-  @ViewChild('railRef', { static: false }) railRef!: ElementRef<HTMLDivElement>;
 
   constructor(
     private meta: Meta,
@@ -41,32 +47,21 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
-  ngOnInit(): void {
-    // 🔹 SEO Meta Tags
-    if (this.title && this.meta) {
-      this.title.setTitle('Home | Yash Mishra Portfolio');
-      this.meta.updateTag({ name: 'description', content: 'Welcome to Yash Mishra’s portfolio showcasing skills in Angular, Node.js, and full-stack development.' });
-      this.meta.updateTag({ name: 'robots', content: 'index, follow' });
-      this.meta.updateTag({ property: 'og:title', content: 'Home | Yash Mishra Portfolio' });
-      this.meta.updateTag({ property: 'og:description', content: 'Portfolio homepage of Yash Mishra, software developer specialized in Angular and full-stack projects.' });
-      this.meta.updateTag({ property: 'og:url', content: 'https://portfolio-updated-lwhs.vercel.app/' });
-      this.meta.updateTag({ property: 'og:type', content: 'website' });
-    }
+  // ================= CORE FLAGS =================
+  isBrowser = false;
+  isLoading = true;
+  private ticking = false;
 
-    // Only start animations if it's running in the browser
-    if (this.isBrowser) {
-      this.animateCounters();
-      this.cycleNameTranslations();
-    } else {
-      // Static values for SSR
-      this.yearsOfExperience = this.targetYearsOfExperience;
-      this.numberOfProjects = this.targetNumberOfProjects;
-      this.numberOfTechnologies = this.targetNumberOfTechnologies;
-    }
-  }
-  @ViewChild('testimonialTrack', { static: false }) testimonialTrack!: ElementRef;
+  private minLoaderTime = 1800;
+  private startTime = 0;
 
-  // Animated Counters
+  // ================= VIEWCHILD =================
+  @ViewChild('railRef') railRef?: ElementRef<HTMLDivElement>;
+  @ViewChild('timelineRef') timelineRef?: ElementRef<HTMLDivElement>;
+  @ViewChildren('itemRef') itemRefs?: QueryList<ElementRef<HTMLElement>>;
+  @ViewChild('testimonialTrack') testimonialTrack?: ElementRef;
+
+  // ================= COUNTERS =================
   yearsOfExperience = 0;
   numberOfProjects = 0;
   numberOfTechnologies = 0;
@@ -75,54 +70,49 @@ export class HomeComponent implements OnInit, AfterViewInit {
   targetNumberOfProjects = 10;
   targetNumberOfTechnologies = 16;
 
-  // Technologies (Professional + Balanced Count)
+  // ================= NAME ROTATION =================
+  nameTranslations: string[] = [
+    'Yash Mishra',
+    'यश मिश्रा',
+    'ਯਸ਼ ਮਿਸ਼ਰਾ',
+    'ଯଶ ମିଶ୍ର',
+    'યશ મિશ્રા',
+    'ಯಶ ಮಿಶ್ರ',
+    'యశ్ మిశ్రా',
+    'யஷ் மிஷ்ரா',
+    'യഷ് മിശ്ര',
+    'যশ মিশ্রা',
+    'Яш Мишра'
+  ];
+
+  currentName = this.nameTranslations[0];
+  nameIndex = 0;
+  nameFadeState: 'visible' | 'hidden' = 'visible';
+
   technologies = [
-    // Core Web
     { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/html5.svg' },
     { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/css3.svg' },
     { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/javascript.svg' },
     { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/typescript.svg' },
-
-    // Frontend Frameworks
     { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/react.svg' },
     { name: 'Angular', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/angular.svg' },
-
-    // UI / Styling
     { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/bootstrap.svg' },
-
-    // API / Tools
     { name: 'Postman', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/postman.svg' },
-
-    // Testing (React)
     { name: 'Jest', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/jest.svg' },
-    // { name: 'React Testing Library', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/testinglibrary.svg' },
-
-    // Performance / Accessibility
-    { name: 'Google Lighthouse', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/googlechrome.svg' },
-    { name: 'WCAG', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/w3c.svg' },
-
-    // Backend
     { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/nodedotjs.svg' },
     { name: 'Express', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/express.svg' },
-
-    // Database / BaaS
     { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/postgresql.svg' },
     { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/supabase.svg' },
-
-    // Deployment
     { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/vercel.svg' },
-
-    // Version Control / CI
     { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/git.svg' },
     { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/github.svg' },
-    { name: 'GitHub Actions', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/githubactions.svg' },
-
-    // UI/UX Design
     { name: 'Figma', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/figma.svg' }
   ];
+  // ================= TIMELINE =================
+  timelineProgress = 0;
+  activeTimelineIndex = 0;
 
-
-
+  // ================= TESTIMONIALS =================
   // Testimonials
   testimonials = [
 
@@ -199,15 +189,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ];
 
 
-
-  // ================= RECENT ACHIEVEMENTS TIMELINE =================
-
-  @ViewChild('timelineRef', { static: false }) timelineRef!: ElementRef<HTMLDivElement>;
-  @ViewChildren('itemRef') itemRefs!: QueryList<ElementRef<HTMLElement>>;
-
-  timelineProgress = 0;
-  activeTimelineIndex = 0;
-
+  // ================= ACHIEVEMENTS =================
+  
   achievementsTimeline = [
     {
       title: 'Technology Leader Award — ABES Alumni Awards',
@@ -235,127 +218,158 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ];
 
 
+  // ================= INIT =================
+  ngOnInit(): void {
 
+    this.title.setTitle('Home | Yash Mishra Portfolio');
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Frontend Developer specializing in Angular, React, and scalable applications.'
+    });
 
-  @HostListener('window:scroll', [])
+    if (!this.isBrowser) {
+      this.yearsOfExperience = this.targetYearsOfExperience;
+      this.numberOfProjects = this.targetNumberOfProjects;
+      this.numberOfTechnologies = this.targetNumberOfTechnologies;
+    }
+  }
+
+  ngAfterViewInit(): void {
+    if (!this.isBrowser) return;
+
+    this.startTime = performance.now();
+
+    requestAnimationFrame(() => {
+      try {
+        this.initApp();
+      } catch (err) {
+        console.error('Init error:', err);
+      }
+
+      const elapsed = performance.now() - this.startTime;
+      const remaining = this.minLoaderTime - elapsed;
+
+      setTimeout(() => {
+        this.isLoading = false;
+      }, remaining > 0 ? remaining : 0);
+    });
+
+    // 🔥 FAILSAFE (never infinite again)
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 4000);
+  }
+
+  // ================= MAIN INIT =================
+  initApp() {
+    this.animateCounters();
+    this.cycleNameTranslations();
+
+    if (this.testimonialTrack) {
+      this.cloneTestimonials();
+    }
+
+    setTimeout(() => {
+      if (this.timelineRef && this.railRef) {
+        this.handleAchievementsScroll();
+      }
+    }, 120);
+  }
+
+  // ================= SCROLL =================
+  @HostListener('window:scroll')
+  onScroll() {
+    if (!this.ticking) {
+      requestAnimationFrame(() => {
+        this.handleAchievementsScroll();
+        this.ticking = false;
+      });
+      this.ticking = true;
+    }
+  }
+
   handleAchievementsScroll(): void {
-    if (!this.isBrowser || !this.timelineRef || !this.railRef) return;
+    if (!this.timelineRef || !this.railRef || !this.itemRefs) return;
 
     const timelineEl = this.timelineRef.nativeElement;
     const railEl = this.railRef.nativeElement;
 
-    const timelineRect = timelineEl.getBoundingClientRect();
-    const timelineTop = timelineRect.top + window.scrollY;
-    const timelineHeight = timelineEl.scrollHeight;
-
+    const rect = timelineEl.getBoundingClientRect();
     const scrollY = window.scrollY + window.innerHeight / 2;
-    const scrolled = scrollY - timelineTop;
-    const percent = scrolled / timelineHeight;
+    const percent = (scrollY - (rect.top + window.scrollY)) / timelineEl.scrollHeight;
 
-    const clamped = Math.min(Math.max(percent, 0), 1);
+    const clamped = Math.max(0, Math.min(1, percent));
     this.timelineProgress = clamped;
 
-    /* 🔹 MOVE BALL IN PIXELS (THIS FIXES IT) */
-    const railHeight = railEl.clientHeight;
-    const orbSize = 22; // ball height
-    const travel = (railHeight - orbSize) * clamped;
+    const travel = (railEl.clientHeight - 22) * clamped;
 
-    railEl.querySelector('.pulse-orb')!
-      .setAttribute('style', `transform: translateY(${travel}px)`);
+    const orb = railEl.querySelector('.pulse-orb');
+    if (orb) {
+      (orb as HTMLElement).style.transform = `translateY(${travel}px)`;
+    }
 
-    /* ACTIVE CARD DETECTION */
     this.itemRefs.forEach((item, index) => {
-      const rect = item.nativeElement.getBoundingClientRect();
-
-      if (rect.top < window.innerHeight * 0.55 && rect.bottom > 0) {
+      const r = item.nativeElement.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.55 && r.bottom > 0) {
         this.activeTimelineIndex = index;
       }
     });
   }
 
+  // ================= TESTIMONIAL =================
+  cloneTestimonials() {
+    if (!this.testimonialTrack) return;
 
-  // Rotating Name
-  nameTranslations: string[] = [
-    'Yash Mishra ',         // English
-    'यश मिश्रा ',           // Hindi (Devanagari)
-    'ਯਸ਼ ਮਿਸ਼ਰਾ ',           // Punjabi (Gurmukhi)
-    'ଯଶ ମିଶ୍ର ',            // Odia
-    'યશ મિશ્રા ',           // Gujarati
-    'Yash Mishra ',         // English
-    'ಯಶ ಮಿಶ್ರ ',            // Kannada
-    'యశ్ మిశ్రా ',           // Telugu
-    'யஷ் மிஷ்ரா ',           // Tamil
-    'യഷ് മിശ്ര ',            // Malayalam
-    'যশ মিশ্রা ',            // Bengali
-    'Yash Mishra ',         // English
-    'यश मिश्र ',            // Sanskrit (minor variation)
-    'Yash Mishra ',         // English
-    'Яш Мишра ',            // Russian (Cyrillic transliteration)
-    'Yash Mishra ',         // English
-    'ਯਸ਼ ਮਿਸ਼ਰਾ ',            // Alternate Punjabi spelling
+    const track = this.testimonialTrack.nativeElement as HTMLElement;
+    const cards = track.querySelectorAll<HTMLElement>('.testimonial-card');
 
+    if (!cards.length) return;
 
-  ];
-
-
-  currentName: string = this.nameTranslations[0];
-  nameIndex: number = 0;
-  nameFadeState: 'visible' | 'hidden' = 'visible';
-  isBrowser = false;
-
-  // (Removed duplicate ngOnInit)
-
-  ngAfterViewInit(): void {
-    if (this.isBrowser) {
-      const track = this.testimonialTrack.nativeElement as HTMLElement;
-      const cards = track.querySelectorAll('.testimonial-card');
-      cards.forEach(card => {
-        const clone = card.cloneNode(true);
-        track.appendChild(clone);
-      });
-    }
-    // 🔹 initialize achievements timeline position once
     setTimeout(() => {
-      this.handleAchievementsScroll();
-    }, 50);
+      cards.forEach(card => {
+        track.appendChild(card.cloneNode(true));
+      });
+    }, 120);
   }
 
-  cycleNameTranslations(): void {
+  // ================= NAME =================
+  cycleNameTranslations() {
     setInterval(() => {
       this.nameFadeState = 'hidden';
+
       setTimeout(() => {
         this.nameIndex = (this.nameIndex + 1) % this.nameTranslations.length;
         this.currentName = this.nameTranslations[this.nameIndex];
         this.nameFadeState = 'visible';
       }, 400);
-    }, 1500);
+
+    }, 1600);
   }
 
-  animateCounters(): void {
-    this.incrementCounter('yearsOfExperience', this.targetYearsOfExperience, this.calculateSpeed(this.targetYearsOfExperience));
-    this.incrementCounter('numberOfProjects', this.targetNumberOfProjects, this.calculateSpeed(this.targetNumberOfProjects));
-    this.incrementCounter('numberOfTechnologies', this.targetNumberOfTechnologies, this.calculateSpeed(this.targetNumberOfTechnologies));
+  // ================= COUNTERS =================
+  animateCounters() {
+    this.incrementCounter('yearsOfExperience', this.targetYearsOfExperience);
+    this.incrementCounter('numberOfProjects', this.targetNumberOfProjects);
+    this.incrementCounter('numberOfTechnologies', this.targetNumberOfTechnologies);
   }
 
-  incrementCounter(property: string, target: number, intervalSpeed: number): void {
+  incrementCounter(property: string, target: number) {
     let current = 0;
+    const speed = this.calculateSpeed(target);
+
     const interval = setInterval(() => {
-      current += 1;
+      current++;
       (this as any)[property] = current;
-      if (current === target) {
-        clearInterval(interval);
-      }
-    }, intervalSpeed);
+
+      if (current >= target) clearInterval(interval);
+    }, speed);
   }
 
   calculateSpeed(target: number): number {
-    if (target <= 5) return 500;
-    if (target <= 15) return 200;
-    return 100;
+    if (target <= 5) return 350;
+    if (target <= 15) return 140;
+    return 70;
   }
-  adjustTestimonialSpeed(): void {
-    const track = this.testimonialTrack.nativeElement;
-    const scrollSpeed = 100; // Adjust the speed here, lower value = faster
-    track.style.animationDuration = `${scrollSpeed}s`; // Apply this speed to the testimonial scrolling effect
-  }
+
+
 }
