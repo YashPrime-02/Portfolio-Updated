@@ -1031,7 +1031,10 @@ line-height: normal;
 .loader {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at 50% 40%, #111, #000 70%);
+  background:
+  radial-gradient(circle at 50% 40%, #111, #000 70%),
+  radial-gradient(circle at 20% 20%, rgba(199,102,255,0.15), transparent 60%),
+  radial-gradient(circle at 80% 80%, rgba(250,182,86,0.12), transparent 60%);
   display: flex;
   justify-content: center;
   align-items: center;

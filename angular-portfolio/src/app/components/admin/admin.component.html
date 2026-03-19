@@ -1,0 +1,161 @@
+<div class="admin-container">
+  <!-- LOGIN -->
+  <div *ngIf="!isLoggedIn" class="admin-card login-card">
+    <h2>Admin Access</h2>
+
+    <div class="input-group">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Enter Password"
+      />
+      <span class="toggle-eye" (click)="showPassword = !showPassword">
+        {{ showPassword ? "🙈" : "👁️" }}
+      </span>
+    </div>
+
+    <button
+      class="btn-premium login-btn"
+      (click)="login()"
+      [disabled]="loading.login"
+    >
+      <span *ngIf="!loading.login">Enter Dashboard →</span>
+      <span *ngIf="loading.login" class="loader-dot"></span>
+    </button>
+  </div>
+
+  <!-- DASHBOARD -->
+
+  <div *ngIf="isLoggedIn" class="dashboard">
+    <div class="bg-orbs">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+    <div class="dashboard-header">
+      <button class="btn-premium logout-btn" (click)="logout()">Logout</button>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button
+        [class.active]="activeTab === 'project'"
+        (click)="activeTab = 'project'"
+      >
+        Projects
+      </button>
+      <button
+        [class.active]="activeTab === 'testimonial'"
+        (click)="activeTab = 'testimonial'"
+      >
+        Testimonials
+      </button>
+      <button
+        [class.active]="activeTab === 'resume'"
+        (click)="activeTab = 'resume'"
+      >
+        Resume
+      </button>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="admin-card tab-card">
+      <!-- PROJECT -->
+      <div *ngIf="activeTab === 'project'" class="tab-content">
+        <h3>{{ editingProjectId ? "Update Project" : "Add Project" }}</h3>
+
+        <input [(ngModel)]="project.title" placeholder="Title" />
+        <input [(ngModel)]="project.imageUrl" placeholder="Image URL" />
+        <input [(ngModel)]="project.projectUrl" placeholder="Project URL" />
+        <input [(ngModel)]="project.workedUnder" placeholder="Worked Under" />
+        <textarea
+          [(ngModel)]="project.description"
+          placeholder="Description"
+        ></textarea>
+
+        <button
+          class="btn-premium"
+          (click)="addProject()"
+          [disabled]="loading.project"
+        >
+          {{ loading.project ? "Saving..." : "Add Project" }}
+        </button>
+
+        <div class="list">
+          <div *ngFor="let p of projects" class="list-item">
+            <div>
+              <strong>{{ p.title }}</strong>
+              <p>{{ p.description }}</p>
+            </div>
+
+            <div class="actions">
+              <button (click)="editProject(p)">✏️</button>
+              <button (click)="deleteProject(p.id)">🗑️</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TESTIMONIAL -->
+      <div *ngIf="activeTab === 'testimonial'" class="tab-content">
+        <h3>Add Testimonial</h3>
+
+        <input [(ngModel)]="testimonial.name" placeholder="Name" />
+        <input [(ngModel)]="testimonial.image" placeholder="Image URL" />
+        <input
+          [(ngModel)]="testimonial.linkedinUrl"
+          placeholder="LinkedIn URL"
+        />
+        <textarea
+          [(ngModel)]="testimonial.message"
+          placeholder="Message"
+        ></textarea>
+
+        <button
+          class="btn-premium"
+          (click)="addTestimonial()"
+          [disabled]="loading.testimonial"
+        >
+          {{ loading.testimonial ? "Saving..." : "Add Testimonial" }}
+        </button>
+
+        <div class="list">
+          <div *ngFor="let t of testimonials" class="list-item">
+            <div>
+              <strong>{{ t.name }}</strong>
+              <p>{{ t.message }}</p>
+            </div>
+
+            <div class="actions">
+              <button (click)="editTestimonial(t)">✏️</button>
+              <button (click)="deleteTestimonial(t.id)">🗑️</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESUME -->
+      <div *ngIf="activeTab === 'resume'" class="tab-content">
+        <h3>Update Resume</h3>
+
+        <input [(ngModel)]="resumeUrl" placeholder="Drive Link" />
+
+        <button
+          class="btn-premium"
+          (click)="updateResume()"
+          [disabled]="loading.resume"
+        >
+          {{ loading.resume ? "Updating..." : "Update Resume" }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" *ngIf="toastMessage">
+    {{ toastMessage }}
+  </div>
+</div>
