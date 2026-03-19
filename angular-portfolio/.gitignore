@@ -47,4 +47,3 @@ Thumbs.db
 .env.local
 .env.development
 .env.production
-environment*.ts
