@@ -21,7 +21,6 @@ const pool = new Pool({
 
 /* ================= AUTH ================= */
 
-// 🔐 login route
 app.post("/admin/login", (req, res) => {
   const { password } = req.body;
 
@@ -35,15 +34,11 @@ app.post("/admin/login", (req, res) => {
   res.status(401).json({ success: false, message: "Invalid password" });
 });
 
-// 🔒 middleware
 const verifyAdmin = (req, res, next) => {
   let token = req.headers.authorization;
 
-  if (!token) {
-    return res.status(403).json({ error: "Unauthorized" });
-  }
+  if (!token) return res.status(403).json({ error: "Unauthorized" });
 
-  // 🔥 handle Bearer token
   if (token.startsWith("Bearer ")) {
     token = token.split(" ")[1];
   }
@@ -54,6 +49,7 @@ const verifyAdmin = (req, res, next) => {
 
   next();
 };
+
 /* ================= PROJECTS ================= */
 
 app.get("/projects", async (req, res) => {
@@ -61,6 +57,7 @@ app.get("/projects", async (req, res) => {
     const result = await pool.query(
       "SELECT * FROM projects ORDER BY id DESC"
     );
+
     res.json(result.rows);
   } catch (err) {
     console.error(err);
@@ -68,20 +65,13 @@ app.get("/projects", async (req, res) => {
   }
 });
 
-// 🔒 PROTECTED
 app.post("/projects", verifyAdmin, async (req, res) => {
   try {
-    const {
-      title,
-      description,
-      imageUrl,
-      projectUrl,
-      workedUnder,
-    } = req.body;
+    const { title, description, imageUrl, projectUrl, workedUnder } = req.body;
 
     await pool.query(
       `INSERT INTO projects 
-      (title, description, imageUrl, projectUrl, workedUnder)
+      (title, description, imageurl, projecturl, workedunder)
       VALUES ($1,$2,$3,$4,$5)`,
       [title, description, imageUrl, projectUrl, workedUnder]
     );
@@ -93,8 +83,6 @@ app.post("/projects", verifyAdmin, async (req, res) => {
   }
 });
 
-
-/* ===== PROJECT UPDATE ===== */
 app.put("/projects/:id", verifyAdmin, async (req, res) => {
   try {
     const { id } = req.params;
@@ -102,7 +90,7 @@ app.put("/projects/:id", verifyAdmin, async (req, res) => {
 
     await pool.query(
       `UPDATE projects 
-       SET title=$1, description=$2, imageUrl=$3, projectUrl=$4, workedUnder=$5
+       SET title=$1, description=$2, imageurl=$3, projecturl=$4, workedunder=$5
        WHERE id=$6`,
       [title, description, imageUrl, projectUrl, workedUnder, id]
     );
@@ -114,13 +102,9 @@ app.put("/projects/:id", verifyAdmin, async (req, res) => {
   }
 });
 
-/* ===== PROJECT DELETE ===== */
 app.delete("/projects/:id", verifyAdmin, async (req, res) => {
   try {
-    const { id } = req.params;
-
-    await pool.query("DELETE FROM projects WHERE id=$1", [id]);
-
+    await pool.query("DELETE FROM projects WHERE id=$1", [req.params.id]);
     res.json({ message: "Project deleted" });
   } catch (err) {
     console.error(err);
@@ -135,21 +119,32 @@ app.get("/testimonials", async (req, res) => {
     const result = await pool.query(
       "SELECT * FROM testimonials ORDER BY id DESC"
     );
-    res.json(result.rows);
+
+    // ✅ FIX: normalize keys + filter bad data
+    const cleaned = result.rows
+      .filter(t => t.name && t.message)
+      .map(t => ({
+        id: t.id,
+        name: t.name,
+        message: t.message,
+        image: t.image,
+        linkedinUrl: t.linkedinurl
+      }));
+
+    res.json(cleaned);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch testimonials" });
   }
 });
 
-// 🔒 PROTECTED
 app.post("/testimonials", verifyAdmin, async (req, res) => {
   try {
     const { name, message, image, linkedinUrl } = req.body;
 
     await pool.query(
       `INSERT INTO testimonials 
-      (name, message, image, linkedinUrl)
+      (name, message, image, linkedinurl)
       VALUES ($1,$2,$3,$4)`,
       [name, message, image, linkedinUrl]
     );
@@ -161,7 +156,6 @@ app.post("/testimonials", verifyAdmin, async (req, res) => {
   }
 });
 
-/* ===== TESTIMONIAL UPDATE ===== */
 app.put("/testimonials/:id", verifyAdmin, async (req, res) => {
   try {
     const { id } = req.params;
@@ -169,7 +163,7 @@ app.put("/testimonials/:id", verifyAdmin, async (req, res) => {
 
     await pool.query(
       `UPDATE testimonials 
-       SET name=$1, message=$2, image=$3, linkedinUrl=$4
+       SET name=$1, message=$2, image=$3, linkedinurl=$4
        WHERE id=$5`,
       [name, message, image, linkedinUrl, id]
     );
@@ -181,19 +175,16 @@ app.put("/testimonials/:id", verifyAdmin, async (req, res) => {
   }
 });
 
-/* ===== TESTIMONIAL DELETE ===== */
 app.delete("/testimonials/:id", verifyAdmin, async (req, res) => {
   try {
-    const { id } = req.params;
-
-    await pool.query("DELETE FROM testimonials WHERE id=$1", [id]);
-
+    await pool.query("DELETE FROM testimonials WHERE id=$1", [req.params.id]);
     res.json({ message: "Testimonial deleted" });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to delete testimonial" });
   }
 });
+
 /* ================= SETTINGS ================= */
 
 app.get("/settings", async (req, res) => {
@@ -201,23 +192,29 @@ app.get("/settings", async (req, res) => {
     const result = await pool.query(
       "SELECT * FROM settings LIMIT 1"
     );
-    res.json(result.rows[0] || {});
+
+    const row = result.rows[0];
+
+    // ✅ FIX: normalize response
+    res.json({
+      resumeUrl: row?.resumeurl || ""
+    });
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch settings" });
   }
 });
 
-// 🔒 PROTECTED + UPSERT
 app.post("/settings", verifyAdmin, async (req, res) => {
   try {
     const { resumeUrl } = req.body;
 
     await pool.query(`
-      INSERT INTO settings (id, resumeUrl)
+      INSERT INTO settings (id, resumeurl)
       VALUES (1, $1)
       ON CONFLICT (id)
-      DO UPDATE SET resumeUrl = EXCLUDED.resumeUrl
+      DO UPDATE SET resumeurl = EXCLUDED.resumeurl
     `, [resumeUrl]);
 
     res.json({ message: "Settings updated" });
@@ -228,6 +225,7 @@ app.post("/settings", verifyAdmin, async (req, res) => {
 });
 
 /* ================= SERVER ================= */
+
 (async () => {
   try {
     const client = await pool.connect();
@@ -235,7 +233,7 @@ app.post("/settings", verifyAdmin, async (req, res) => {
     client.release();
   } catch (err) {
     console.error("❌ DB Connection Failed:", err);
-    process.exit(1); // stop server if DB fails
+    process.exit(1);
   }
 })();
 
