@@ -12,7 +12,7 @@ export const routes: Routes = [
   { path: 'about', component: AboutComponent, data: { title: 'About' } },
   { path: 'projects', component: ProjectsComponent,data: { title: 'Projects' } },
   { path: 'contact', component: ContactComponent,data: { title: 'Contact' } },
-  { path: 'admin-yash-portal-6367', component:AdminComponent,data: { title: 'Admin' }},
+  { path: 'admin-yash', component:AdminComponent,data: { title: 'Admin' }},
   { path: '**', redirectTo: '' } // Redirect unknown paths to home
 ];
 
