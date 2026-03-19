@@ -1,28 +1,43 @@
 <div class="projects-container">
   <h2 class="fade-in">My <span class="span-element">Projects :</span></h2>
-  <p class="projects-subheading fade-in">Explore a selection of my development work, showcasing responsive designs, optimized performance, and innovative solutions across multiple platforms.</p>
+  <p class="projects-subheading fade-in">
+    Explore a selection of my development work, showcasing responsive designs,
+    optimized performance, and innovative solutions across multiple platforms.
+  </p>
 
   <div class="project-grid">
-  <div class="col-12 col-md-6 col-lg-6 mb-4" *ngFor="let project of projects">
-    <div class="project-card">
-
-      <!-- Thumbnail with hover overlay -->
-      <div class="thumbnail">
-        <img [src]="project.imageUrl" alt="{{ project.title }}" />
-        <div class="thumb-overlay">
-
+    <div
+      class="col-12 col-md-6 col-lg-6 mb-4"
+      *ngFor="let project of projects; let i = index"
+      [@cardFadeUp]
+      [style.animationDelay.ms]="i * 80"
+    >
+      <div class="project-card">
+        <!-- Thumbnail with hover overlay -->
+        <div class="thumbnail">
+          <img [src]="project.imageUrl" alt="{{ project.title }}" />
+          <div class="thumb-overlay"></div>
         </div>
-      </div>
 
-      <h3 class="project-title">{{ project.title }}</h3>
-      <h4 class="project-subtitle">{{ project.workedUnder }}</h4>
-      <p class="project-desc">{{ project.description }}</p>
-      <a [href]="project.projectUrl" target="_blank" class="btn btn-primary mt-2 d-md-none">
-        View Project
-      </a>
+        <h3 class="project-title">{{ project.title }}</h3>
+        <h4 class="project-subtitle">{{ project.workedUnder }}</h4>
+        <p class="project-desc">{{ project.description }}</p>
+        <a
+          [href]="project.projectUrl"
+          target="_blank"
+          class="btn btn-primary mt-2 d-md-none"
+        >
+          View Project
+        </a>
+      </div>
     </div>
   </div>
-</div>
 
-  <div class="background-graphic"><img class="contact-graphic" src="/assets/contact me gradient pattern-2.svg" alt="ABOUT GRAPHIC"></div>
+  <div class="background-graphic">
+    <img
+      class="contact-graphic"
+      src="/assets/contact me gradient pattern-2.svg"
+      alt="ABOUT GRAPHIC"
+    />
+  </div>
 </div>

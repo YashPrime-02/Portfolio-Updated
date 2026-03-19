@@ -17,7 +17,7 @@ body {
   flex-direction: column;
   gap: 40px;
 
-  min-height: 100vh;
+  height: 10vh;
 }
 
 /* ===== BACKGROUND ===== */
@@ -144,7 +144,7 @@ body {
 /* ===== LOGIN ===== */
 .login-card {
   max-width: 420px;
-  margin: auto;
+  margin: 12% auto;
   text-align: center;
 }
 

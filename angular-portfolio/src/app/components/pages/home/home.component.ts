@@ -15,11 +15,13 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { environment } from '../../../../../environment/environment';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, HttpClientModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   animations: [
@@ -42,6 +44,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(
     private meta: Meta,
     private title: Title,
+    private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -54,7 +57,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   private minLoaderTime = 1800;
   private startTime = 0;
-
+  private api(path: string) {
+    return `${environment.apiBase}${path}`;
+  }
   // ================= VIEWCHILD =================
   @ViewChild('railRef') railRef?: ElementRef<HTMLDivElement>;
   @ViewChild('timelineRef') timelineRef?: ElementRef<HTMLDivElement>;
@@ -111,6 +116,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   // ================= TIMELINE =================
   timelineProgress = 0;
   activeTimelineIndex = 0;
+  resumeUrl = '';
 
   // ================= TESTIMONIALS =================
   // Testimonials
@@ -188,9 +194,39 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ];
 
+  staticTestimonials = [...this.testimonials];
 
+  loadTestimonials() {
+    this.http.get(this.api('/testimonials')).subscribe({
+      next: (res: any) => {
+        const apiData = (res || [])
+          .filter((t: any) => t.name && t.message) // remove null rows
+          .map((t: any) => ({
+            id: t.id,
+            name: t.name,
+            message: t.message,
+            image: t.image,
+            linkedinUrl: t.linkedinurl // 🔥 FIX HERE
+          }));
+
+        // ✅ MERGE OLD + NEW
+        this.testimonials = [...apiData, ...this.staticTestimonials];
+
+        // re-run animation
+        setTimeout(() => {
+          if (this.testimonialTrack) {
+            this.cloneTestimonials();
+          }
+        }, 200);
+      },
+      error: () => {
+        // fallback = only old data
+        this.testimonials = [...this.staticTestimonials];
+      }
+    });
+  }
   // ================= ACHIEVEMENTS =================
-  
+
   achievementsTimeline = [
     {
       title: 'Technology Leader Award — ABES Alumni Awards',
@@ -218,6 +254,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ];
 
 
+
+  loadSettings() {
+  this.http.get(this.api('/settings')).subscribe({
+    next: (res: any) => {
+      this.resumeUrl = res?.resumeUrl || '';
+    },
+    error: () => {
+      this.resumeUrl = '';
+    }
+  });
+}
+
   // ================= INIT =================
   ngOnInit(): void {
 
@@ -232,6 +280,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.numberOfProjects = this.targetNumberOfProjects;
       this.numberOfTechnologies = this.targetNumberOfTechnologies;
     }
+
+    if (this.isBrowser) {
+      this.loadTestimonials();
+      this.loadSettings();
+
+    }
+    
   }
 
   ngAfterViewInit(): void {
@@ -318,9 +373,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   // ================= TESTIMONIAL =================
   cloneTestimonials() {
+
+
     if (!this.testimonialTrack) return;
 
     const track = this.testimonialTrack.nativeElement as HTMLElement;
+    track.innerHTML = track.innerHTML; // ✅ prevents infinite duplication
     const cards = track.querySelectorAll<HTMLElement>('.testimonial-card');
 
     if (!cards.length) return;
