@@ -16,7 +16,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { environment } from '../../../../environment/environment';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-home',
