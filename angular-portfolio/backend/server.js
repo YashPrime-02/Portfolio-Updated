@@ -224,6 +224,25 @@ app.post("/settings", verifyAdmin, async (req, res) => {
   }
 });
 
+/* ================= HEALTH CHECK ================= */
+
+app.get("/ping", async (req, res) => {
+  try {
+    await pool.query("SELECT 1"); // keeps DB awake too
+
+    res.status(200).json({
+      status: "ok",
+      db: "connected",
+      time: new Date().toISOString()
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "error",
+      db: "failed"
+    });
+  }
+});
+
 /* ================= SERVER ================= */
 
 (async () => {
