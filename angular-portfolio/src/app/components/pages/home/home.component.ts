@@ -1,11 +1,9 @@
 import {
   Component,
-  ElementRef,
-  ViewChild,
   ViewChildren,
   QueryList,
   OnInit,
-  AfterViewInit,
+
   Inject,
   PLATFORM_ID,
   HostListener
@@ -17,8 +15,21 @@ import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
+import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import * as d3 from 'd3';
+
+interface TechNode {
+  id: number;
+  name: string;
+  icon: string;
+  x?: number;
+  y?: number;
+  fx?: number | null;
+  fy?: number | null;
+}
 
 @Component({
+
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule, RouterLink, HttpClientModule],
@@ -65,6 +76,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('timelineRef') timelineRef?: ElementRef<HTMLDivElement>;
   @ViewChildren('itemRef') itemRefs?: QueryList<ElementRef<HTMLElement>>;
   @ViewChild('testimonialTrack') testimonialTrack?: ElementRef;
+  @ViewChild('techGraph', { static: false }) svgRef!: ElementRef;
 
   // ================= COUNTERS =================
   yearsOfExperience = 0;
@@ -95,24 +107,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
   nameFadeState: 'visible' | 'hidden' = 'visible';
 
   technologies = [
-    { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/html5.svg' },
-    { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/css3.svg' },
-    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/javascript.svg' },
-    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/typescript.svg' },
-    { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/react.svg' },
-    { name: 'Angular', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/angular.svg' },
-    { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/bootstrap.svg' },
-    { name: 'Postman', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/postman.svg' },
-    { name: 'Jest', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/jest.svg' },
-    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/nodedotjs.svg' },
-    { name: 'Express', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/express.svg' },
-    { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/postgresql.svg' },
-    { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/supabase.svg' },
-    { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/vercel.svg' },
-    { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/git.svg' },
-    { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/github.svg' },
-    { name: 'Figma', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/figma.svg' }
+    { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/html5.svg', category: 'frontend' },
+    { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/css3.svg', category: 'frontend' },
+    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/javascript.svg', category: 'frontend' },
+    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/typescript.svg', category: 'frontend' },
+    { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/react.svg' , category: 'frontend'},
+    { name: 'Angular', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/angular.svg' , category: 'frontend'},
+    { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/bootstrap.svg', category: 'frontend' },
+    { name: 'Postman', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/postman.svg', category: 'tools' },
+    { name: 'Jest', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/jest.svg' , category: 'frontend'},
+    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/nodedotjs.svg', category: 'backend' },
+    { name: 'Express', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/express.svg', category: 'backend'  },
+    { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/postgresql.svg', category: 'backend' },
+    { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/supabase.svg', category: 'backend'  },
+    { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/vercel.svg' , category: 'tools'  },
+    { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/git.svg' , category: 'tools' },
+    { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/github.svg', category: 'tools' },
+    { name: 'Figma', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@5.0.0/icons/figma.svg', category: 'tools' }
   ];
+
   // ================= TIMELINE =================
   timelineProgress = 0;
   activeTimelineIndex = 0;
@@ -254,7 +267,140 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ];
 
 
+  initGraph() {
+  if (!this.svgRef || !this.svgRef.nativeElement) return;
 
+  const el = this.svgRef.nativeElement;
+
+  const rect = el.getBoundingClientRect();
+  if (rect.width === 0) {
+    setTimeout(() => this.initGraph(), 150);
+    return;
+  }
+
+  const width = rect.width || 800;
+
+  // ✅ Responsive columns
+  const cols =
+    width < 480 ? 3 :
+    width < 768 ? 4 :
+    width < 1024 ? 5 :
+    6;
+
+  const rows = Math.ceil(this.technologies.length / cols);
+
+  // ✅ Dynamic height (FIXES MOBILE CUT ISSUE)
+  const height = rows * 110 + 80;
+  let iconSize = 48;
+
+if (width < 480) iconSize = 26;
+else if (width < 768) iconSize = 32;
+else if (width < 1024) iconSize = 38;
+else if (width > 1440) iconSize = 56;
+  const textSize =
+    width < 480 ? '8px' :
+    width < 768 ? '9px' :
+    width < 1024 ? '11px' :
+    '12px';
+
+  const collisionRadius = iconSize + 20;
+
+  d3.select(el).selectAll('*').remove();
+
+  const svg = d3.select(el)
+    .attr('width', width)
+    .attr('height', height);
+
+  // ✅ GRID POSITIONING (CORE FIX)
+  const spacingX = width / (cols + 1);
+  const spacingY = height / (rows + 1);
+
+  const nodes: TechNode[] = this.technologies.map((tech, i) => {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+
+    return {
+      id: i,
+      ...tech,
+      x: spacingX * (col + 1),
+      y: spacingY * (row + 1)
+    };
+  });
+
+  // ✅ SOFT PHYSICS (NO CHAOS)
+  const simulation = d3.forceSimulation<TechNode>(nodes)
+    .force('charge', d3.forceManyBody().strength(-60))
+    .force('collision', d3.forceCollide<TechNode>().radius(collisionRadius))
+    .force('x', d3.forceX(d => d.x!).strength(0.25))
+    .force('y', d3.forceY(d => d.y!).strength(0.25))
+    .alpha(1)
+    .alphaDecay(0.08);
+
+  // ✅ Nodes
+  const node = svg.selectAll<SVGGElement, TechNode>('.node')
+    .data(nodes)
+    .enter()
+    .append('g')
+    .attr('class', 'node')
+    .style('cursor', 'grab')
+    .style('opacity', () => 0.75 + Math.random() * 0.25)
+    .call(
+      d3.drag<SVGGElement, TechNode>()
+        .on('start', dragStarted)
+        .on('drag', dragged)
+        .on('end', dragEnded)
+    );
+
+  // ✅ ICON
+  node.append('image')
+    .attr('href', d => d.icon)
+    .attr('xlink:href', d => d.icon)
+    .attr('width', iconSize)
+    .attr('height', iconSize)
+    .attr('x', -iconSize / 2)
+    .attr('y', -iconSize / 2)
+    .style('filter', 'invert(1)');
+
+  // ✅ TEXT
+  node.append('text')
+    .attr('dy', iconSize / 2 + 14)
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#fff')
+    .style('font-size', textSize)
+    .text(d => d.name);
+
+  // ✅ FLOATING + 3D FEEL
+  simulation.on('tick', () => {
+    const time = Date.now() * 0.002;
+
+    node.attr('transform', d => {
+      const floatX = Math.sin(time + d.id) * 1.5;
+      const floatY = Math.cos(time + d.id) * 1.5;
+
+      const scale = 0.96 + Math.sin(time + d.id) * 0.04;
+
+      return `translate(${d.x! + floatX}, ${d.y! + floatY}) scale(${scale})`;
+    });
+  });
+
+  // ✅ DRAG
+  function dragStarted(event: any, d: TechNode) {
+    if (!event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x ?? 0;
+    d.fy = d.y ?? 0;
+  }
+
+  function dragged(event: any, d: TechNode) {
+    d.fx = event.x;
+    d.fy = event.y;
+  }
+
+  function dragEnded(event: any, d: TechNode) {
+    if (!event.active) simulation.alphaTarget(0);
+    d.fx = null;
+    d.fy = null;
+  }
+}
   loadSettings() {
     this.http.get(this.api('/settings')).subscribe({
       next: (res: any) => {
@@ -308,11 +454,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
     requestAnimationFrame(() => {
       try {
         this.initApp();
+
+        // ✅ Wait a bit to ensure DOM + SVG container is ready
+        setTimeout(() => {
+          this.initGraph(); // 🔥 D3 GRAPH INIT HERE
+        }, 50);
+
       } catch (err) {
         console.error('Init error:', err);
       }
 
-      // ✅ ONLY control loader if it's enabled
+      // ✅ Loader handling
       if (this.isLoading) {
         const elapsed = performance.now() - this.startTime;
         const remaining = this.minLoaderTime - elapsed;
@@ -323,13 +475,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
     });
 
-    // ✅ FAILSAFE only if loader is active
+    // ✅ Failsafe loader kill
     if (this.isLoading) {
       setTimeout(() => {
         this.isLoading = false;
       }, 4000);
     }
   }
+
   // ================= MAIN INIT =================
   initApp() {
     this.animateCounters();
@@ -364,19 +517,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   updateRepulsorBeam() {
-  if (!this.isBrowser) return;
+    if (!this.isBrowser) return;
 
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
 
-  const progress = (scrollTop / docHeight) * 100;
+    const progress = (scrollTop / docHeight) * 100;
 
-  const beam = document.querySelector('.repulsor-beam') as HTMLElement;
+    const beam = document.querySelector('.repulsor-beam') as HTMLElement;
 
-  if (beam) {
-    beam.style.width = `${progress}vw`; 
+    if (beam) {
+      beam.style.width = `${progress}vw`;
+    }
   }
-}
 
   handleAchievementsScroll(): void {
     if (!this.timelineRef || !this.railRef || !this.itemRefs) return;

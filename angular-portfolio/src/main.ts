@@ -3,8 +3,21 @@ import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import gsap from 'gsap';
 
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
-import { routes } from './app/app.routes';   // 🔹 make sure this path matches your project
+import { routes } from './app/app.routes';
+
+// 🔥 COMMON PROVIDERS
+const sharedProviders = [
+  provideAnimations(),
+  provideRouter(
+    routes,
+    withInMemoryScrolling({
+      scrollPositionRestoration: 'top',
+      anchorScrolling: 'enabled'
+    })
+  )
+];
 
 const texts = [
   "Loading assets...",
@@ -21,38 +34,42 @@ const imagesToPreload = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-  const loaderTextElement = document.querySelector('.loader-text') as HTMLElement;
-  const loaderPercentageElement = document.querySelector('.loader-percentage') as HTMLElement;
-  const loaderProgressElement = document.querySelector('.loader-progress') as HTMLElement;
+
+  // 🔹 Raw query
+  const loaderTextEl = document.querySelector('.loader-text');
+  const loaderPercentEl = document.querySelector('.loader-percentage');
+  const loaderProgressEl = document.querySelector('.loader-progress');
   const loaderWrapper = document.getElementById('loader-wrapper');
 
-  if (!loaderTextElement || !loaderPercentageElement || !loaderProgressElement || !loaderWrapper) {
-    console.error('Loader elements not found!');
+  // ✅ FALLBACK (no loader present)
+  if (!loaderTextEl || !loaderPercentEl || !loaderProgressEl || !loaderWrapper) {
+    console.warn('Loader not found → bootstrapping directly');
+
     bootstrapApplication(AppComponent, {
       ...appConfig,
       providers: [
         ...(appConfig.providers ?? []),
-
-        // 🔹 SCROLL TO TOP ON EVERY ROUTE CHANGE
-        provideRouter(
-          routes,
-          withInMemoryScrolling({
-            scrollPositionRestoration: 'top',
-            anchorScrolling: 'enabled'
-          })
-        )
+        ...sharedProviders
       ]
     }).catch(err => console.error(err));
+
     return;
   }
 
+  // ✅ SAFE TYPED ELEMENTS (CRITICAL FIX)
+  const loaderTextElement = loaderTextEl as HTMLElement;
+  const loaderPercentageElement = loaderPercentEl as HTMLElement;
+  const loaderProgressElement = loaderProgressEl as HTMLElement;
+
   let currentTextIndex = 0;
   let fakeProgress = 0;
+
   const totalDuration = 8000;
   const intervalTime = 100;
   const steps = Math.floor(totalDuration / intervalTime);
   const progressIncrement = 100 / steps;
   const textChangeInterval = Math.floor(steps / texts.length);
+
   let currentStep = 0;
 
   function rotateText() {
@@ -62,7 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
       onComplete: () => {
         currentTextIndex = (currentTextIndex + 1) % texts.length;
         loaderTextElement.textContent = texts[currentTextIndex];
-        gsap.to(loaderTextElement, { opacity: 1, duration: 0.3 });
+
+        gsap.to(loaderTextElement, {
+          opacity: 1,
+          duration: 0.3
+        });
       }
     });
   }
@@ -77,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       images.forEach((src) => {
         const img = new Image();
         img.src = src;
+
         img.onload = img.onerror = () => {
           loaded++;
           if (loaded === total) resolve();
@@ -87,10 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const intervalId = setInterval(() => {
     fakeProgress = Math.min(fakeProgress + progressIncrement, 99);
+
     loaderPercentageElement.textContent = `${Math.floor(fakeProgress)}%`;
     loaderProgressElement.style.width = `${fakeProgress}%`;
 
     currentStep++;
+
     if (currentStep % textChangeInterval === 0) {
       rotateText();
     }
@@ -102,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   preloadImages(imagesToPreload).then(() => {
     clearInterval(intervalId);
+
     loaderPercentageElement.textContent = `100%`;
     loaderProgressElement.style.width = `100%`;
 
@@ -111,22 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
       onComplete: () => {
         loaderWrapper.style.display = 'none';
 
-        // 🔹 BOOTSTRAP WITH SCROLL-TO-TOP ENABLED
         bootstrapApplication(AppComponent, {
           ...appConfig,
           providers: [
             ...(appConfig.providers ?? []),
-
-            provideRouter(
-              routes,
-              withInMemoryScrolling({
-                scrollPositionRestoration: 'top',
-                anchorScrolling: 'enabled'
-              })
-            )
+            ...sharedProviders
           ]
         }).catch(err => console.error(err));
       }
     });
   });
+
 });

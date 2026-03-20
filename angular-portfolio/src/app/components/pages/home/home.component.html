@@ -81,17 +81,13 @@
 
   <!-- Technologies -->
   <section class="technologies-section">
-    <h2>Technologies <span class="span-element">I've Worked on</span></h2>
-    <div class="tech-glass-wrapper">
+  <h2>Technologies <span class="span-element">I've Worked on</span></h2>
 
-    <div class="tech-icons">
-      <div class="tech-icon" *ngFor="let tech of technologies">
-        <img [src]="tech.icon" [alt]="tech.name" loading="lazy" />
-        <p>{{ tech.name }}</p>
-      </div>
-    </div>
-    </div>
-  </section>
+  <div class="tech-glass-wrapper">
+    <!-- D3 Graph -->
+    <svg #techGraph class="tech-graph"></svg>
+  </div>
+</section>
 
   <!-- Achievements -->
   <h2 class="Achivement-Heading">Recent <span class="span-element">Achievements</span></h2>

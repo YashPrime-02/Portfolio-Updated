@@ -1449,3 +1449,107 @@ line-height: normal;
   }
 }
 
+
+/* ===== GRAPH BASE ===== */
+.tech-graph {
+  width: 100%;
+  display: block;
+  height: auto; /* 🔥 IMPORTANT */
+}
+
+/* ===== NODE INTERACTION ===== */
+.node image {
+  transition: transform 0.3s ease;
+}
+
+.node:hover image {
+  transform: scale(1.2);
+}
+
+.node:hover text {
+  fill: #fab656;
+}
+
+.tech-glass-wrapper:hover {
+  transform: translateY(-4px);
+  transition: 0.3s ease;
+}
+
+/* ===== GLASS HOVER ===== */
+.tech-glass-wrapper:hover {
+  transform: translateY(-4px);
+  transition: 0.3s ease;
+}
+
+/* ========================= */
+/* 📱 TABLET (≤1024px) */
+/* ========================= */
+@media (max-width: 1024px) {
+  
+
+  .node text {
+    font-size: 10px;
+  }
+
+  .node image {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* ========================= */
+/* 📱 MOBILE (≤768px) */
+/* ========================= */
+@media (max-width: 768px) {
+  
+
+  .node text {
+    font-size: 9px;
+  }
+
+  .node image {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tech-glass-wrapper {
+    padding: 1.2rem;
+    border-radius: 16px;
+  }
+}
+
+/* ========================= */
+/* 📱 SMALL MOBILE (≤480px) */
+/* ========================= */
+@media (max-width: 480px) {
+  
+
+  .node text {
+    font-size: 8px;
+  }
+
+  .node image {
+    width: 26px;
+    height: 26px;
+  }
+
+  .tech-glass-wrapper {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+}
+
+/* ========================= */
+/* 📱 EXTRA SMALL (≤360px) */
+/* ========================= */
+@media (max-width: 360px) {
+
+  .node text {
+    font-size: 7px;
+  }
+
+  .node image {
+    width: 22px;
+    height: 22px;
+  }
+}
