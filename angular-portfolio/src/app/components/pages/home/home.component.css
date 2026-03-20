@@ -674,14 +674,24 @@ line-height: normal;
 
 /* ACTIVE LIFT */
 
-.aura-slab.orb-hit {
+/* .aura-slab.orb-hit {
   opacity: 1;
   transform: translateY(-16px) scale(1.04);
   box-shadow:
     0 22px 60px rgba(199, 102, 255, 0.4),
     0 0 30px rgba(250, 182, 86, 0.35);
   border-left: 4px solid #FAB656;
+} */
+
+.aura-slab:hover{
+    opacity: 1;
+  transform: translateY(-16px) scale(1.04);
+  box-shadow:
+    0 22px 60px rgba(199, 102, 255, 0.4),
+    0 0 30px rgba(250, 182, 86, 0.35);
+  border-left: 4px solid #FAB656;
 }
+
 
 /* TEXT */
 
