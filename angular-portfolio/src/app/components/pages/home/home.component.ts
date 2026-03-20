@@ -256,17 +256,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
   loadSettings() {
-  this.http.get(this.api('/settings')).subscribe({
-    next: (res: any) => {
-      this.resumeUrl = res?.resumeUrl || '';
-    },
-    error: () => {
-      this.resumeUrl = '';
-    }
-  });
-}
+    this.http.get(this.api('/settings')).subscribe({
+      next: (res: any) => {
+        this.resumeUrl = res?.resumeUrl || '';
+      },
+      error: () => {
+        this.resumeUrl = '';
+      }
+    });
+  }
 
-  // ================= INIT =================
   ngOnInit(): void {
 
     this.title.setTitle('Home | Yash Mishra Portfolio');
@@ -275,18 +274,30 @@ export class HomeComponent implements OnInit, AfterViewInit {
       content: 'Frontend Developer specializing in Angular, React, and scalable applications.'
     });
 
+    // ================= LOADER CONTROL =================
+    if (this.isBrowser) {
+      const hasLoaded = sessionStorage.getItem('portfolio_loaded');
+
+      if (hasLoaded) {
+        this.isLoading = false; // ❌ skip loader
+      } else {
+        sessionStorage.setItem('portfolio_loaded', 'true');
+        this.isLoading = true; // ✅ show loader first time
+      }
+    }
+
+    // ================= SSR FALLBACK =================
     if (!this.isBrowser) {
       this.yearsOfExperience = this.targetYearsOfExperience;
       this.numberOfProjects = this.targetNumberOfProjects;
       this.numberOfTechnologies = this.targetNumberOfTechnologies;
     }
 
+    // ================= API LOAD =================
     if (this.isBrowser) {
       this.loadTestimonials();
       this.loadSettings();
-
     }
-    
   }
 
   ngAfterViewInit(): void {
@@ -301,20 +312,24 @@ export class HomeComponent implements OnInit, AfterViewInit {
         console.error('Init error:', err);
       }
 
-      const elapsed = performance.now() - this.startTime;
-      const remaining = this.minLoaderTime - elapsed;
+      // ✅ ONLY control loader if it's enabled
+      if (this.isLoading) {
+        const elapsed = performance.now() - this.startTime;
+        const remaining = this.minLoaderTime - elapsed;
 
-      setTimeout(() => {
-        this.isLoading = false;
-      }, remaining > 0 ? remaining : 0);
+        setTimeout(() => {
+          this.isLoading = false;
+        }, remaining > 0 ? remaining : 0);
+      }
     });
 
-    // 🔥 FAILSAFE (never infinite again)
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 4000);
+    // ✅ FAILSAFE only if loader is active
+    if (this.isLoading) {
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 4000);
+    }
   }
-
   // ================= MAIN INIT =================
   initApp() {
     this.animateCounters();
@@ -342,6 +357,26 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.ticking = true;
     }
   }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.updateRepulsorBeam();
+  }
+
+  updateRepulsorBeam() {
+  if (!this.isBrowser) return;
+
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+  const progress = (scrollTop / docHeight) * 100;
+
+  const beam = document.querySelector('.repulsor-beam') as HTMLElement;
+
+  if (beam) {
+    beam.style.width = `${progress}vw`; 
+  }
+}
 
   handleAchievementsScroll(): void {
     if (!this.timelineRef || !this.railRef || !this.itemRefs) return;

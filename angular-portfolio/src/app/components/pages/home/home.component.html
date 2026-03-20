@@ -25,6 +25,13 @@
 
 </div>
 
+<div class="ironman-container">
+  <div class="ironman-glass">
+    <img src="/assets/iron-man.jpg" class="ironman-img" />
+    <div class="repulsor-beam"></div>
+  </div>
+</div>
+
 <!-- MAIN CONTENT -->
 <div *ngIf="!isLoading" class="home-container" @fadeInAnimation>
 
@@ -75,12 +82,14 @@
   <!-- Technologies -->
   <section class="technologies-section">
     <h2>Technologies <span class="span-element">I've Worked on</span></h2>
+    <div class="tech-glass-wrapper">
 
     <div class="tech-icons">
       <div class="tech-icon" *ngFor="let tech of technologies">
         <img [src]="tech.icon" [alt]="tech.name" loading="lazy" />
         <p>{{ tech.name }}</p>
       </div>
+    </div>
     </div>
   </section>
 

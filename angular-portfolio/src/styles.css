@@ -133,3 +133,39 @@ body {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px; /* thinner = smoother perception */
+}
+
+/* ===== TRACK ===== */
+::-webkit-scrollbar-track {
+  background: rgba(15, 15, 15, 0.8);
+}
+
+/* ===== THUMB ===== */
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+
+  /* 🔥 Use solid base + subtle gradient overlay */
+  background: #C766FF;
+
+  background-image: linear-gradient(
+    135deg,
+    rgba(250,182,86,0.8),
+    rgba(199,102,255,0.9)
+  );
+
+  /* 👇 key trick */
+  background-clip: padding-box;
+
+  border: 2px solid transparent;
+
+  /* smoother feel */
+  transition: background 0.25s ease;
+}
+
+/* ===== HOVER ===== */
+::-webkit-scrollbar-thumb:hover {
+  background: #d88cff;
+}
