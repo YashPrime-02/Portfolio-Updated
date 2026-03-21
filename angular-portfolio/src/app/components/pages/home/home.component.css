@@ -948,3 +948,188 @@ line-height: normal;
   }
 
 } 
+
+
+
+/* ======= Base Layout ======= */
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: calc(100vh - 80px);
+  color: #00E5FF !important;
+  padding: 2rem;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ======= Hero Section ======= */
+.hero {
+  border-radius: 12px;
+  backdrop-filter: blur(15px);
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  color: #FFFFFF !important;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.hero p {
+  color: #D9F9FF !important;
+  font-family: Poppins;
+  font-size: 24px;
+  line-height: 40px;
+}
+
+.btn {
+  border-radius: 50px;
+  border: 2px solid transparent !important;
+  background: linear-gradient(144deg, rgba(0,229,255,0.08), rgba(124,77,255,0.18)) !important;
+  color: #FFFFFF !important;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.btn:hover {
+  background: linear-gradient(93deg, #00E5FF, #7C4DFF) !important;
+}
+
+/* ======= Stats Section ======= */
+
+.stats-heading h2 {
+  font-family: Poppins;
+  font-size: 64px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.stats-card {
+  background: linear-gradient(144deg, rgba(0,229,255,0.08), rgba(124,77,255,0.18)) !important;
+  border-radius: 12px;
+  padding: 2rem;
+  backdrop-filter: blur(15px);
+}
+
+.stats-card h3,
+.stats-card p {
+  color: #FFFFFF !important;
+}
+
+/* ======= Technologies Section ======= */
+
+.technologies-section h2 {
+  color: #FFFFFF !important;
+}
+
+.tech-icon img {
+  filter: brightness(0) saturate(100%) invert(77%) sepia(79%) saturate(749%) hue-rotate(155deg) !important;
+}
+
+.tech-icon p {
+  color: #D9F9FF !important;
+}
+
+.tech-icon:hover {
+  color: #00FFA3 !important;
+}
+
+/* ======= Testimonials ======= */
+
+.testimonials-section h2 {
+  color: #FFFFFF !important;
+}
+
+.testimonial-card {
+  background: linear-gradient(144deg, rgba(0,229,255,0.08), rgba(124,77,255,0.18)) !important;
+  color: #FFFFFF !important;
+}
+
+.testimonial-card p,
+.testimonial-card h4 {
+  color: #D9F9FF !important;
+}
+
+/* ======= Arrows ======= */
+
+.arrow {
+  background: rgba(0,229,255,0.7) !important;
+  color: #0A0F1C !important;
+}
+
+/* ======= Timeline ======= */
+
+.orbital-rail::before {
+  background: linear-gradient(
+    180deg,
+    rgba(0,229,255,0.25),
+    rgba(124,77,255,0.6),
+    rgba(0,229,255,0.25)
+  ) !important;
+}
+
+.aura-slab {
+  background: linear-gradient(
+    144deg,
+    rgba(0,229,255,0.08),
+    rgba(124,77,255,0.18)
+  ) !important;
+}
+
+.aura-slab.orb-hit {
+  box-shadow:
+    0 22px 60px rgba(124,77,255,0.4),
+    0 0 30px rgba(0,229,255,0.35) !important;
+  border-left: 4px solid #00E5FF !important;
+}
+
+.aura-slab h3,
+.aura-slab p {
+  color: #FFFFFF !important;
+}
+
+.aura-slab span {
+  color: #00FFA3 !important;
+}
+
+/* ======= Heading ======= */
+
+.Achivement-Heading {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* ======= Hero Card ======= */
+
+.aura-hero {
+  background: linear-gradient(
+    144deg,
+    rgba(0,229,255,0.1),
+    rgba(124,77,255,0.2)
+  ) !important;
+}
+
+/* ======= Achievement Button ======= */
+
+.aura-link-btn {
+  background: linear-gradient(
+    144deg,
+    rgba(0,229,255,0.08),
+    rgba(124,77,255,0.18)
+  ) !important;
+  border: 1px solid rgba(0,229,255,0.4) !important;
+  color: #00E5FF !important;
+}
+
+.aura-link-btn:hover {
+  color: #FFFFFF !important;
+}
