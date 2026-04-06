@@ -267,18 +267,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ];
 
 
-  initGraph() {
-  if (!this.svgRef || !this.svgRef.nativeElement) return;
+ initGraph() {
+  if (!this.svgRef?.nativeElement) return;
 
   const el = this.svgRef.nativeElement;
 
   const rect = el.getBoundingClientRect();
-  if (rect.width === 0) {
-    setTimeout(() => this.initGraph(), 150);
+
+  // 🔥 FIX 1: Ensure element is actually visible/rendered
+  if (rect.width === 0 || rect.height === 0) {
+    requestAnimationFrame(() => this.initGraph());
     return;
   }
 
-  const width = rect.width || 800;
+  const width = rect.width;
 
   // ✅ Responsive columns
   const cols =
@@ -289,14 +291,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   const rows = Math.ceil(this.technologies.length / cols);
 
-  // ✅ Dynamic height (FIXES MOBILE CUT ISSUE)
+  // ✅ Dynamic height
   const height = rows * 110 + 80;
-  let iconSize = 48;
 
-if (width < 480) iconSize = 26;
-else if (width < 768) iconSize = 32;
-else if (width < 1024) iconSize = 38;
-else if (width > 1440) iconSize = 56;
+  // ✅ Responsive icon sizing
+  let iconSize = 48;
+  if (width < 480) iconSize = 26;
+  else if (width < 768) iconSize = 32;
+  else if (width < 1024) iconSize = 38;
+  else if (width > 1440) iconSize = 56;
+
   const textSize =
     width < 480 ? '8px' :
     width < 768 ? '9px' :
@@ -305,13 +309,14 @@ else if (width > 1440) iconSize = 56;
 
   const collisionRadius = iconSize + 20;
 
-  d3.select(el).selectAll('*').remove();
+  // 🔥 FIX 2: Clear previous renders safely
+  d3.select(el).selectAll('*').interrupt().remove();
 
   const svg = d3.select(el)
     .attr('width', width)
     .attr('height', height);
 
-  // ✅ GRID POSITIONING (CORE FIX)
+  // ✅ Grid spacing
   const spacingX = width / (cols + 1);
   const spacingY = height / (rows + 1);
 
@@ -327,14 +332,15 @@ else if (width > 1440) iconSize = 56;
     };
   });
 
-  // ✅ SOFT PHYSICS (NO CHAOS)
+  // 🔥 FIX 3: Stable simulation config
   const simulation = d3.forceSimulation<TechNode>(nodes)
-    .force('charge', d3.forceManyBody().strength(-60))
+    .force('charge', d3.forceManyBody().strength(-50)) // slightly reduced chaos
     .force('collision', d3.forceCollide<TechNode>().radius(collisionRadius))
-    .force('x', d3.forceX(d => d.x!).strength(0.25))
-    .force('y', d3.forceY(d => d.y!).strength(0.25))
+    .force('x', d3.forceX(d => d.x!).strength(0.3))
+    .force('y', d3.forceY(d => d.y!).strength(0.3))
     .alpha(1)
-    .alphaDecay(0.08);
+    .alphaDecay(0.08)
+    .velocityDecay(0.3);
 
   // ✅ Nodes
   const node = svg.selectAll<SVGGElement, TechNode>('.node')
@@ -343,7 +349,7 @@ else if (width > 1440) iconSize = 56;
     .append('g')
     .attr('class', 'node')
     .style('cursor', 'grab')
-    .style('opacity', () => 0.75 + Math.random() * 0.25)
+    .style('opacity', () => 0.8)
     .call(
       d3.drag<SVGGElement, TechNode>()
         .on('start', dragStarted)
@@ -351,43 +357,43 @@ else if (width > 1440) iconSize = 56;
         .on('end', dragEnded)
     );
 
-  // ✅ ICON
+  // 🔥 FIX 4: Better image loading reliability
   node.append('image')
     .attr('href', d => d.icon)
-    .attr('xlink:href', d => d.icon)
     .attr('width', iconSize)
     .attr('height', iconSize)
     .attr('x', -iconSize / 2)
     .attr('y', -iconSize / 2)
-    .style('filter', 'invert(1)');
+    .style('filter', 'invert(1)')
+    .style('pointer-events', 'none');
 
-  // ✅ TEXT
+  // ✅ Text
   node.append('text')
     .attr('dy', iconSize / 2 + 14)
     .attr('text-anchor', 'middle')
     .attr('fill', '#fff')
     .style('font-size', textSize)
+    .style('pointer-events', 'none')
     .text(d => d.name);
 
-  // ✅ FLOATING + 3D FEEL
+  // 🔥 FIX 5: Smooth floating (less jitter)
   simulation.on('tick', () => {
-    const time = Date.now() * 0.002;
+    const time = Date.now() * 0.0015;
 
     node.attr('transform', d => {
-      const floatX = Math.sin(time + d.id) * 1.5;
-      const floatY = Math.cos(time + d.id) * 1.5;
-
-      const scale = 0.96 + Math.sin(time + d.id) * 0.04;
+      const floatX = Math.sin(time + d.id) * 1.2;
+      const floatY = Math.cos(time + d.id) * 1.2;
+      const scale = 0.97 + Math.sin(time + d.id) * 0.03;
 
       return `translate(${d.x! + floatX}, ${d.y! + floatY}) scale(${scale})`;
     });
   });
 
-  // ✅ DRAG
+  // ✅ Drag handlers
   function dragStarted(event: any, d: TechNode) {
     if (!event.active) simulation.alphaTarget(0.3).restart();
-    d.fx = d.x ?? 0;
-    d.fy = d.y ?? 0;
+    d.fx = d.x;
+    d.fy = d.y;
   }
 
   function dragged(event: any, d: TechNode) {
@@ -400,6 +406,27 @@ else if (width > 1440) iconSize = 56;
     d.fx = null;
     d.fy = null;
   }
+}
+
+private preloadTechIcons() {
+  this.technologies.forEach(tech => {
+    const img = new Image();
+    img.src = tech.icon;
+  });
+}
+
+private waitForGraphInit() {
+  if (!this.isBrowser) return;
+
+  const check = () => {
+    if (!this.isLoading && this.svgRef?.nativeElement) {
+      this.initGraph();
+    } else {
+      requestAnimationFrame(check);
+    }
+  };
+
+  check();
 }
   loadSettings() {
     this.http.get(this.api('/settings')).subscribe({
@@ -419,6 +446,14 @@ else if (width > 1440) iconSize = 56;
       name: 'description',
       content: 'Frontend Developer specializing in Angular, React, and scalable applications.'
     });
+
+    if (this.isBrowser) {
+  this.loadTestimonials();
+  this.loadSettings();
+
+  // 🔥 NEW: preload icons early
+  this.preloadTechIcons();
+}
 
     // ================= LOADER CONTROL =================
     if (this.isBrowser) {
@@ -447,41 +482,39 @@ else if (width > 1440) iconSize = 56;
   }
 
   ngAfterViewInit(): void {
-    if (!this.isBrowser) return;
+  if (!this.isBrowser) return;
 
-    this.startTime = performance.now();
+  this.startTime = performance.now();
 
-    requestAnimationFrame(() => {
-      try {
-        this.initApp();
+  requestAnimationFrame(() => {
+    try {
+      this.initApp();
 
-        // ✅ Wait a bit to ensure DOM + SVG container is ready
-        setTimeout(() => {
-          this.initGraph(); // 🔥 D3 GRAPH INIT HERE
-        }, 50);
+      // 🔥 NEW: Wait until loader is gone + DOM ready
+      this.waitForGraphInit();
 
-      } catch (err) {
-        console.error('Init error:', err);
-      }
+    } catch (err) {
+      console.error('Init error:', err);
+    }
 
-      // ✅ Loader handling
-      if (this.isLoading) {
-        const elapsed = performance.now() - this.startTime;
-        const remaining = this.minLoaderTime - elapsed;
-
-        setTimeout(() => {
-          this.isLoading = false;
-        }, remaining > 0 ? remaining : 0);
-      }
-    });
-
-    // ✅ Failsafe loader kill
+    // ✅ Loader handling
     if (this.isLoading) {
+      const elapsed = performance.now() - this.startTime;
+      const remaining = this.minLoaderTime - elapsed;
+
       setTimeout(() => {
         this.isLoading = false;
-      }, 4000);
+      }, remaining > 0 ? remaining : 0);
     }
+  });
+
+  // ✅ Failsafe loader kill
+  if (this.isLoading) {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 4000);
   }
+}
 
   // ================= MAIN INIT =================
   initApp() {

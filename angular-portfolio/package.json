@@ -2,11 +2,12 @@
   "name": "angular-portfolio",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "build": "ng build --configuration production",
-    "start": "ng serve",
-    "test": "ng test"
-  },
+  "dev": "ng serve --open",
+  "start": "npm run dev",
+  "build": "ng build --configuration production",
+  "test": "ng test"
+},
+
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.2.5",
