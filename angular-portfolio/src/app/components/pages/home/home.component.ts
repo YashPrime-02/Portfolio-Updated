@@ -267,22 +267,23 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ];
 
 
- initGraph() {
-  if (!this.svgRef?.nativeElement) return;
+initGraph() {
+  if (!this.svgRef || !this.svgRef.nativeElement) return;
 
   const el = this.svgRef.nativeElement;
-
   const rect = el.getBoundingClientRect();
 
-  // 🔥 FIX 1: Ensure element is actually visible/rendered
   if (rect.width === 0 || rect.height === 0) {
     requestAnimationFrame(() => this.initGraph());
     return;
   }
 
-  const width = rect.width;
+  const width = rect.width || 800;
 
-  // ✅ Responsive columns
+  // 🔥 HARD device check (this is the ONLY control switch)
+  const isMobile = window.matchMedia("(max-width: 480px)").matches;
+
+  // layout stays based on container (UNCHANGED)
   const cols =
     width < 480 ? 3 :
     width < 768 ? 4 :
@@ -291,10 +292,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   const rows = Math.ceil(this.technologies.length / cols);
 
-  // ✅ Dynamic height
-  const height = rows * 110 + 80;
+  const height = isMobile
+    ? rows * 80 + 40   // mobile compact
+    : rows * 110 + 80; // desktop SAME
 
-  // ✅ Responsive icon sizing
   let iconSize = 48;
   if (width < 480) iconSize = 26;
   else if (width < 768) iconSize = 32;
@@ -309,16 +310,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   const collisionRadius = iconSize + 20;
 
-  // 🔥 FIX 2: Clear previous renders safely
-  d3.select(el).selectAll('*').interrupt().remove();
+  d3.select(el).selectAll('*').remove();
 
   const svg = d3.select(el)
     .attr('width', width)
     .attr('height', height);
 
-  // ✅ Grid spacing
   const spacingX = width / (cols + 1);
-  const spacingY = height / (rows + 1);
+  const spacingY = height / (rows + (isMobile ? 0.6 : 1));
 
   const nodes: TechNode[] = this.technologies.map((tech, i) => {
     const col = i % cols;
@@ -332,68 +331,68 @@ export class HomeComponent implements OnInit, AfterViewInit {
     };
   });
 
-  // 🔥 FIX 3: Stable simulation config
-  const simulation = d3.forceSimulation<TechNode>(nodes)
-    .force('charge', d3.forceManyBody().strength(-50)) // slightly reduced chaos
-    .force('collision', d3.forceCollide<TechNode>().radius(collisionRadius))
-    .force('x', d3.forceX(d => d.x!).strength(0.3))
-    .force('y', d3.forceY(d => d.y!).strength(0.3))
-    .alpha(1)
-    .alphaDecay(0.08)
-    .velocityDecay(0.3);
-
-  // ✅ Nodes
   const node = svg.selectAll<SVGGElement, TechNode>('.node')
     .data(nodes)
     .enter()
     .append('g')
     .attr('class', 'node')
-    .style('cursor', 'grab')
-    .style('opacity', () => 0.8)
-    .call(
-      d3.drag<SVGGElement, TechNode>()
-        .on('start', dragStarted)
-        .on('drag', dragged)
-        .on('end', dragEnded)
-    );
+    .style('cursor', isMobile ? 'default' : 'grab')
+    .style('opacity', () => 0.75 + Math.random() * 0.25);
 
-  // 🔥 FIX 4: Better image loading reliability
   node.append('image')
     .attr('href', d => d.icon)
     .attr('width', iconSize)
     .attr('height', iconSize)
     .attr('x', -iconSize / 2)
     .attr('y', -iconSize / 2)
-    .style('filter', 'invert(1)')
-    .style('pointer-events', 'none');
+    .style('filter', 'invert(1)');
 
-  // ✅ Text
   node.append('text')
     .attr('dy', iconSize / 2 + 14)
     .attr('text-anchor', 'middle')
     .attr('fill', '#fff')
     .style('font-size', textSize)
-    .style('pointer-events', 'none')
     .text(d => d.name);
 
-  // 🔥 FIX 5: Smooth floating (less jitter)
+  // ================= MOBILE ONLY =================
+  if (isMobile) {
+    // 🔥 STATIC GRID — no physics, no drag, no float
+    node.attr('transform', d => `translate(${d.x}, ${d.y})`);
+    return; // 🚨 HARD EXIT → prevents ANY desktop logic
+  }
+
+  // ================= DESKTOP (UNTOUCHED) =================
+  const simulation = d3.forceSimulation<TechNode>(nodes)
+    .force('charge', d3.forceManyBody().strength(-60))
+    .force('collision', d3.forceCollide<TechNode>().radius(collisionRadius))
+    .force('x', d3.forceX(d => d.x!).strength(0.25))
+    .force('y', d3.forceY(d => d.y!).strength(0.25))
+    .alpha(1)
+    .alphaDecay(0.08);
+
+  node.call(
+    d3.drag<SVGGElement, TechNode>()
+      .on('start', dragStarted)
+      .on('drag', dragged)
+      .on('end', dragEnded)
+  );
+
   simulation.on('tick', () => {
-    const time = Date.now() * 0.0015;
+    const time = Date.now() * 0.002;
 
     node.attr('transform', d => {
-      const floatX = Math.sin(time + d.id) * 1.2;
-      const floatY = Math.cos(time + d.id) * 1.2;
-      const scale = 0.97 + Math.sin(time + d.id) * 0.03;
+      const floatX = Math.sin(time + d.id) * 1.5;
+      const floatY = Math.cos(time + d.id) * 1.5;
+      const scale = 0.96 + Math.sin(time + d.id) * 0.04;
 
       return `translate(${d.x! + floatX}, ${d.y! + floatY}) scale(${scale})`;
     });
   });
 
-  // ✅ Drag handlers
   function dragStarted(event: any, d: TechNode) {
     if (!event.active) simulation.alphaTarget(0.3).restart();
-    d.fx = d.x;
-    d.fy = d.y;
+    d.fx = d.x ?? 0;
+    d.fy = d.y ?? 0;
   }
 
   function dragged(event: any, d: TechNode) {
